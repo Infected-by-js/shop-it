@@ -1,43 +1,59 @@
+import { borderRadius } from 'polished';
 import styled from 'styled-components';
-import { headerHeight, color } from '../../styles/constants';
+import { headerHeight, color, TRANSION_MS } from '../../styles/constants';
 
-export const Slider = styled.div`
-	width: 100vw;
-	height: calc(100vh - ${headerHeight});
+export const Container = styled.div`
 	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
 `;
 
-export const SliderTrack = styled.div``;
-
-export const SliderList = styled.div`
+export const Arrow = styled.button`
+	position: absolute;
+	top: 0;
+	left: ${({ direction }) => direction === 'left' && '20px'};
+	right: ${({ direction }) => direction === 'right' && '20px'};
+	bottom: 0;
+	margin: auto;
 	display: flex;
 	align-items: center;
-`;
-export const SliderItem = styled.div`
-	object-fit: cover;
-	img {
-		width: 100vw;
+	justify-content: center;
+	width: 70px;
+	height: 70px;
+	background-color: ${color.white};
+	border: 0;
+
+	border-radius: 50%;
+	opacity: 0.6;
+
+	transition: opacity ${TRANSION_MS} ease;
+
+	&:hover {
+		opacity: 1;
 	}
 `;
 
-export const ArrowPrev = styled.button`
-	width: 80px;
-	height: 80px;
-	background-color: ${color.white};
-	position: absolute;
-	top: 50%;
-	left: 10px;
-	transform: translateY(-50%);
-	border-radius: 50%;
+export const Wrapper = styled.div``;
+export const Slide = styled.div`
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
 `;
-export const ArrowNext = styled.button`
-	width: 80px;
-	height: 80px;
-	background-color: ${color.white};
-	position: absolute;
-	top: 50%;
+export const ImageContainer = styled.div`
+	height: 100%;
+	flex: 1;
+`;
 
-	right: 10px;
-	transform: translateY(-50%);
-	border-radius: 50%;
+export const Image = styled.img`
+	height: 80%;
 `;
+export const InfoContainer = styled.div`
+	flex: 1;
+`;
+
+export const Title = styled.h1``;
+export const Descr = styled.p``;
+
+export const Button = styled.button``;

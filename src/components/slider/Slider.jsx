@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Slider.styled.js';
+import { IconShevronLeft, IconShevronRight } from '../../assets/icons/';
 
-const slides = ['./images/banner_1.jpg', './images/banner_2.jpg', './images/banner_3.jpg'];
+const slides = [
+	{
+		imgM: './images/banner_1.jpg',
+	},
+	{
+		imgM: './images/banner_2.jpg',
+	},
+	{
+		imgM: './images/banner_3.jpg',
+	},
+];
 
-export const Slider = () => {
+export const Slider = ({ children }) => {
 	const [slideIndex, setSlideIndex] = useState(0);
 
 	const handlePrevSlide = () => {
@@ -19,18 +30,25 @@ export const Slider = () => {
 	};
 
 	return (
-		<S.Slider>
-			<S.SliderTrack slideIndex={slideIndex}>
-				<S.SliderList>
-					{slides.map((slide, index) => (
-						<S.SliderItem key={slide} activeSlide={index}>
-							<img src={slide} alt='slide' />
-						</S.SliderItem>
-					))}
-				</S.SliderList>
-			</S.SliderTrack>
-			<S.ArrowPrev onClick={handlePrevSlide} />
-			<S.ArrowNext onClick={handleNextSlide} />
-		</S.Slider>
+		<S.Container>
+			<S.Arrow direction='left'>
+				<IconShevronLeft />
+			</S.Arrow>
+			<S.Wrapper>
+				<S.Slide>
+					<S.ImageContainer>
+						<S.Image src='./images/banner_1@2x.jpg' />
+					</S.ImageContainer>
+					<S.InfoContainer>
+						<S.Title>Titlte</S.Title>
+						<S.Descr>Description</S.Descr>
+					</S.InfoContainer>
+					<S.Button>Button</S.Button>
+				</S.Slide>
+			</S.Wrapper>
+			<S.Arrow direction='right'>
+				<IconShevronRight />
+			</S.Arrow>
+		</S.Container>
 	);
 };
