@@ -1,16 +1,19 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
-import { fonts, color, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { fonts, color, fontWeight, TRANSION_MS, device } from '../../styles/constants';
 
 export const Navbar = styled.nav``;
 
 export const NavList = styled.ul`
-	display: flex;
+	display: none;
 	align-items: center;
+
+	@media ${device.laptop} {
+		display: flex;
+	}
 `;
 
 export const NavItem = styled.li`
-	margin-right: 25px;
+	margin-right: 40px;
 
 	font-size: 1.25rem;
 	font-family: ${fonts.inter};
@@ -25,14 +28,13 @@ export const NavItem = styled.li`
 		display: inline-block;
 		height: 100%;
 		width: 100%;
-		padding: 20px;
+		padding: 20px 0;
 		border-radius: 8px;
-		transition: background-color ${TRANSION_MS} ease-in-out, color ${TRANSION_MS} ease-in-out;
+		transition: color ${TRANSION_MS} ease-in-out;
 
 		&:hover,
 		&:focus {
-			background-color: ${lighten(0.5, color.red)};
-			color: ${color.red};
+			color: ${color.blue};
 		}
 	}
 `;
@@ -42,7 +44,7 @@ export const ButtonCart = styled.button`
 	align-items: center;
 	justify-content: center;
 
-	padding: 15px;
+	padding: 15px 0;
 	background-color: transparent;
 	border: 0;
 	border-radius: 8px;
@@ -54,9 +56,25 @@ export const ButtonCart = styled.button`
 
 	&:hover,
 	&:focus {
-		background-color: ${lighten(0.5, color.red)};
 		& g {
-			stroke: ${color.red};
+			stroke: ${color.blue};
 		}
+	}
+`;
+
+export const BurgerButton = styled.button`
+	display: flex;
+
+	background-color: transparent;
+	border: 0;
+
+	&:active {
+		g {
+			fill: ${color.blue};
+		}
+	}
+
+	@media ${device.laptop} {
+		display: none;
 	}
 `;

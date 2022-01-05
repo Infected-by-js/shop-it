@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, device, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { color, device, fontWeight, TRANSION_MS, fonts } from '../../styles/constants';
 
 export const Search = styled.div`
 	position: relative;
@@ -11,11 +11,12 @@ export const Search = styled.div`
 	&:hover,
 	&:focus-within {
 		& input {
-			border-color: ${color.red};
+			border-color: ${color.blue};
+			box-shadow: 0.2px 0.5px 2px ${color.blue};
 		}
 
 		& g {
-			fill: ${color.red};
+			fill: ${color.blue};
 		}
 	}
 `;
@@ -25,20 +26,20 @@ export const Input = styled.input.attrs({
 	placeholder: 'Search...',
 	id: 'search-input',
 })`
-	display: none;
-	width: 215px;
 	padding: 0.5rem 1rem 0.5rem 2.5rem;
-	font-size: 1rem;
-	font-weight: ${fontWeight.inter.s};
+	display: none;
+	width: 100%;
+	font-family: ${fonts.arsenal};
+	font-size: 1.25rem;
+	font-weight: ${fontWeight.arsenal.m};
 	font-style: normal;
-	border: 1px solid ${color.greyLight};
-	border-radius: 4px;
+	border: 1.5px solid ${color.greyLight};
+	border-radius: 8px;
 
-	transition: border-color ${TRANSION_MS} ease-in-out, width ${TRANSION_MS} linear;
+	transition: border-color ${TRANSION_MS} ease-in-out, box-shadow ${TRANSION_MS} ease-in-out;
 
 	&::placeholder {
 		font-weight: ${fontWeight.inter.xs};
-		font-style: italic;
 	}
 
 	@media ${device.laptop} {
