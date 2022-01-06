@@ -28,7 +28,7 @@ export const Input = styled.input.attrs({
 })`
 	padding: 0.5rem 1rem 0.5rem 2.5rem;
 	display: none;
-	width: 100%;
+	width: 250px;
 	font-family: ${fonts.arsenal};
 	font-size: 1.25rem;
 	font-weight: ${fontWeight.arsenal.m};

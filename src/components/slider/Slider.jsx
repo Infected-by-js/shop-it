@@ -1,54 +1,85 @@
-import React, { useEffect, useState } from 'react';
-import * as S from './Slider.styled.js';
-import { IconShevronLeft, IconShevronRight } from '../../assets/icons/';
+import React, { useCallback, useRef, useState, cloneElement, useEffect } from 'react';
+
+import { Controls } from './components/Controls.jsx';
+import { Dots } from './components/Dots.jsx';
+import { Slide } from './components/Slide.jsx';
+import styled from 'styled-components';
 
 const slides = [
 	{
-		imgM: './images/banner_1.jpg',
+		title: 'slide 1 Title',
+		description: 'slide 1 Description',
+		imageSrc: './images/banner_1.jpg',
 	},
 	{
-		imgM: './images/banner_2.jpg',
+		title: 'slide 2 Title',
+		description: 'slide 2 Description',
+		imageSrc: './images/banner_2.jpg',
 	},
 	{
-		imgM: './images/banner_3.jpg',
+		title: 'slide 3 Title',
+		description: 'slide 3 Description',
+		imageSrc: './images/banner_3.jpg',
 	},
 ];
 
-export const Slider = ({ children }) => {
+const SLIDE_WIDTH = '100';
+
+export const Slider = ({ infinite, autoplay }) => {
 	const [slideIndex, setSlideIndex] = useState(0);
 
 	const handlePrevSlide = () => {
-		if (slideIndex > 0) {
-			setSlideIndex((prev) => prev - 1);
-		}
+		setSlideIndex((currentIndex) => (currentIndex === 0 ? slides.length - 1 : currentIndex - 1));
 	};
 
 	const handleNextSlide = () => {
-		if (slideIndex < slides.length - 1) {
-			setSlideIndex((prev) => prev + 1);
-		}
+		setSlideIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
 	};
 
+	useEffect(() => {
+		if (autoplay) {
+			setInterval(() => {
+				handleNextSlide();
+			}, 8000);
+		}
+	}, [autoplay]);
+
 	return (
-		<S.Container>
-			<S.Arrow direction='left'>
-				<IconShevronLeft />
-			</S.Arrow>
-			<S.Wrapper>
-				<S.Slide>
-					<S.ImageContainer>
-						<S.Image src='./images/banner_1@2x.jpg' />
-					</S.ImageContainer>
-					<S.InfoContainer>
-						<S.Title>Titlte</S.Title>
-						<S.Descr>Description</S.Descr>
-					</S.InfoContainer>
-					<S.Button>Button</S.Button>
-				</S.Slide>
-			</S.Wrapper>
-			<S.Arrow direction='right'>
-				<IconShevronRight />
-			</S.Arrow>
-		</S.Container>
+		<Container>
+			<SliderWrapp>
+				<Track slideWidth={SLIDE_WIDTH} slideIndex={slideIndex}>
+					<SliderList>
+						{slides.map(({ title, description, imageSrc }) => (
+							<SlideWrapper slideWidth={SLIDE_WIDTH} key={imageSrc}>
+								<Slide imageSrc={imageSrc} title={title} description={description} />
+							</SlideWrapper>
+						))}
+					</SliderList>
+				</Track>
+				<Controls onLeft={handlePrevSlide} onRight={handleNextSlide} />
+			</SliderWrapp>
+			<Dots slides={slides} slide={slideIndex} setSlide={setSlideIndex} />
+		</Container>
 	);
 };
+
+const Container = styled.div`
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+`;
+
+const SliderWrapp = styled.div``;
+
+const Track = styled.div`
+	transition: transform 400ms linear;
+	transform: translateX(${({ slideIndex, slideWidth }) => slideIndex * -slideWidth}vw);
+`;
+const SliderList = styled.ul`
+	display: flex;
+`;
+const SlideWrapper = styled.li`
+	min-width: ${({ slideWidth }) => slideWidth}vw;
+	max-width: ${({ slideWidth }) => slideWidth}vw;
+	height: 100%;
+`;
