@@ -5,9 +5,11 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
 
 render(
-	<BrowserRouter>
-		<GlobalStyle />
-		<App />
-	</BrowserRouter>,
+	<React.StrictMode>
+		<BrowserRouter>
+			<GlobalStyle />
+			<App />
+		</BrowserRouter>
+	</React.StrictMode>,
 	document.getElementById('root')
 );

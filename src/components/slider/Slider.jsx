@@ -1,27 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
-import { Controls } from './components/Controls.jsx';
-import { Dots } from './components/Dots.jsx';
-import { Slide } from './components/Slide.jsx';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const slides = [
-	{
-		title: 'slide 1 Title',
-		description: 'slide 1 Description',
-		imageSrc: './images/banner_1.jpg',
-	},
-	{
-		title: 'slide 2 Title',
-		description: 'slide 2 Description',
-		imageSrc: './images/banner_2.jpg',
-	},
-	{
-		title: 'slide 3 Title',
-		description: 'slide 3 Description',
-		imageSrc: './images/banner_3.jpg',
-	},
-];
+import { Controls, Content } from './components/';
+import { slides } from '../../assets/slides';
 
 export const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
@@ -35,41 +16,46 @@ export const Slider = () => {
 	};
 
 	return (
-		<Container>
-			<SliderWrapp>
+		<>
+			<Container>
 				<Track slideIndex={slideIndex}>
 					<SliderList>
-						{slides.map(({ title, description, imageSrc }) => (
-							<SlideWrapper key={imageSrc}>
-								<Slide imageSrc={imageSrc} title={title} description={description} />
-							</SlideWrapper>
+						{slides.map(({ title, description, imageSrc, buttonLabel }, index) => (
+							<Content
+								key={imageSrc}
+								isActiveSlide={slideIndex === index}
+								imageSrc={imageSrc}
+								title={title}
+								description={description}
+								buttonLabel={buttonLabel}
+							/>
 						))}
 					</SliderList>
 				</Track>
-				<Controls onLeft={handlePrevSlide} onRight={handleNextSlide} />
-			</SliderWrapp>
-			<Dots slides={slides} slide={slideIndex} setSlide={setSlideIndex} />
-		</Container>
+				<Controls
+					slides={slides}
+					slide={slideIndex}
+					setSlide={setSlideIndex}
+					handleLeft={handlePrevSlide}
+					handleRight={handleNextSlide}
+				/>
+			</Container>
+		</>
 	);
 };
 
-const Container = styled.div`
+export const Container = styled.div`
 	position: relative;
 	width: 100%;
+	height: 100%;
 	overflow: hidden;
 `;
 
-const SliderWrapp = styled.div``;
-
-const Track = styled.div`
+export const Track = styled.div`
 	transition: transform 800ms ease;
-	transform: translateX(${({ slideIndex, slideWidth }) => slideIndex * -100}vw);
+	transform: translateX(${({ slideIndex }) => slideIndex * -100}vw);
+	z-index: 10;
 `;
-const SliderList = styled.ul`
+export const SliderList = styled.ul`
 	display: flex;
-`;
-const SlideWrapper = styled.li`
-	min-width: 100vw;
-	max-width: 100vw;
-	height: 100%;
 `;
