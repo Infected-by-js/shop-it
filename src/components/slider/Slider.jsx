@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, cloneElement, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Controls } from './components/Controls.jsx';
 import { Dots } from './components/Dots.jsx';
@@ -23,9 +23,7 @@ const slides = [
 	},
 ];
 
-const SLIDE_WIDTH = '100';
-
-export const Slider = ({ infinite, autoplay }) => {
+export const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
 
 	const handlePrevSlide = () => {
@@ -36,21 +34,13 @@ export const Slider = ({ infinite, autoplay }) => {
 		setSlideIndex((currentIndex) => (currentIndex === slides.length - 1 ? 0 : currentIndex + 1));
 	};
 
-	useEffect(() => {
-		if (autoplay) {
-			setInterval(() => {
-				handleNextSlide();
-			}, 8000);
-		}
-	}, [autoplay]);
-
 	return (
 		<Container>
 			<SliderWrapp>
-				<Track slideWidth={SLIDE_WIDTH} slideIndex={slideIndex}>
+				<Track slideIndex={slideIndex}>
 					<SliderList>
 						{slides.map(({ title, description, imageSrc }) => (
-							<SlideWrapper slideWidth={SLIDE_WIDTH} key={imageSrc}>
+							<SlideWrapper key={imageSrc}>
 								<Slide imageSrc={imageSrc} title={title} description={description} />
 							</SlideWrapper>
 						))}
@@ -72,14 +62,14 @@ const Container = styled.div`
 const SliderWrapp = styled.div``;
 
 const Track = styled.div`
-	transition: transform 400ms linear;
-	transform: translateX(${({ slideIndex, slideWidth }) => slideIndex * -slideWidth}vw);
+	transition: transform 800ms ease;
+	transform: translateX(${({ slideIndex, slideWidth }) => slideIndex * -100}vw);
 `;
 const SliderList = styled.ul`
 	display: flex;
 `;
 const SlideWrapper = styled.li`
-	min-width: ${({ slideWidth }) => slideWidth}vw;
-	max-width: ${({ slideWidth }) => slideWidth}vw;
+	min-width: 100vw;
+	max-width: 100vw;
 	height: 100%;
 `;
