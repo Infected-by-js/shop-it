@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconShevronLeft, IconShevronRight } from '../../../assets/icons';
+import { IconShevronLeft, IconShevronRight } from '../../../assets/images/icons';
 import { color, device, TRANSION_MS } from '../../../styles/constants';
 import styled from 'styled-components';
 

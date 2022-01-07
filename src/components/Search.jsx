@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { IconSearch } from '../assets/icons';
+import { IconSearch } from '../assets/images/icons';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
 
 export const Search = () => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { TRANSION_MS } from '../styles/constants';
-import logo from '../assets/logo.svg';
+import logo from '../assets/images/logo.svg';
 
 export const Logo = () => {
 	return (
