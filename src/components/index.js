@@ -1,3 +1,4 @@
+export { Container } from './Container';
 export { Logo } from './Logo';
 export { SortCategory } from './SortCategory';
 export { Search } from './Search';

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../constants/routes';
+import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../router/routes';
 import { IconCart, IconBurger } from '../assets/images/icons';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
 

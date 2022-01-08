@@ -1,14 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { color, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
 import { IconHeart, IconSearch, IconCart } from '../assets/images/icons/';
+import { DETAILS_PAGE_ROUTE } from '../router/routes';
 
-export const ProductCard = ({ image_src, title, style, author, price, year_created }) => {
+export const ProductCard = ({ id, image_src, title, style, author, price, year_created }) => {
+	const navigate = useNavigate();
+
 	const handleClickAddToCart = () => {
 		console.log('Add to cart');
 	};
 	const handleClickDetails = () => {
-		console.log('Details');
+		navigate(`/${id}`);
 	};
 	const handleClickAddToFavourite = () => {
 		console.log('Add to Favourite');

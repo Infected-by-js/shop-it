@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container } from '../templates/Container';
-import { Logo, Search, Navbar, Slider, SortCategory, ProductCard } from '../components';
-import { color, headerHeight } from '../styles/constants';
+import { Container, Logo, Search, Navbar, Slider, SortCategory, ProductCard } from '../components';
+import { Footer } from '../containers/';
 
 import { products } from '../assets/products';
+import { color, device, headerHeight } from '../styles/constants';
 import { darken } from 'polished';
-import { Footer } from '../components/Footer';
 
 export const HomePage = () => {
 	return (
@@ -53,6 +52,15 @@ const Products = styled.div`
 	margin-top: 35px;
 	display: grid;
 	gap: 30px;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: 1fr;
 	align-items: flex-start;
+	justify-items: center;
+
+	@media ${device.tablet} {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media ${device.laptop} {
+		grid-template-columns: repeat(4, 1fr);
+	}
 `;
