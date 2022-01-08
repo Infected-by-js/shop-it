@@ -5,7 +5,7 @@ import { color, device, fonts, fontWeight, headerHeight } from '../../../styles/
 
 export const Content = ({ imageSrc, title, description, buttonLabel, isActiveSlide }) => {
 	return (
-		<Container>
+		<Wrapper>
 			<InfoContainer>
 				<Title>{title}</Title>
 				<Description>{description}</Description>
@@ -13,11 +13,11 @@ export const Content = ({ imageSrc, title, description, buttonLabel, isActiveSli
 			</InfoContainer>
 
 			<Image src={imageSrc} />
-		</Container>
+		</Wrapper>
 	);
 };
 
-const Container = styled.li`
+const Wrapper = styled.li`
 	position: relative;
 	min-width: 100vw;
 	max-width: 100vw;

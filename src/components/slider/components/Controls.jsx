@@ -10,28 +10,28 @@ export const Controls = ({ handleLeft, handleRight, slides, slide, setSlide }) =
 
 	return (
 		<>
-			<ArrowsContainer>
+			<ArrowsWrapper>
 				<Arrow onClick={handleLeft}>
 					<IconShevronLeft />
 				</Arrow>
 				<Arrow onClick={handleRight}>
 					<IconShevronRight />
 				</Arrow>
-			</ArrowsContainer>
+			</ArrowsWrapper>
 
-			<DotsContainer>
+			<DotsWrapper>
 				{slides.map((_, index) => (
 					<Label key={index}>
 						<RadioButton value={index} checked={index === slide} onChange={handleChange} />
 						<Dot />
 					</Label>
 				))}
-			</DotsContainer>
+			</DotsWrapper>
 		</>
 	);
 };
 
-const ArrowsContainer = styled.div`
+const ArrowsWrapper = styled.div`
 	padding: 2rem;
 	position: absolute;
 	top: 0;
@@ -81,7 +81,7 @@ const Arrow = styled.button`
 	}
 `;
 
-const DotsContainer = styled.div`
+const DotsWrapper = styled.div`
 	position: absolute;
 	bottom: 10px;
 	right: 0;

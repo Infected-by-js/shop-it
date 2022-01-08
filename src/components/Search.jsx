@@ -6,16 +6,16 @@ import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constan
 
 export const Search = () => {
 	return (
-		<SearchContainer>
+		<SearchWrapper>
 			<Input />
 			<Label>
 				<IconSearch />
 			</Label>
-		</SearchContainer>
+		</SearchWrapper>
 	);
 };
 
-const SearchContainer = styled.div`
+const SearchWrapper = styled.div`
 	position: relative;
 
 	display: flex;

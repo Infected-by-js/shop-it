@@ -9,7 +9,7 @@ import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constan
 export const Navbar = () => {
 	return (
 		<>
-			<NavbarContainer>
+			<NavbarWrapper>
 				<NavList>
 					<NavItem>
 						<Link to={REGISTER_PAGE_ROUTE}>Register</Link>
@@ -23,7 +23,7 @@ export const Navbar = () => {
 						</ButtonCart>
 					</NavItem>
 				</NavList>
-			</NavbarContainer>
+			</NavbarWrapper>
 
 			<BurgerButton>
 				<IconBurger />
@@ -32,7 +32,7 @@ export const Navbar = () => {
 	);
 };
 
-export const NavbarContainer = styled.nav``;
+export const NavbarWrapper = styled.nav``;
 
 export const NavList = styled.ul`
 	display: none;
@@ -75,11 +75,16 @@ export const ButtonCart = styled.button`
 	align-items: center;
 	justify-content: center;
 
-	padding: 15px 0;
+	padding: 15px;
 	background-color: transparent;
 	border: 0;
 	border-radius: 8px;
 	transition: background-color ${TRANSION_MS} ease-in-out;
+
+	svg {
+		width: 26px;
+		height: 22px;
+	}
 
 	& g {
 		transition: stroke ${TRANSION_MS} ease-in-out;

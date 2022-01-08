@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { TRANSION_MS } from '../styles/constants';
-import logo from '../assets/images/logo.svg';
+import { IconLogo } from '../assets/images/icons';
 
-export const Logo = () => {
+export const Logo = ({ color }) => {
 	return (
-		<LogoContainer>
+		<LogoWrapper>
 			<Link to='/'>
-				<img src={logo} alt='shop-it logo' />
+				<IconLogo color={color} />
 			</Link>
-		</LogoContainer>
+		</LogoWrapper>
 	);
 };
 
-const LogoContainer = styled.div`
+const LogoWrapper = styled.div`
 	transition: transform ${TRANSION_MS} ease;
 
 	&:hover,

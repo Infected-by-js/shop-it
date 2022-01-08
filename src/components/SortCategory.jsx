@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { color, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
-
-const categories = [
-	{ value: 'all', title: 'All' },
-	{ value: 'paintings', title: 'Paintings' },
-	{ value: 'drawings', title: 'Drawings' },
-	{ value: 'sculpture', title: 'Sculpture' },
-];
+import { categories } from '../assets/categories';
 
 export const SortCategory = () => {
 	const [activeCategory, setActiveCategory] = useState(categories[0].value);
 
-	const handleChangeCategory = (event) => {
-		setActiveCategory(event.target.value);
+	const handleChangeCategory = (value) => {
+		setActiveCategory(value);
 	};
 
 	return (
-		<CategoryContainer>
-			{categories.map(({ title, value }, index) => (
+		<CategoryWrapper>
+			{categories.map(({ title, value }) => (
 				<CategoryButton
 					key={value}
 					active={activeCategory === value}
-					onClick={handleChangeCategory}
+					onClick={() => handleChangeCategory(value)}
 				>
 					{title}
 				</CategoryButton>
 			))}
-		</CategoryContainer>
+		</CategoryWrapper>
 	);
 };
 
-const CategoryContainer = styled.div`
+const CategoryWrapper = styled.div`
 	padding: 15px 0;
 	width: 100%;
 	display: flex;
@@ -50,6 +44,7 @@ const CategoryButton = styled.button`
 
 	color: ${({ active }) => (active ? color.white : color.black)};
 	background-color: ${({ active }) => (active ? color.black : color.white)};
+	box-shadow: 0.5px 1px 2px ${color.greyLight};
 
 	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;
 

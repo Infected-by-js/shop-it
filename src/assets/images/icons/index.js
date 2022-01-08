@@ -9,3 +9,4 @@ export { IconDelivery } from './IconDelivery';
 export { IconHeart } from './IconHeart';
 export { IconShevronLeft } from './IconShevronLeft';
 export { IconShevronRight } from './IconShevronRight';
+export { IconLogo } from './IconLogo';
