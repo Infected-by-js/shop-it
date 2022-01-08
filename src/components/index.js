@@ -1,7 +1,8 @@
-export { Container } from './Container';
-export { Logo } from './Logo';
-export { SortCategory } from './SortCategory';
-export { Search } from './Search';
-export { Navbar } from './Navbar';
+export { Container } from './container/Container';
+export { Logo } from './logo/Logo';
+export { SortCategories } from './sort-categories/SortCategories';
+export { Search } from './search/Search';
+export { Navbar } from './navbar/Navbar';
 export { Slider } from './slider/Slider';
-export { ProductCard } from './ProductCard';
+export { ProductCard } from './product-card/ProductCard';
+export { Copyright } from './copyright/Copyright';

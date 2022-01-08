@@ -1,38 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
-import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../router/routes';
-import { IconCart, IconBurger } from '../assets/images/icons';
-import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
-
-export const Navbar = () => {
-	return (
-		<>
-			<NavbarWrapper>
-				<NavList>
-					<NavItem>
-						<Link to={REGISTER_PAGE_ROUTE}>Register</Link>
-					</NavItem>
-					<NavItem>
-						<Link to={LOGIN_PAGE_ROUTE}>Log in</Link>
-					</NavItem>
-					<NavItem>
-						<ButtonCart>
-							<IconCart />
-						</ButtonCart>
-					</NavItem>
-				</NavList>
-			</NavbarWrapper>
-
-			<BurgerButton>
-				<IconBurger />
-			</BurgerButton>
-		</>
-	);
-};
-
-export const NavbarWrapper = styled.nav``;
+export const Navbar = styled.nav``;
 
 export const NavList = styled.ul`
 	display: none;

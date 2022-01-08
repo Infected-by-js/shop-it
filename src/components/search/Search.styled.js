@@ -1,21 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
+import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
-import { IconSearch } from '../assets/images/icons';
-import { color, device, fonts, fontWeight, TRANSION_MS } from '../styles/constants';
-
-export const Search = () => {
-	return (
-		<SearchWrapper>
-			<Input />
-			<Label>
-				<IconSearch />
-			</Label>
-		</SearchWrapper>
-	);
-};
-
-const SearchWrapper = styled.div`
+export const Search = styled.div`
 	position: relative;
 
 	display: flex;
@@ -35,7 +21,7 @@ const SearchWrapper = styled.div`
 	}
 `;
 
-const Input = styled.input.attrs({
+export const Input = styled.input.attrs({
 	type: 'text',
 	placeholder: 'Search...',
 	id: 'search-input',
@@ -61,7 +47,7 @@ const Input = styled.input.attrs({
 	}
 `;
 
-const Label = styled.label.attrs({
+export const Label = styled.label.attrs({
 	htmlFor: 'search-input',
 })`
 	position: absolute;

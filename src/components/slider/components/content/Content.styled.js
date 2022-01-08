@@ -1,23 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
 import { darken, lighten } from 'polished';
-import { color, device, fonts, fontWeight, headerHeight } from '../../../styles/constants';
+import styled from 'styled-components';
+import { color, device, fonts, fontWeight, headerHeight } from '../../../../styles/constants';
 
-export const Content = ({ imageSrc, title, description, buttonLabel, isActiveSlide }) => {
-	return (
-		<Wrapper>
-			<InfoContainer>
-				<Title>{title}</Title>
-				<Description>{description}</Description>
-				<Button tabIndex={isActiveSlide ? 0 : -1}>{buttonLabel}</Button>
-			</InfoContainer>
-
-			<Image src={imageSrc} />
-		</Wrapper>
-	);
-};
-
-const Wrapper = styled.li`
+export const Content = styled.li`
 	position: relative;
 	min-width: 100vw;
 	max-width: 100vw;
@@ -37,7 +22,7 @@ const Wrapper = styled.li`
 	}
 `;
 
-const InfoContainer = styled.div`
+export const InfoContainer = styled.div`
 	width: 50%;
 	display: flex;
 	justify-content: center;
@@ -47,7 +32,7 @@ const InfoContainer = styled.div`
 	z-index: 10;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
 	margin: 0 0 20px 0;
 	padding: 0 1.5rem;
 	font-family: ${fonts.inter};
@@ -56,7 +41,7 @@ const Title = styled.h1`
 	text-align: center;
 	color: ${color.black};
 `;
-const Description = styled.p`
+export const Description = styled.p`
 	margin-bottom: 20px;
 	padding: 0 1.5rem;
 	font-family: ${fonts.inter};
@@ -67,7 +52,7 @@ const Description = styled.p`
 	color: ${color.black};
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
 	padding: 16px 30px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.s};

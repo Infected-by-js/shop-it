@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as Styled from './Slider.styled';
 
-import { Controls, Content } from './components/';
+import { Content, ControlsArrows, ControlsDots } from './components/';
 import { slides } from '../../assets/slides';
 
 export const Slider = () => {
@@ -17,9 +17,9 @@ export const Slider = () => {
 
 	return (
 		<>
-			<Container>
-				<Track slideIndex={slideIndex}>
-					<SliderList>
+			<Styled.Slider>
+				<Styled.Track slideIndex={slideIndex}>
+					<Styled.SliderList>
 						{slides.map(({ title, description, imageSrc, buttonLabel }, index) => (
 							<Content
 								key={imageSrc}
@@ -30,32 +30,12 @@ export const Slider = () => {
 								buttonLabel={buttonLabel}
 							/>
 						))}
-					</SliderList>
-				</Track>
-				<Controls
-					slides={slides}
-					slide={slideIndex}
-					setSlide={setSlideIndex}
-					handleLeft={handlePrevSlide}
-					handleRight={handleNextSlide}
-				/>
-			</Container>
+					</Styled.SliderList>
+				</Styled.Track>
+
+				<ControlsArrows handleLeft={handlePrevSlide} handleRight={handleNextSlide} />
+				<ControlsDots slides={slides} slide={slideIndex} setSlide={setSlideIndex} />
+			</Styled.Slider>
 		</>
 	);
 };
-
-export const Container = styled.div`
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-`;
-
-export const Track = styled.div`
-	transition: transform 800ms ease;
-	transform: translateX(${({ slideIndex }) => slideIndex * -100}vw);
-	z-index: 10;
-`;
-export const SliderList = styled.ul`
-	display: flex;
-`;

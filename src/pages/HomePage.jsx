@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container, Logo, Search, Navbar, Slider, SortCategory, ProductCard } from '../components';
+import {
+	Container,
+	Logo,
+	Search,
+	Navbar,
+	Slider,
+	SortCategories,
+	ProductCard,
+} from '../components';
 import { Footer } from '../containers/';
 
 import { products } from '../assets/products';
@@ -21,7 +29,7 @@ export const HomePage = () => {
 			<Slider />
 			<Main>
 				<Container>
-					<SortCategory />
+					<SortCategories />
 
 					<Products>
 						{products.map((product) => (
