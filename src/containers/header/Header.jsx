@@ -1,6 +1,15 @@
 import React from 'react';
-import * as S from './Header.styled.js';
+import * as Styled from './Header.styled.js';
+import { Container, Search, Logo, Navbar } from '../../components/';
 
 export const Header = () => {
-	return <div>Heder</div>;
+	return (
+		<Container>
+			<Styled.Header>
+				<Search />
+				<Logo />
+				<Navbar />
+			</Styled.Header>
+		</Container>
+	);
 };

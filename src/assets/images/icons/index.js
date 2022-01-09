@@ -10,3 +10,4 @@ export { IconHeart } from './IconHeart';
 export { IconShevronLeft } from './IconShevronLeft';
 export { IconShevronRight } from './IconShevronRight';
 export { IconLogo } from './IconLogo';
+export { IconArrowLeft } from './IconArrowLeft';

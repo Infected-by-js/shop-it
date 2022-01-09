@@ -1,28 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import * as Styled from './HomePage.styled';
-import {
-	Container,
-	Logo,
-	Search,
-	Navbar,
-	Slider,
-	SortCategories,
-	ProductCard,
-} from '../../components';
-import { Footer } from '../../containers';
 
-import { products } from '../../assets/products';
+import { Footer, Header } from '../../containers';
+import { Container, Slider, SortCategories, ProductCard } from '../../components';
 
 export const HomePage = () => {
+	const { products } = useSelector(({ products }) => products);
+
 	return (
 		<>
-			<Container>
-				<Styled.HeaderContainer>
-					<Search />
-					<Logo />
-					<Navbar />
-				</Styled.HeaderContainer>
-			</Container>
+			<Header />
 			<Slider />
 			<Styled.Main>
 				<Container>

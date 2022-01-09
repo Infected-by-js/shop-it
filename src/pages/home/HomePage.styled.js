@@ -2,12 +2,6 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 import { color, device, headerHeight } from '../../styles/constants';
 
-export const HeaderContainer = styled.header`
-	height: ${headerHeight};
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-`;
 export const Main = styled.main`
 	padding-top: 35px;
 	padding-bottom: 150px;

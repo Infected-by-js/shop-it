@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { DetailsPage, HomePage, LoginPage, RegisterPage } from '../pages';
+import { CartPage, DetailsPage, HomePage, LoginPage, RegisterPage } from '../pages';
 import {
+	CART_PAGE_ROUTE,
 	DETAILS_PAGE_ROUTE,
 	HOME_PAGE_ROUTE,
 	LOGIN_PAGE_ROUTE,
@@ -15,6 +16,7 @@ export const AppRouter = () => {
 			<Route path={DETAILS_PAGE_ROUTE} element={<DetailsPage />} />
 			<Route path={REGISTER_PAGE_ROUTE} element={<RegisterPage />} />
 			<Route path={LOGIN_PAGE_ROUTE} element={<LoginPage />} />
+			<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
 			<Route
 				path={HOME_PAGE_ROUTE}
 				element={
