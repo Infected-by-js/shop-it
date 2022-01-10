@@ -1,8 +1,8 @@
-import { darken, lighten } from 'polished';
 import styled from 'styled-components';
+import { darken } from 'polished';
 import { color, device, fonts, fontWeight, headerHeight } from '../../../../styles/constants';
 
-export const Content = styled.li`
+export const Wrapper = styled.li`
 	position: relative;
 	min-width: 100vw;
 	max-width: 100vw;
@@ -30,6 +30,11 @@ export const InfoContainer = styled.div`
 	flex-direction: column;
 	flex: 1;
 	z-index: 10;
+
+	button {
+		font-size: 1.75rem;
+		border-radius: 8px;
+	}
 `;
 
 export const Title = styled.h1`
@@ -50,23 +55,6 @@ export const Description = styled.p`
 	text-align: center;
 
 	color: ${color.black};
-`;
-
-export const Button = styled.button`
-	padding: 16px 30px;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.s};
-	font-size: 1.75rem;
-	border-radius: 10px;
-	background-color: ${color.black};
-	color: ${color.white};
-	box-shadow: 2px 4px 8px ${color.greyLight};
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		background-color: ${lighten(0.12, color.black)};
-	}
 `;
 
 export const Image = styled.img`

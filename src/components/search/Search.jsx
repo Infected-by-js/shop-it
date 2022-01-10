@@ -1,15 +1,15 @@
 import React from 'react';
 
-import * as Styled from './Search.styled';
 import { IconSearch } from '../../assets/images/icons';
+import { Wrapper, Input, Label } from './Search.styled';
 
 export const Search = () => {
 	return (
-		<Styled.Search>
-			<Styled.Input />
-			<Styled.Label>
+		<Wrapper>
+			<Input />
+			<Label>
 				<IconSearch />
-			</Styled.Label>
-		</Styled.Search>
+			</Label>
+		</Wrapper>
 	);
 };

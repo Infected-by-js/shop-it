@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color } from '../../styles/constants';
 
-export const Footer = styled.footer`
+export const Wrapper = styled.footer`
 	padding: 30px 0;
 	display: flex;
 	align-items: center;

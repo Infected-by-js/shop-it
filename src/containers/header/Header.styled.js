@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { color, headerHeight } from '../../styles/constants';
 
-export const Header = styled.header`
+export const Wrapper = styled.header`
 	background-color: ${color.white};
 `;
-export const HeaderContent = styled.header`
+export const Content = styled.header`
 	height: ${headerHeight};
 	display: flex;
 	align-items: center;

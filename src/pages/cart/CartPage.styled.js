@@ -21,32 +21,6 @@ export const ButtonsWrapp = styled.div`
 	margin-bottom: 50px;
 	padding-bottom: 50px;
 	border-bottom: 1px solid ${color.silverLight};
-`;
-
-export const Button = styled.button`
-	padding: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 5px;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.s};
-	font-size: 1rem;
-	color: ${color.black};
-	border: 1px solid ${color.black};
-	background-color: transparent;
-	cursor: pointer;
-
-	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;
-
-	&:hover {
-		color: ${color.white};
-		background-color: ${color.black};
-
-		svg g {
-			fill: ${color.white};
-		}
-	}
 
 	svg {
 		width: 8px;
@@ -56,8 +30,16 @@ export const Button = styled.button`
 			transition: fill ${TRANSION_MS} ease;
 		}
 	}
-`;
 
+	button {
+		gap: 5px;
+		&:hover {
+			svg g {
+				fill: ${color.white};
+			}
+		}
+	}
+`;
 export const Content = styled.div`
 	display: flex;
 	justify-content: space-between;

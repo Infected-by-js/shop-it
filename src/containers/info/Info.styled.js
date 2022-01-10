@@ -1,4 +1,3 @@
-import { lighten } from 'polished';
 import styled from 'styled-components';
 import { color, fonts, TRANSION_MS, fontWeight } from '../../styles/constants';
 
@@ -46,8 +45,8 @@ export const BackButton = styled.button`
 		}
 	}
 `;
-export const Content = styled.div`
-	padding-bottom: 2rem;
+export const Main = styled.main`
+	padding-bottom: 1rem;
 	margin-bottom: 1.5rem;
 	border-bottom: 0.5px solid ${color.grey};
 `;
@@ -62,32 +61,20 @@ export const Title = styled.h2`
 	color: ${color.black};
 `;
 
-export const Author = styled.p`
+export const Description = styled.p`
 	margin-bottom: 2rem;
 	font-family: ${fonts.arsenal};
 	font-size: 1.5rem;
-	line-height: 25px;
-	color: ${color.black};
-`;
-
-export const Style = styled.div`
-	margin-bottom: 1.75rem;
-	display: inline-block;
-	font-family: ${fonts.arsenal};
-	font-size: 1.25rem;
-	line-height: 1.25;
+	line-height: 1;
 	color: ${color.grey};
 `;
 
-export const Description = styled.div`
-	font-family: ${fonts.arsenal};
-	font-size: 1.25rem;
-	line-height: 1.25;
-
-	color: ${color.grey};
+export const Footer = styled.div`
+	button {
+		width: 100%;
+		margin-bottom: 10px;
+	}
 `;
-
-export const Footer = styled.div``;
 
 export const Price = styled.div`
 	margin-bottom: 1.25rem;
@@ -98,7 +85,7 @@ export const Price = styled.div`
 	color: ${color.black};
 `;
 
-export const Info = styled.div`
+export const DeliveryInfo = styled.div`
 	margin-bottom: 1rem;
 	display: flex;
 	align-items: center;
@@ -117,39 +104,10 @@ export const Info = styled.div`
 	}
 `;
 
-export const AddToCartButton = styled.button`
-	width: 100%;
-	min-height: 3rem;
-	padding: 8px;
-	margin-bottom: 1rem;
-
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.m};
-	font-size: 1rem;
-	line-height: 2;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-
-	color: ${color.white};
-	background: ${color.black};
-	border-radius: 2px;
-
-	transition: background-color ${TRANSION_MS} ease;
-
-	&:hover,
-	&:focus {
-		background-color: ${lighten(0.3, color.black)};
-	}
-
-	&:active {
-		background-color: ${color.black};
-	}
-`;
-
-export const Text = styled.p`
+export const HelperText = styled.p`
 	text-align: center;
 	font-family: ${fonts.inter};
-	font-size: 1rem;
+	font-size: 0.8rem;
 	line-height: 2;
 	color: ${color.black};
 `;

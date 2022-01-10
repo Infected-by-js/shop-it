@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as Styled from './Slider.styled';
+import { Wrapper, Track, SliderList } from './Slider.styled';
 
 import { Content, ControlsArrows, ControlsDots } from './components/';
 import { slides } from '../../assets/slides';
@@ -16,26 +16,24 @@ export const Slider = () => {
 	};
 
 	return (
-		<>
-			<Styled.Slider>
-				<Styled.Track slideIndex={slideIndex}>
-					<Styled.SliderList>
-						{slides.map(({ title, description, imageSrc, buttonLabel }, index) => (
-							<Content
-								key={imageSrc}
-								isActiveSlide={slideIndex === index}
-								imageSrc={imageSrc}
-								title={title}
-								description={description}
-								buttonLabel={buttonLabel}
-							/>
-						))}
-					</Styled.SliderList>
-				</Styled.Track>
+		<Wrapper>
+			<Track slideIndex={slideIndex}>
+				<SliderList>
+					{slides.map(({ title, description, imageSrc, buttonLabel }, index) => (
+						<Content
+							key={imageSrc}
+							isActiveSlide={slideIndex === index}
+							imageSrc={imageSrc}
+							title={title}
+							description={description}
+							buttonLabel={buttonLabel}
+						/>
+					))}
+				</SliderList>
+			</Track>
 
-				<ControlsArrows handleLeft={handlePrevSlide} handleRight={handleNextSlide} />
-				<ControlsDots slides={slides} slide={slideIndex} setSlide={setSlideIndex} />
-			</Styled.Slider>
-		</>
+			<ControlsArrows handleLeft={handlePrevSlide} handleRight={handleNextSlide} />
+			<ControlsDots slides={slides} slide={slideIndex} setSlide={setSlideIndex} />
+		</Wrapper>
 	);
 };

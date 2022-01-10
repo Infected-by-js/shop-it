@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, device, TRANSION_MS } from '../../../../styles/constants';
 
-export const ControlsDots = styled.div`
+export const Wrapper = styled.div`
 	position: absolute;
 	bottom: 10px;
 	right: 0;

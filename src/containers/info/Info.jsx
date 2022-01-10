@@ -1,34 +1,45 @@
 import React from 'react';
-import * as Styled from './Info.styled.js';
 
+import { Button } from '../../ui/Button.jsx';
 import { IconDelivery, IconLocation, IconArrowLeft } from '../../assets/images/icons/';
+import {
+	Section,
+	BackButton,
+	Main,
+	Title,
+	Description,
+	Footer,
+	Price,
+	DeliveryInfo,
+	HelperText,
+} from './Info.styled.js';
 
 export const Info = () => {
 	return (
-		<Styled.Section>
-			<Styled.BackButton>
+		<Section>
+			<BackButton>
 				<IconArrowLeft />
 				Back
-			</Styled.BackButton>
-			<Styled.Content>
-				<Styled.Title>title (2021)</Styled.Title>
-				<Styled.Author>Author</Styled.Author>
-				<Styled.Style>style, size</Styled.Style>
-				<Styled.Description>description</Styled.Description>
-			</Styled.Content>
-			<Styled.Footer>
-				<Styled.Price>$620</Styled.Price>
-				<Styled.Info>
+			</BackButton>
+			<Main>
+				<Title>title (2021)</Title>
+				<Description>Author</Description>
+				<Description>style, size</Description>
+				<Description>description</Description>
+			</Main>
+			<Footer>
+				<Price>$620</Price>
+				<DeliveryInfo>
 					<IconLocation />
 					<p> Ships from New York, NY, USA</p>
-				</Styled.Info>
-				<Styled.Info>
+				</DeliveryInfo>
+				<DeliveryInfo>
 					<IconDelivery />
 					<p>Estimated to ship in 3 - 7 days within USA</p>
-				</Styled.Info>
-				<Styled.AddToCartButton>Add to cart</Styled.AddToCartButton>
-				<Styled.Text>Taxes and shipping fees will apply upon checkout</Styled.Text>
-			</Styled.Footer>
-		</Styled.Section>
+				</DeliveryInfo>
+				<Button>Add to cart</Button>
+				<HelperText>Taxes and shipping fees will apply upon checkout</HelperText>
+			</Footer>
+		</Section>
 	);
 };

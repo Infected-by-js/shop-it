@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
-export const Navbar = styled.nav``;
+export const Wrapper = styled.nav``;
 
 export const NavList = styled.ul`
 	display: none;

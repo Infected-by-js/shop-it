@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TRANSION_MS } from '../../styles/constants';
 
-export const Logo = styled.div`
+export const Wrapper = styled.div`
 	transition: transform ${TRANSION_MS} ease;
 
 	&:hover,

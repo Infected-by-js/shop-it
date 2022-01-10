@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import * as Styled from './HomePage.styled';
+import { Main, ProductsList } from './HomePage.styled';
 
 import { Footer, Header } from '../../containers';
 import { Container, Slider, SortCategories, ProductCard } from '../../components';
@@ -12,17 +12,17 @@ export const HomePage = () => {
 		<>
 			<Header />
 			<Slider />
-			<Styled.Main>
+			<Main>
 				<Container>
 					<SortCategories />
 
-					<Styled.Products>
+					<ProductsList>
 						{products.map((product) => (
 							<ProductCard key={product.image_src} {...product} />
 						))}
-					</Styled.Products>
+					</ProductsList>
 				</Container>
-			</Styled.Main>
+			</Main>
 			<Footer />
 		</>
 	);

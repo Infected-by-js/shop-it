@@ -1,6 +1,6 @@
-import { darken } from 'polished';
 import styled from 'styled-components';
-import { color, device, headerHeight } from '../../styles/constants';
+import { darken } from 'polished';
+import { color, device } from '../../styles/constants';
 
 export const Main = styled.main`
 	padding-top: 35px;
@@ -9,7 +9,7 @@ export const Main = styled.main`
 	background-color: ${darken(0.03, color.white)};
 `;
 
-export const Products = styled.div`
+export const ProductsList = styled.div`
 	margin-top: 35px;
 	display: grid;
 	gap: 30px;

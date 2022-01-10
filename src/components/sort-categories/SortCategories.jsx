@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import * as Styled from './SortCategories.styled';
+import { Wrapper, CategoryButton } from './SortCategories.styled';
 import { categories } from '../../assets/categories';
 
 export const SortCategories = () => {
@@ -11,16 +11,16 @@ export const SortCategories = () => {
 	};
 
 	return (
-		<Styled.SortCategories>
+		<Wrapper>
 			{categories.map(({ title, value }) => (
-				<Styled.CategoryButton
+				<CategoryButton
 					key={value}
 					active={activeCategory === value}
 					onClick={() => handleChangeCategory(value)}
 				>
 					{title}
-				</Styled.CategoryButton>
+				</CategoryButton>
 			))}
-		</Styled.SortCategories>
+		</Wrapper>
 	);
 };

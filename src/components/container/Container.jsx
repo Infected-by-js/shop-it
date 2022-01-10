@@ -1,6 +1,6 @@
 import React from 'react';
-import * as Styled from './Container.styled';
+import { Wrapper } from './Container.styled';
 
 export const Container = ({ children, ...props }) => {
-	return <Styled.Container {...props}>{children}</Styled.Container>;
+	return <Wrapper {...props}>{children}</Wrapper>;
 };

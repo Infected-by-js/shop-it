@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { fonts, fontWeight, TRANSION_MS, color } from '../../styles/constants';
 
-export const ProductCard = styled.div`
+export const Wrapper = styled.div`
 	position: relative;
 	width: 290px;
 	display: flex;
@@ -28,7 +28,7 @@ export const InfoWrapp = styled.div`
 	padding: 10px 25px 15px;
 `;
 
-export const Author = styled.h2`
+export const Title = styled.h2`
 	margin-bottom: 3px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.m};
@@ -37,7 +37,9 @@ export const Author = styled.h2`
 	letter-spacing: -5%;
 	color: ${color.black};
 `;
-export const Style = styled.p`
+
+export const Description = styled.p`
+	margin-bottom: 5px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.s};
 	font-size: 0.9rem;
@@ -62,8 +64,8 @@ export const ButtonsWrapper = styled.div`
 
 	transition: all ${TRANSION_MS} ease;
 
-	${ProductCard}:hover &,
-	${ProductCard}:focus-within & {
+	${Wrapper}:hover &,
+	${Wrapper}:focus-within & {
 		opacity: 1;
 	}
 	border-radius: 15px;

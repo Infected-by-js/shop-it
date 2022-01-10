@@ -1,19 +1,19 @@
 import React from 'react';
-import * as Styled from './DetailsPage.styled';
 import { Header, Overview, Info } from '../../containers/';
+import { Main, Column } from './DetailsPage.styled';
 
 export const DetailsPage = () => {
 	return (
 		<>
 			<Header />
-			<Styled.Main>
-				<Styled.Column>
+			<Main>
+				<Column>
 					<Info />
-				</Styled.Column>
-				<Styled.Column>
+				</Column>
+				<Column>
 					<Overview />
-				</Styled.Column>
-			</Styled.Main>
+				</Column>
+			</Main>
 		</>
 	);
 };

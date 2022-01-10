@@ -1,16 +1,17 @@
 import React from 'react';
-import * as Styled from './Content.styled';
+import { Button } from '../../../../ui/Button';
+import { Wrapper, InfoContainer, Title, Description, Image } from './Content.styled';
 
 export const Content = ({ imageSrc, title, description, buttonLabel, isActiveSlide }) => {
 	return (
-		<Styled.Content>
-			<Styled.InfoContainer>
-				<Styled.Title>{title}</Styled.Title>
-				<Styled.Description>{description}</Styled.Description>
-				<Styled.Button tabIndex={isActiveSlide ? 0 : -1}>{buttonLabel}</Styled.Button>
-			</Styled.InfoContainer>
+		<Wrapper>
+			<InfoContainer>
+				<Title>{title}</Title>
+				<Description>{description}</Description>
+				<Button tabIndex={isActiveSlide ? 0 : -1}>{buttonLabel}</Button>
+			</InfoContainer>
 
-			<Styled.Image src={imageSrc} />
-		</Styled.Content>
+			<Image src={imageSrc} />
+		</Wrapper>
 	);
 };

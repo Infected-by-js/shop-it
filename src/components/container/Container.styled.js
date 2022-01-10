@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device, size } from '../../styles/constants';
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 1rem;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
-export const Search = styled.div`
+export const Wrapper = styled.div`
 	position: relative;
 
 	display: flex;

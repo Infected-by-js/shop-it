@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, device, TRANSION_MS } from '../../../../styles/constants';
 
-export const ControlsArrows = styled.div`
+export const Wrapper = styled.div`
 	padding: 2rem;
 	position: absolute;
 	top: 0;

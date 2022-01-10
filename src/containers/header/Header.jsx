@@ -1,17 +1,17 @@
 import React from 'react';
-import * as Styled from './Header.styled.js';
+import { Wrapper, Content } from './Header.styled.js';
 import { Container, Search, Logo, Navbar } from '../../components/';
 
 export const Header = () => {
 	return (
-		<Styled.Header>
+		<Wrapper>
 			<Container>
-				<Styled.HeaderContent>
+				<Content>
 					<Search />
 					<Logo />
 					<Navbar />
-				</Styled.HeaderContent>
+				</Content>
 			</Container>
-		</Styled.Header>
+		</Wrapper>
 	);
 };

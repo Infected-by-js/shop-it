@@ -1,8 +1,8 @@
-import { lighten } from 'polished';
 import styled from 'styled-components';
-import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { lighten } from 'polished';
+import { color, device, fonts, fontWeight } from '../../styles/constants';
 
-export const RegisterPage = styled.div`
+export const Wrapper = styled.div`
 	width: 100vw;
 	height: 100vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -13,7 +13,7 @@ export const RegisterPage = styled.div`
 	justify-content: center;
 `;
 
-export const Wrapper = styled.div`
+export const Content = styled.div`
 	min-width: 280px;
 	width: 70%;
 	padding: 20px;
@@ -46,6 +46,10 @@ export const Form = styled.form`
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};
 
+	button {
+		width: 100%;
+	}
+
 	@media ${device.tablet} {
 		flex-direction: row;
 	}
@@ -71,29 +75,4 @@ export const Input = styled.input`
 export const Agreement = styled.span`
 	font-size: 12px;
 	margin: 20px 0px;
-`;
-
-export const Button = styled.button`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	border: none;
-	padding: 15px 20px;
-	cursor: pointer;
-
-	color: ${color.white};
-	background: ${color.black};
-	border-radius: 2px;
-
-	transition: background-color ${TRANSION_MS} ease;
-
-	&:hover,
-	&:focus {
-		background-color: ${lighten(0.3, color.black)};
-	}
-
-	&:active {
-		background-color: ${color.black};
-	}
 `;

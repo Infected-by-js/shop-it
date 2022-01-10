@@ -2,7 +2,7 @@ import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 import { color, fonts, TRANSION_MS } from '../../styles/constants';
 
-export const Overview = styled.section`
+export const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -19,7 +19,7 @@ export const Overview = styled.section`
 	}
 `;
 
-export const MainView = styled.div`
+export const Content = styled.div`
 	position: relative;
 	width: 600px;
 	height: 700px;
@@ -33,7 +33,7 @@ export const MainView = styled.div`
 	}
 `;
 
-export const MainImage = styled.img`
+export const Image = styled.img`
 	margin-bottom: 20px;
 
 	width: 100%;
