@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { darken } from 'polished';
+
+export const CartPage = styled.main`
+	background-color: ${darken(0.03, color.white)};
+`;
 
 export const Title = styled.h1`
 	margin-bottom: 20px;
@@ -14,6 +19,8 @@ export const Header = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 50px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid ${color.silverLight};
 `;
 
 export const HeaderButton = styled.button`
@@ -76,45 +83,20 @@ export const HeaderText = styled.span`
 export const Content = styled.div`
 	display: flex;
 	justify-content: space-between;
+	gap: 50px;
+	padding: 0 10px;
 
 	flex-direction: column;
 
 	@media ${device.laptop} {
 		flex-direction: row;
 	}
+	@media ${device.laptopL} {
+		max-width: 80%;
+		margin: 0 auto;
+	}
 `;
 
 export const ProductsList = styled.div`
 	flex: 1;
-`;
-
-export const Summary = styled.div`
-	border: 0.5px solid lightgray;
-	border-radius: 10px;
-	padding: 20px;
-	height: 50vh;
-`;
-
-export const SummaryTitle = styled.h1`
-	font-weight: 200;
-`;
-
-export const SummaryItem = styled.div`
-	margin: 30px 0px;
-	display: flex;
-	justify-content: space-between;
-	font-weight: ${(props) => props.type === 'total' && '500'};
-	font-size: ${(props) => props.type === 'total' && '24px'};
-`;
-
-export const SummaryItemText = styled.span``;
-
-export const SummaryItemPrice = styled.span``;
-
-export const Button = styled.button`
-	width: 100%;
-	padding: 10px;
-	background-color: black;
-	color: white;
-	font-weight: 600;
 `;

@@ -96,7 +96,7 @@ export const Button = styled.button`
 
 export const Link = styled.a`
 	display: inline-block;
-	width: 100%;
+	width: 50%;
 	margin: 5px 0px;
 	font-size: 12px;
 	text-transform: uppercase;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
+import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE, CART_PAGE_ROUTE } from '../../router/routes';
 
 import * as Styled from './Navbar.styled';
 import { IconCart, IconBurger } from '../../assets/images/icons';
@@ -17,9 +17,11 @@ export const Navbar = () => {
 						<Link to={LOGIN_PAGE_ROUTE}>Log in</Link>
 					</Styled.NavItem>
 					<Styled.NavItem>
-						<Styled.ButtonCart>
-							<IconCart />
-						</Styled.ButtonCart>
+						<Link to={CART_PAGE_ROUTE}>
+							<Styled.CartIconWrapp>
+								<IconCart />
+							</Styled.CartIconWrapp>
+						</Link>
 					</Styled.NavItem>
 				</Styled.NavList>
 			</Styled.Navbar>

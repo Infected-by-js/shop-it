@@ -39,12 +39,11 @@ export const NavItem = styled.li`
 	}
 `;
 
-export const ButtonCart = styled.button`
+export const CartIconWrapp = styled.span`
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
-	padding: 15px;
 	background-color: transparent;
 	border: 0;
 	border-radius: 8px;

@@ -4,12 +4,14 @@ import { Container, Search, Logo, Navbar } from '../../components/';
 
 export const Header = () => {
 	return (
-		<Container>
-			<Styled.Header>
-				<Search />
-				<Logo />
-				<Navbar />
-			</Styled.Header>
-		</Container>
+		<Styled.Header>
+			<Container>
+				<Styled.HeaderContent>
+					<Search />
+					<Logo />
+					<Navbar />
+				</Styled.HeaderContent>
+			</Container>
+		</Styled.Header>
 	);
 };

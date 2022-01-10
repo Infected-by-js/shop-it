@@ -10,7 +10,7 @@ export const LoginPage = () => {
 					<Styled.Input placeholder='Username/Email' type='text' />
 					<Styled.Input placeholder='Password' type='password' />
 					<Styled.Button>Login</Styled.Button>
-					<Styled.Link>Don`t you remember the password?</Styled.Link>
+					<Styled.Link>Foggot the password?</Styled.Link>
 					<Styled.Link>Create a new account</Styled.Link>
 				</Styled.Form>
 			</Styled.Wrapper>
