@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 import { darken } from 'polished';
 
-export const CartPage = styled.main`
+export const Wrapper = styled.main`
 	background-color: ${darken(0.03, color.white)};
 `;
 
@@ -14,7 +14,7 @@ export const Title = styled.h1`
 	text-transform: uppercase;
 `;
 
-export const Header = styled.div`
+export const ButtonsWrapp = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -23,7 +23,7 @@ export const Header = styled.div`
 	border-bottom: 1px solid ${color.silverLight};
 `;
 
-export const HeaderButton = styled.button`
+export const Button = styled.button`
 	padding: 10px;
 	display: flex;
 	align-items: center;
@@ -55,28 +55,6 @@ export const HeaderButton = styled.button`
 		g {
 			transition: fill ${TRANSION_MS} ease;
 		}
-	}
-`;
-
-export const HeaderTexts = styled.div`
-	display: none;
-	align-items: center;
-	justify-content: center;
-
-	@media ${device.tablet} {
-		display: flex;
-	}
-`;
-
-export const HeaderText = styled.span`
-	margin: 0px 10px;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.xs};
-	font-size: 1.1rem;
-
-	cursor: pointer;
-	&:hover {
-		text-decoration: underline;
 	}
 `;
 
