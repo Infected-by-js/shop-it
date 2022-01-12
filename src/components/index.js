@@ -5,6 +5,6 @@ export { Search } from './search/Search';
 export { Navbar } from './navbar/Navbar';
 export { Slider } from './slider/Slider';
 export { Copyright } from './copyright/Copyright';
-export { ProductCard } from './product-card/ProductCard';
+export { Product } from './product/Product';
 export { CartProduct } from './cart-product/CartProduct';
 export { CartSummary } from './cart-summary/CartSummary';

@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
-import { darken } from 'polished';
 
-export const Wrapper = styled.main`
-	background-color: ${darken(0.03, color.white)};
-`;
+export const Wrapper = styled.main``;
 
 export const Title = styled.h1`
 	margin-bottom: 20px;
@@ -32,11 +29,16 @@ export const ButtonsWrapp = styled.div`
 	}
 
 	button {
+		padding: 10px;
 		gap: 5px;
 		&:hover {
 			svg g {
 				fill: ${color.white};
 			}
+		}
+
+		@media ${device.tablet} {
+			padding: 15px 20px;
 		}
 	}
 `;

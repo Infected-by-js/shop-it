@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Main, ProductsList } from './HomePage.styled';
 
 import { Footer, Header } from '../../containers';
-import { Container, Slider, SortCategories, ProductCard } from '../../components';
+import { Container, Slider, SortCategories, Product } from '../../components';
 
 export const HomePage = () => {
 	const { products } = useSelector(({ products }) => products);
@@ -18,7 +18,7 @@ export const HomePage = () => {
 
 					<ProductsList>
 						{products.map((product) => (
-							<ProductCard key={product.image_src} {...product} />
+							<Product key={product.image_src} {...product} />
 						))}
 					</ProductsList>
 				</Container>

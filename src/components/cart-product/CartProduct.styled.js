@@ -2,14 +2,21 @@ import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
-	padding: 10px;
+	margin: 0 auto;
+	padding: 10px 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
+	max-width: 50%;
+	min-width: 350px;
+
+	border: 1px solid ${color.greyLight};
+	border-radius: 8px;
 
 	@media ${device.laptop} {
 		flex-direction: row;
+		max-width: 100%;
 	}
 `;
 

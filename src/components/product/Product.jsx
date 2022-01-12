@@ -9,10 +9,10 @@ import {
 	Description,
 	ButtonsWrapper,
 	Button,
-} from './ProductCard.styled';
-import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons/';
+} from './Product.styled';
+import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
 
-export const ProductCard = ({ id, image_src, title, style, author }) => {
+export const Product = ({ id, image_src, title, style, author }) => {
 	const navigate = useNavigate();
 
 	const handleClickAddToCart = () => {

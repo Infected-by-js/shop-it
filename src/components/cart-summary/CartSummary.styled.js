@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
 	border-radius: 10px;
 	padding: 20px;
 	min-width: 350px;
+	max-width: 80%;
+	align-self: center;
 `;
 
 export const Title = styled.h1`
