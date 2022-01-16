@@ -1,7 +1,7 @@
 export const slides = [
 	{
-		title: 'New This Week',
-		description: 'New This Week',
+		title: 'Original art for sale',
+		description: 'Art for the soul. Art for life. Art for your home.',
 		buttonLabel: 'Start Exploring',
 		imageSrc: './images/banner_1.jpeg',
 	},

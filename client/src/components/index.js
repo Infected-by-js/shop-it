@@ -8,3 +8,4 @@ export { Copyright } from './copyright/Copyright';
 export { Product } from './product/Product';
 export { CartProduct } from './cart-product/CartProduct';
 export { CartSummary } from './cart-summary/CartSummary';
+export { ProductsCategories } from './products-categories/ProductsCategories';

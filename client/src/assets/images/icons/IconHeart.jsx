@@ -3,7 +3,7 @@ import React from 'react';
 export const IconHeart = () => {
 	return (
 		<svg width='16' height='13' viewBox='0 0 16 13' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<g fill='#23263B' stroke='#23263B'>
+			<g fill='#0000' stroke='#23263B'>
 				<path
 					fillRule='evenodd'
 					clipRule='evenodd'

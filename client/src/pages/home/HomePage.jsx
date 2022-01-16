@@ -1,26 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Main, ProductsList } from './HomePage.styled';
+import { Main } from './HomePage.styled';
 
-import { Footer, Header } from '../../containers';
-import { Container, Slider, SortCategories, Product } from '../../components';
+import { Footer, Header, ProductList } from '../../containers';
+import { Container, Slider, ProductsCategories } from '../../components';
 
 export const HomePage = () => {
-	const { products } = useSelector(({ products }) => products);
-
 	return (
 		<>
 			<Header />
 			<Slider />
 			<Main>
 				<Container>
-					<SortCategories />
-
-					<ProductsList>
-						{products.map((product) => (
-							<Product key={product.image_src} {...product} />
-						))}
-					</ProductsList>
+					<ProductsCategories />
+					<ProductList />
 				</Container>
 			</Main>
 			<Footer />

@@ -1,5 +1,5 @@
 import { lighten } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { fonts, fontWeight, TRANSION_MS, color } from '../../styles/constants';
 
 export const Wrapper = styled.div`
@@ -85,8 +85,20 @@ export const Button = styled.button`
 	svg {
 		width: 50%;
 		height: 50%;
-		fill: ${color.black};
+
+		g {
+			stroke: ${color.black};
+		}
 	}
+
+	${({ active }) =>
+		active &&
+		css`
+			svg g {
+				fill: ${color.blue};
+				stroke: ${color.blue};
+			}
+		`}
 
 	&:hover,
 	&:focus {

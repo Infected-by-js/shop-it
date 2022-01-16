@@ -11,15 +11,16 @@ import {
 	Button,
 } from './Product.styled';
 import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
+import { routeToDetailsPage } from '../../router/routes';
 
-export const Product = ({ id, image_src, title, style, author }) => {
+export const Product = ({ id, image_src, title, category, style, author }) => {
 	const navigate = useNavigate();
 
 	const handleClickAddToCart = () => {
 		console.log('Add to cart');
 	};
 	const handleClickDetails = () => {
-		navigate(`/${id}`);
+		navigate(routeToDetailsPage(id), {});
 	};
 	const handleClickAddToFavourite = () => {
 		console.log('Add to Favourite');
