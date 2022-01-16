@@ -1,8 +1,8 @@
 import React from 'react';
 import { Main } from './HomePage.styled';
 
-import { Footer, Header, ProductList } from '../../containers';
-import { Container, Slider, ProductsCategories } from '../../components';
+import { Footer, Header, ProductList, CategoryList } from '../../containers';
+import { Container, Slider } from '../../components';
 
 export const HomePage = () => {
 	return (
@@ -11,7 +11,7 @@ export const HomePage = () => {
 			<Slider />
 			<Main>
 				<Container>
-					<ProductsCategories />
+					<CategoryList />
 					<ProductList />
 				</Container>
 			</Main>

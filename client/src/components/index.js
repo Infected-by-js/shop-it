@@ -1,11 +1,11 @@
 export { Container } from './container/Container';
 export { Logo } from './logo/Logo';
-export { SortCategories } from './sort-categories/SortCategories';
+export { SortBlock } from './sort-block/SortBlock';
 export { Search } from './search/Search';
 export { Navbar } from './navbar/Navbar';
 export { Slider } from './slider/Slider';
 export { Copyright } from './copyright/Copyright';
-export { Product } from './product/Product';
+export { ProductItem } from './product-item/ProductItem';
 export { CartProduct } from './cart-product/CartProduct';
 export { CartSummary } from './cart-summary/CartSummary';
-export { ProductsCategories } from './products-categories/ProductsCategories';
+export { CategoryItem } from './category-item/CategoryItem';

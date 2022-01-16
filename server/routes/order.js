@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { json } = require('express/lib/response');
 const Order = require('../models/Order');
-const { verifyToken, verifyTokenAndAuth, verifyTokenAndAdmin } = require('./verifyToken');
+const { verifyToken, verifyTokenAndAuth, verifyTokenAndAdmin } = require('../utils/verifyToken');
 
 router.post('/', verifyToken, async (req, res) => {
 	const newOrder = new Order(req.body);
@@ -93,7 +92,6 @@ router.get('/income', verifyTokenAndAdmin, async (req, res) => {
 
 		res.status(200).json(income);
 	} catch (error) {
-		json;
 		res.status(500).json(error);
 	}
 });

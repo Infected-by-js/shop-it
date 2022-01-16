@@ -9,11 +9,11 @@ import {
 	Description,
 	ButtonsWrapper,
 	Button,
-} from './Product.styled';
+} from './ProductItem.styled';
 import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
 import { routeToDetailsPage } from '../../router/routes';
 
-export const Product = ({ id, image_src, title, category, style, author }) => {
+export const ProductItem = ({ id, image_src, title, category, style, author }) => {
 	const navigate = useNavigate();
 
 	const handleClickAddToCart = () => {

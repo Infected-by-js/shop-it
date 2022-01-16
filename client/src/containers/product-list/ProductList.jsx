@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Product } from '../../components';
+import { ProductItem } from '../../components';
 import { Wrapper } from './ProductList.styled';
 
 export const ProductList = () => {
@@ -7,7 +7,7 @@ export const ProductList = () => {
 	return (
 		<Wrapper>
 			{products.map((product) => (
-				<Product key={product.image_src} {...product} />
+				<ProductItem key={product.image_src} {...product} />
 			))}
 		</Wrapper>
 	);

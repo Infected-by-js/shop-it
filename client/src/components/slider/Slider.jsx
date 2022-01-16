@@ -19,15 +19,8 @@ export const Slider = () => {
 		<Wrapper>
 			<Track slideIndex={slideIndex}>
 				<SliderList>
-					{slides.map(({ title, description, imageSrc, buttonLabel }, index) => (
-						<Content
-							key={imageSrc}
-							isActiveSlide={slideIndex === index}
-							imageSrc={imageSrc}
-							title={title}
-							description={description}
-							buttonLabel={buttonLabel}
-						/>
+					{slides.map((slide, index) => (
+						<Content key={slide.imageSrc} isActiveSlide={slideIndex === index} {...slide} />
 					))}
 				</SliderList>
 			</Track>

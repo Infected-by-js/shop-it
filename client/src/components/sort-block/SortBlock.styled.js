@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 	gap: 8px;
 `;
 
-export const CategoryButton = styled.button`
+export const SortButton = styled.button`
 	padding: 5px 17px;
 	font-family: ${fonts.arsenal};
 	font-size: 1.5rem;
