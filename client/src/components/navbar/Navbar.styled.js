@@ -34,7 +34,11 @@ export const NavItem = styled.li`
 
 		&:hover,
 		&:focus {
-			color: ${color.blue};
+			color: ${color.red};
+
+			& g {
+				stroke: ${color.red};
+			}
 		}
 	}
 `;
@@ -57,13 +61,6 @@ export const CartIconWrapp = styled.span`
 	& g {
 		transition: stroke ${TRANSION_MS} ease-in-out;
 	}
-
-	&:hover,
-	&:focus {
-		& g {
-			stroke: ${color.blue};
-		}
-	}
 `;
 
 export const BurgerButton = styled.button`
@@ -74,7 +71,7 @@ export const BurgerButton = styled.button`
 
 	&:active {
 		g {
-			fill: ${color.blue};
+			fill: ${color.red};
 		}
 	}
 

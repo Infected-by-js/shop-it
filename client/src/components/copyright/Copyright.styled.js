@@ -8,7 +8,8 @@ export const Wrapper = styled.a.attrs({
 
 	transition: color ${TRANSION_MS} ease;
 
-	&:hover {
-		color: ${color.blue};
+	&:hover,
+	&:focus {
+		color: ${color.red};
 	}
 `;

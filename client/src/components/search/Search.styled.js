@@ -11,12 +11,12 @@ export const Wrapper = styled.div`
 	&:hover,
 	&:focus-within {
 		& input {
-			border-color: ${color.blue};
-			box-shadow: 0.2px 0.5px 2px ${color.blue};
+			border-color: ${color.red};
+			box-shadow: 0.2px 0.5px 2px ${color.red};
 		}
 
 		& g {
-			fill: ${color.blue};
+			fill: ${color.red};
 		}
 	}
 `;

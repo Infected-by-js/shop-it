@@ -5,5 +5,6 @@ export const Main = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 40px;
+	margin-top: 50px;
 	margin-bottom: 150px;
 `;

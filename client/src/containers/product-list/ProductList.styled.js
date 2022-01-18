@@ -14,6 +14,10 @@ export const Wrapper = styled.div`
 	}
 
 	@media ${device.laptop} {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media ${device.laptopL} {
 		grid-template-columns: repeat(4, 1fr);
 	}
 `;

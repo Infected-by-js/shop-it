@@ -1,26 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-	Wrapper,
-	Image,
-	InfoWrapp,
-	Title,
-	Description,
-	ButtonsWrapper,
-	Button,
-} from './ProductItem.styled';
+import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
 import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
 import { routeToDetailsPage } from '../../router/routes';
 
-export const ProductItem = ({ id, image_src, title, category, style, author }) => {
+export const ProductItem = ({ id, image_set, title }) => {
 	const navigate = useNavigate();
 
 	const handleClickAddToCart = () => {
 		console.log('Add to cart');
 	};
 	const handleClickDetails = () => {
-		navigate(routeToDetailsPage(id), {});
+		navigate(routeToDetailsPage(id));
 	};
 	const handleClickAddToFavourite = () => {
 		console.log('Add to Favourite');
@@ -28,11 +20,7 @@ export const ProductItem = ({ id, image_src, title, category, style, author }) =
 
 	return (
 		<Wrapper>
-			<Image src={image_src} alt={title} />
-			<InfoWrapp>
-				<Title>{author}</Title>
-				<Description>{style}</Description>
-			</InfoWrapp>
+			<Image src={image_set[0]} alt={title} />
 			<ButtonsWrapper>
 				<Button onClick={handleClickAddToCart}>
 					<IconCart />

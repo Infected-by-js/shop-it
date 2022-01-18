@@ -1,14 +1,11 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { ProductItem } from '../../components';
 import { Wrapper } from './ProductList.styled';
 
-export const ProductList = () => {
-	const { products } = useSelector(({ products }) => products);
+export const ProductList = ({ products }) => {
 	return (
 		<Wrapper>
-			{products.map((product) => (
-				<ProductItem key={product.image_src} {...product} />
-			))}
+			{products && products.map((product) => <ProductItem key={product._id} {...product} />)}
 		</Wrapper>
 	);
 };

@@ -1,9 +1,18 @@
 import styled from 'styled-components';
-import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
+import {
+	color,
+	device,
+	fonts,
+	fontWeight,
+	headerHeight,
+	TRANSION_MS,
+} from '../../styles/constants';
 
 export const Wrapper = styled.main``;
 
 export const Title = styled.h1`
+	margin-top: ${headerHeight};
+	padding-top: 20px;
 	margin-bottom: 20px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};

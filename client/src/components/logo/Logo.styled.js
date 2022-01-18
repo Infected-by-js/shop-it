@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import { TRANSION_MS } from '../../styles/constants';
+import { color, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
-	transition: transform ${TRANSION_MS} ease;
+	margin: 0 auto;
 
 	&:hover,
 	&:focus-within {
-		transform: scale(1.05);
+		g {
+			fill: ${color.red};
+		}
+	}
+	g {
+		transition: fill ${TRANSION_MS} ease;
 	}
 `;

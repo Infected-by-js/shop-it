@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
 	padding: 15px 0;
@@ -7,7 +7,12 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
 	gap: 8px;
+
+	@media ${device.tablet} {
+		flex-wrap: nowrap;
+	}
 `;
 
 export const SortButton = styled.button`
@@ -28,5 +33,15 @@ export const SortButton = styled.button`
 	&:focus {
 		color: ${color.white};
 		background-color: ${color.black};
+	}
+
+	&:first-child {
+		width: 100%;
+	}
+
+	@media ${device.tablet} {
+		&:first-child {
+			width: auto;
+		}
 	}
 `;

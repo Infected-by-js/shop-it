@@ -1,4 +1,5 @@
 export const headerHeight = '88px';
+
 export const fonts = {
 	inter: 'Inter, sans-serif',
 	arsenal: 'Arsenal, sans-serif',

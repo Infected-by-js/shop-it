@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { headerHeight } from '../../styles/constants';
 
 export const Main = styled.main`
+	margin-top: ${headerHeight};
 	position: relative;
 	display: grid;
 	grid-template-columns: repeat(2, 50%);

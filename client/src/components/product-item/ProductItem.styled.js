@@ -1,51 +1,28 @@
 import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
-import { fonts, fontWeight, TRANSION_MS, color } from '../../styles/constants';
+import { TRANSION_MS, color, device } from '../../styles/constants';
 
 export const Wrapper = styled.div`
 	position: relative;
-	width: 290px;
-	display: flex;
-	flex-direction: column;
+	width: 320px;
+	height: 460px;
 	border-radius: 15px;
 
-	border: 1px solid ${color.white};
 	background-color: ${color.white};
 	box-shadow: 1px 2px 6px ${lighten(0.5, color.grey)};
 
 	overflow: hidden;
 	cursor: pointer;
+
+	@media ${device.laptop} {
+	}
 `;
 
 export const Image = styled.img`
 	width: 100%;
-	height: auto;
-	max-height: 400px;
-	object-fit: contain;
-`;
-
-export const InfoWrapp = styled.div`
-	padding: 10px 25px 15px;
-`;
-
-export const Title = styled.h2`
-	margin-bottom: 3px;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.m};
-	font-size: 1.1rem;
-	line-height: 1.5;
-	letter-spacing: -5%;
-	color: ${color.black};
-`;
-
-export const Description = styled.p`
-	margin-bottom: 5px;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.s};
-	font-size: 0.9rem;
-	line-height: 1.5;
-	letter-spacing: -5%;
-	color: ${color.grey};
+	height: 100%;
+	object-position: center center;
+	object-fit: cover;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -60,20 +37,20 @@ export const ButtonsWrapper = styled.div`
 	justify-content: center;
 	gap: 20px;
 
-	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
 
+	background-color: rgba(0, 0, 0, 0.5);
 	transition: all ${TRANSION_MS} ease;
 
 	${Wrapper}:hover &,
-	${Wrapper}:focus-within & {
+		${Wrapper}:focus-within & {
 		opacity: 1;
 	}
-	border-radius: 15px;
 `;
 
 export const Button = styled.button`
-	width: 50px;
-	height: 50px;
+	width: 80px;
+	height: 80px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -103,5 +80,10 @@ export const Button = styled.button`
 	&:hover,
 	&:focus {
 		opacity: 1;
+	}
+
+	@media ${device.laptop} {
+		width: 60px;
+		height: 60px;
 	}
 `;
