@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { color, fonts, fontWeight, headerHeight, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
+	margin: 0 auto;
 	position: sticky;
 	top: calc(${headerHeight} + 20px);
 	right: 0;

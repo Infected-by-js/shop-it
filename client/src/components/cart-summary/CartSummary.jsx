@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Wrapper, Title, Item, ItemText, ItemPrice, Button } from './CartSummary.styled';
 
-export const CartSummary = ({ totalPrice }) => {
+export const CartSummary = ({ totalPrice, onOpenModal }) => {
 	const shippingPrice = 5.9;
 	const discount = 5.9;
 
@@ -25,7 +25,7 @@ export const CartSummary = ({ totalPrice }) => {
 				<ItemText>Total</ItemText>
 				<ItemPrice>$ {totalPrice}</ItemPrice>
 			</Item>
-			<Button>CHECKOUT NOW</Button>
+			<Button onClick={onOpenModal}>CHECKOUT NOW</Button>
 		</Wrapper>
 	);
 };

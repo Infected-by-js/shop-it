@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../../ui/Button';
 import { Container, CartProduct, CartSummary } from '../../components';
 import { Header } from '../../containers/';
 
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
-import { useDispatch, useSelector } from 'react-redux';
 import { removeProduct } from '../../redux/features/cart/cartSlice';
 import {
 	Wrapper,
@@ -16,14 +16,26 @@ import {
 	ProductsContainer,
 	SummaryContainer,
 	Placeholder,
+	ModalSuccess,
 } from './CartPage.styled.js';
+import { Modal } from '../../components/modal/Modal';
 
 export const CartPage = () => {
-	const { products, quantity, totalPrice } = useSelector((state) => state.cart);
+	const { products, totalPrice } = useSelector((state) => state.cart);
+	const [openModal, setOpenModal] = useState(false);
+
 	const dispatch = useDispatch();
 
 	const handleRemoveFromCart = (product) => {
 		dispatch(removeProduct(product));
+	};
+
+	const handleOpenModal = () => {
+		setOpenModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setOpenModal(false);
 	};
 
 	return (
@@ -61,10 +73,16 @@ export const CartPage = () => {
 					</ProductsContainer>
 
 					<SummaryContainer>
-						<CartSummary totalPrice={totalPrice} />
+						<CartSummary totalPrice={totalPrice} onOpenModal={handleOpenModal} />
 					</SummaryContainer>
 				</Content>
 			</Container>
+
+			{openModal && (
+				<Modal onClose={handleCloseModal}>
+					<ModalSuccess>SUCCCESS</ModalSuccess>
+				</Modal>
+			)}
 		</Wrapper>
 	);
 };

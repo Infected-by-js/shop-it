@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { CartPage, ProductPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
+
 import {
 	CART_PAGE_ROUTE,
 	PRODUCTS_CATEGORY_ROUTE,

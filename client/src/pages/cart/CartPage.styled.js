@@ -88,3 +88,5 @@ export const Placeholder = styled.div`
 	font-size: 2rem;
 	text-align: center;
 `;
+
+export const ModalSuccess = styled.div``;

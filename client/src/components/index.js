@@ -10,3 +10,4 @@ export { ProductItemSkeleton } from './product-item/ProductItemSkeleton';
 export { CartProduct } from './cart-product/CartProduct';
 export { CartSummary } from './cart-summary/CartSummary';
 export { CategoryItem } from './category-item/CategoryItem';
+export { Portal } from './portal/Portal';

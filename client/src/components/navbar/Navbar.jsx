@@ -8,10 +8,11 @@ import {
 	NavList,
 	NavItem,
 	CartIconWrapp,
+	HeartIconWrapp,
 	BurgerButton,
 	QuantityIcon,
 } from './Navbar.styled';
-import { IconCart, IconBurger } from '../../assets/images/icons';
+import { IconCart, IconBurger, IconHeart } from '../../assets/images/icons';
 
 export const Navbar = () => {
 	const quantity = useSelector((state) => state.cart.quantity);
@@ -26,6 +27,11 @@ export const Navbar = () => {
 					</NavItem>
 					<NavItem>
 						<Link to={LOGIN_PAGE_ROUTE}>Log in</Link>
+					</NavItem>
+					<NavItem>
+						<HeartIconWrapp>
+							<IconHeart />
+						</HeartIconWrapp>
 					</NavItem>
 					<NavItem>
 						<Link to={CART_PAGE_ROUTE}>

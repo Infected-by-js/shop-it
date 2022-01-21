@@ -13,7 +13,7 @@ export const NavList = styled.ul`
 `;
 
 export const NavItem = styled.li`
-	margin-right: 40px;
+	margin-right: 30px;
 
 	font-size: 1.25rem;
 	font-family: ${fonts.inter};
@@ -39,6 +39,36 @@ export const NavItem = styled.li`
 			& g {
 				stroke: ${color.red};
 			}
+		}
+	}
+`;
+
+export const HeartIconWrapp = styled.button`
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: transparent;
+	border: 0;
+	border-radius: 8px;
+	transition: background-color ${TRANSION_MS} ease-in-out;
+	cursor: pointer;
+
+	svg {
+		width: 26px;
+		height: 22px;
+	}
+
+	& g {
+		transition: stroke ${TRANSION_MS} ease-in-out, fill ${TRANSION_MS} ease-in-out;
+	}
+
+	&:hover,
+	&:focus-visible {
+		& g {
+			stroke: ${color.red};
+			fill: ${color.red};
 		}
 	}
 `;
