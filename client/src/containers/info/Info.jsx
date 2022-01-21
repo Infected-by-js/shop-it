@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Button } from '../../ui/Button.jsx';
 import { IconDelivery, IconLocation, IconArrowLeft } from '../../assets/images/icons/';
+
 import {
 	Section,
 	BackButton,
@@ -13,7 +15,7 @@ import {
 	HelperText,
 } from './Info.styled.js';
 
-export const Info = () => {
+export const Info = ({ product, addToCart }) => {
 	return (
 		<Section>
 			<BackButton>
@@ -21,13 +23,17 @@ export const Info = () => {
 				Back
 			</BackButton>
 			<Main>
-				<Title>title (2021)</Title>
-				<Description>Author</Description>
-				<Description>style, size</Description>
-				<Description>description</Description>
+				<Title>
+					{product.title} ({product.year_created})
+				</Title>
+				<Description>{product.author}</Description>
+				<Description>
+					{product.style}, {product.size}
+				</Description>
+				<Description>{product.description}</Description>
 			</Main>
 			<Footer>
-				<Price>$620</Price>
+				<Price>${product.price}</Price>
 				<DeliveryInfo>
 					<IconLocation />
 					<p> Ships from New York, NY, USA</p>
@@ -36,7 +42,7 @@ export const Info = () => {
 					<IconDelivery />
 					<p>Estimated to ship in 3 - 7 days within USA</p>
 				</DeliveryInfo>
-				<Button>Add to cart</Button>
+				<Button onClick={addToCart}>Add to cart</Button>
 				<HelperText>Taxes and shipping fees will apply upon checkout</HelperText>
 			</Footer>
 		</Section>

@@ -10,21 +10,21 @@ import {
 	RemoveButton,
 } from './CartProduct.styled';
 
-export const CartProduct = () => {
+export const CartProduct = ({ product, removeProduct }) => {
 	return (
 		<Wrapper>
-			<Image src='./images/img_1.jpeg' />
+			<Image src={product.image_set[0]} />
 
 			<Details>
 				<TextWrapp>
-					<Text>ESSIE THUNDER SHOES</Text>
-					<Text>by Author</Text>
-					<Text>Oil paint</Text>
-					<Text>30 x 25 cm</Text>
+					<Text style={{ fontWeight: 700 }}>{product.title}</Text>
+					<Text>by {product.author}</Text>
+					<Text>{product.style}</Text>
+					<Text>{product.size}</Text>
 				</TextWrapp>
-				<RemoveButton>Discart</RemoveButton>
+				<RemoveButton onClick={() => removeProduct(product)}>Discart</RemoveButton>
 			</Details>
-			<Price>$30</Price>
+			<Price>${product.price}</Price>
 		</Wrapper>
 	);
 };

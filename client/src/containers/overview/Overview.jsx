@@ -3,21 +3,22 @@ import { Wrapper, Content, Image, PreviewList, PreviewItem } from './Overview.st
 
 const images = ['./images/img_1.jpeg', './images/img_2.jpeg'];
 
-export const Overview = () => {
+export const Overview = ({ images }) => {
 	return (
 		<Wrapper>
-			<Content>
-				<Image src='./images/img_1.jpeg' />
+			{images && (
+				<Content>
+					<Image src={images[0]} />
 
-				<PreviewList>
-					{images &&
-						images.map((imageSrc) => (
+					<PreviewList>
+						{images.map((imageSrc) => (
 							<PreviewItem key={imageSrc}>
 								<img src={imageSrc} alt='preview' />
 							</PreviewItem>
 						))}
-				</PreviewList>
-			</Content>
+					</PreviewList>
+				</Content>
+			)}
 		</Wrapper>
 	);
 };

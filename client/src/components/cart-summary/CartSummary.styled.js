@@ -1,8 +1,11 @@
 import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
-import { color, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
+import { color, fonts, fontWeight, headerHeight, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
+	position: sticky;
+	top: calc(${headerHeight} + 20px);
+	right: 0;
 	border: 0.5px solid ${color.greyLight};
 	border-radius: 10px;
 	padding: 20px;

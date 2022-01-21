@@ -4,15 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
 import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
 import { routeToDetailsPage } from '../../router/routes';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/features/cart/cartSlice';
 
-export const ProductItem = ({ id, image_set, title }) => {
+export const ProductItem = ({ product }) => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleClickAddToCart = () => {
-		console.log('Add to cart');
+		dispatch(addProduct(product));
 	};
 	const handleClickDetails = () => {
-		navigate(routeToDetailsPage(id));
+		navigate(routeToDetailsPage(product._id));
 	};
 	const handleClickAddToFavourite = () => {
 		console.log('Add to Favourite');
@@ -20,7 +23,7 @@ export const ProductItem = ({ id, image_set, title }) => {
 
 	return (
 		<Wrapper>
-			<Image src={image_set[0]} alt={title} />
+			<Image src={product.image_set[0]} alt={product.title} />
 			<ButtonsWrapper>
 				<Button onClick={handleClickAddToCart}>
 					<IconCart />

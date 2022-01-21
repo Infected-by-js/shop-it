@@ -1,11 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE, CART_PAGE_ROUTE } from '../../router/routes';
 
-import { Wrapper, NavList, NavItem, CartIconWrapp, BurgerButton } from './Navbar.styled';
+import {
+	Wrapper,
+	NavList,
+	NavItem,
+	CartIconWrapp,
+	BurgerButton,
+	QuantityIcon,
+} from './Navbar.styled';
 import { IconCart, IconBurger } from '../../assets/images/icons';
 
 export const Navbar = () => {
+	const quantity = useSelector((state) => state.cart.quantity);
+	const isEmptyCart = quantity === 0;
+
 	return (
 		<>
 			<Wrapper>
@@ -20,6 +31,7 @@ export const Navbar = () => {
 						<Link to={CART_PAGE_ROUTE}>
 							<CartIconWrapp>
 								<IconCart />
+								{!isEmptyCart && <QuantityIcon>{quantity}</QuantityIcon>}
 							</CartIconWrapp>
 						</Link>
 					</NavItem>

@@ -5,9 +5,27 @@ import { Container, CartProduct, CartSummary } from '../../components';
 import { Header } from '../../containers/';
 
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
-import { Wrapper, Title, ButtonsWrapp, Content, ProductsList } from './CartPage.styled.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeProduct } from '../../redux/features/cart/cartSlice';
+import {
+	Wrapper,
+	Title,
+	ButtonsWrapp,
+	Content,
+	ProductsList,
+	ProductsContainer,
+	SummaryContainer,
+	Placeholder,
+} from './CartPage.styled.js';
 
 export const CartPage = () => {
+	const { products, quantity, totalPrice } = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+
+	const handleRemoveFromCart = (product) => {
+		dispatch(removeProduct(product));
+	};
+
 	return (
 		<Wrapper>
 			<Header />
@@ -26,11 +44,25 @@ export const CartPage = () => {
 				</ButtonsWrapp>
 
 				<Content>
-					<ProductsList>
-						<CartProduct />
-					</ProductsList>
+					<ProductsContainer>
+						{!products.length ? (
+							<Placeholder>Cart is empty</Placeholder>
+						) : (
+							<ProductsList>
+								{products.map((product) => (
+									<CartProduct
+										key={product._id}
+										product={product}
+										removeProduct={handleRemoveFromCart}
+									/>
+								))}
+							</ProductsList>
+						)}
+					</ProductsContainer>
 
-					<CartSummary />
+					<SummaryContainer>
+						<CartSummary totalPrice={totalPrice} />
+					</SummaryContainer>
 				</Content>
 			</Container>
 		</Wrapper>

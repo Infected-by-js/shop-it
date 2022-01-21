@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import { CartPage, DetailsPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
+import { CartPage, ProductPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
 import {
 	CART_PAGE_ROUTE,
 	PRODUCTS_CATEGORY_ROUTE,
-	DETAILS_PAGE_ROUTE,
+	PRODUCT_PAGE_ROUTE,
 	HOME_PAGE_ROUTE,
 	LOGIN_PAGE_ROUTE,
 	REGISTER_PAGE_ROUTE,
@@ -21,7 +21,7 @@ export const AppRouter = () => {
 				<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
 					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
 				</Route>
-				<Route path={DETAILS_PAGE_ROUTE} element={<DetailsPage />} />
+				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
 				<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
 			</Route>
 			{/* <Route element={<PublicRoute isLogged={isLogged} />}> */}

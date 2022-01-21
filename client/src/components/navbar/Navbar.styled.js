@@ -44,6 +44,7 @@ export const NavItem = styled.li`
 `;
 
 export const CartIconWrapp = styled.span`
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -78,4 +79,23 @@ export const BurgerButton = styled.button`
 	@media ${device.laptop} {
 		display: none;
 	}
+`;
+
+export const QuantityIcon = styled.span`
+	position: absolute;
+	right: -15px;
+	top: -15px;
+	width: 22px;
+	height: 22px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 0.75rem;
+	font-family: ${fonts.inter};
+	font-weight: ${fontWeight.inter.s};
+	color: ${color.white};
+	background-color: ${color.red};
+	border-radius: 50%;
 `;

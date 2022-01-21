@@ -56,6 +56,7 @@ export const Content = styled.div`
 	justify-content: space-between;
 	gap: 50px;
 	padding: 0 10px;
+	margin-bottom: 50px;
 
 	flex-direction: column;
 
@@ -69,5 +70,21 @@ export const Content = styled.div`
 `;
 
 export const ProductsList = styled.div`
+	display: flex;
+	flex-direction: column;
 	flex: 1;
+	gap: 40px;
+`;
+
+export const ProductsContainer = styled.div`
+	width: 100%;
+`;
+
+export const SummaryContainer = styled.div`
+	position: relative;
+`;
+
+export const Placeholder = styled.div`
+	font-size: 2rem;
+	text-align: center;
 `;

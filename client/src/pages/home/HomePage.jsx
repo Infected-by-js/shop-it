@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
-import { ProductService } from '../../api/ProductService';
+import ProductService from '../../api/ProductService';
 
 import { Footer, Header, ProductList, CategoryList } from '../../containers';
 import { Container, Slider } from '../../components';
 import { Main } from './HomePage.styled';
+import { PRODUCTS } from '../../api/endpoints';
 
 export const HomePage = () => {
 	const [products, setProducts] = useState([]);
-	const [fetchProducts] = useFetch(async (params) => {
-		const { data } = await ProductService.getAll(params);
-		setProducts([...products, ...data]);
-	});
 
 	useEffect(() => {
-		fetchProducts({ limit: 8 });
+		const getProducts = async () => {
+			const response = await ProductService.fetchAll(PRODUCTS, { limit: 8 });
+			setProducts(response);
+		};
+
+		getProducts();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	console.log(products);
 	return (
 		<>
 			<Header />

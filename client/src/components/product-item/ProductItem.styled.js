@@ -78,7 +78,7 @@ export const Button = styled.button`
 		`}
 
 	&:hover,
-	&:focus {
+	&:focus-visible {
 		opacity: 1;
 	}
 

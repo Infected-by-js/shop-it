@@ -5,7 +5,7 @@ import { Wrapper } from './ProductList.styled';
 export const ProductList = ({ products }) => {
 	return (
 		<Wrapper>
-			{products && products.map((product) => <ProductItem key={product._id} {...product} />)}
+			{products && products.map((product) => <ProductItem key={product._id} product={product} />)}
 		</Wrapper>
 	);
 };

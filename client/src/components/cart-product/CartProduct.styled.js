@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
 	@media ${device.laptop} {
 		flex-direction: row;
 		max-width: 100%;
+		margin: 0;
 	}
 `;
 
@@ -25,14 +26,15 @@ export const Image = styled.img`
 	width: 210px;
 	height: 240px;
 	object-fit: contain;
-	border: 1px solid ${color.silver};
 `;
 
 export const Details = styled.div`
+	padding: 10px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	flex: 1;
+	height: 100%;
 `;
 
 export const TextWrapp = styled.div`
@@ -43,18 +45,19 @@ export const Text = styled.p`
 	margin-bottom: 10px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	line-height: 1;
 `;
 
 export const Price = styled.p`
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.m};
-	font-size: 2rem;
+	font-size: 1.5rem;
 	letter-spacing: 1px;
 `;
 
 export const RemoveButton = styled.button`
+	margin-top: auto;
 	padding: 5px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.s};
