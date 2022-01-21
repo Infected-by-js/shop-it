@@ -25,12 +25,13 @@ const StyledButton = styled.button`
 	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;
 
 	&:hover,
-	&:focus {
+	&:focus-visible {
 		background-color: ${lighten(0.3, color.black)};
 	}
 
-	&:active {
-		background-color: ${color.black};
+	&:disabled {
+		background-color: ${lighten(0.5, color.black)};
+		cursor: not-allowed;
 	}
 
 	${({ outlined }) =>

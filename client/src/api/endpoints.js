@@ -10,7 +10,6 @@ export const ENDPOINTS = {
 	[ORDERS]: '/orders',
 	[CARTS]: '/carts',
 	[USERS]: '/users',
-	[LOGIN]: '/login',
-	[REGISTER]: '/register',
-	[LOGIN]: '/login',
+	[LOGIN]: 'auth/login',
+	[REGISTER]: 'auth/register',
 };

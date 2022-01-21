@@ -86,3 +86,11 @@ export const Link = styled.a`
 		text-decoration: underline;
 	}
 `;
+
+export const Error = styled.p`
+	display: block;
+	font-size: 1rem;
+	font-family: ${fonts.inter};
+	font-weight: ${fontWeight.inter.m};
+	color: ${color.red};
+`;
