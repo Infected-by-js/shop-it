@@ -19,18 +19,18 @@ export const AppRouter = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route element={<PrivateRoute isLogged={!!user} />}>
-					<Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
-					<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
-						<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
-					</Route>
-					<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
-					<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
+				{/* <Route element={<PrivateRoute isLogged={!!user} />}> */}
+				<Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
+				<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
+					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
 				</Route>
-				<Route element={<PublicRoute isLogged={!!user} />}>
-					<Route path={REGISTER_PAGE_ROUTE} element={<RegisterPage />} />
-					<Route path={LOGIN_PAGE_ROUTE} element={<LoginPage />} />
-				</Route>
+				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
+				<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
+				{/* </Route> */}
+				{/* <Route element={<PublicRoute isLogged={!!user} />}> */}
+				<Route path={REGISTER_PAGE_ROUTE} element={<RegisterPage />} />
+				<Route path={LOGIN_PAGE_ROUTE} element={<LoginPage />} />
+				{/* </Route> */}
 
 				<Route path='*' element={<Navigate to={HOME_PAGE_ROUTE} />} />
 			</Routes>

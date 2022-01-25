@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../ui/Button.jsx';
 import { login } from '../../redux/apiCall';
-import { Wrapper, Content, Title, Form, Input, Link, Error } from './LoginPage.styled.js';
+import { Wrapper, Content, Title, Form, Input, LinkText, Error } from './LoginPage.styled.js';
+import { REGISTER_PAGE_ROUTE } from '../../router/routes';
 
 export const LoginPage = () => {
 	const [userData, setUserData] = useState({ username: '', password: '' });
 	const { isFetching, error } = useSelector((state) => state.user);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
-	const routeToRegisterPage = () => {
-		navigate('/register');
-	};
 
 	const handleChange = (event) => {
 		const activeInputEl = event.target.name;
@@ -50,6 +47,9 @@ export const LoginPage = () => {
 					</Button>
 					{error && <Error>{error}</Error>}
 				</Form>
+				<Link to={REGISTER_PAGE_ROUTE}>
+					<LinkText>Need an Account?</LinkText>
+				</Link>
 			</Content>
 		</Wrapper>
 	);

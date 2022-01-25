@@ -1,19 +1,15 @@
 import axiosInstance from './axiosInstance';
-import { ENDPOINTS } from './endpoints';
 
 class UserService {
-	constructor(endpoints) {
-		this.endpoints = endpoints;
-	}
-
-	async login(endpoint, requestBody) {
-		const url = this.endpoints[endpoint];
-
-		const response = await axiosInstance.post(`${url}`, requestBody);
+	async login(userCredentials) {
+		const response = await axiosInstance.post('auth/login', userCredentials);
 		return response.data;
 	}
 
-	register() {}
+	async register(userCredentials) {
+		const response = await axiosInstance.post('auth/register', userCredentials);
+		return response.data;
+	}
 }
 
-export default new UserService(ENDPOINTS);
+export default new UserService();

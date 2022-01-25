@@ -73,8 +73,8 @@ export const Input = styled.input`
 	}
 `;
 
-export const Link = styled.a`
-	display: inline-block;
+export const LinkText = styled.span`
+	display: inline-flex;
 	width: 50%;
 	margin: 5px 0px;
 	font-size: 12px;

@@ -11,7 +11,6 @@ const ProductSchema = new mongoose.Schema(
 		category: { type: String, required: true },
 		year_created: { type: Number, required: true },
 		image_set: { type: Array, required: true },
-		inStock: { type: Boolean, default: true },
 	},
 	{
 		timestamps: true,
