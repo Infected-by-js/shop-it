@@ -12,20 +12,26 @@ const loginValidators = [
 ];
 
 const saveProductValidators = [
+	check('title', 'title is required!').notEmpty(),
+	check('author', 'author is required!').notEmpty(),
+	check('size', 'size is required!').notEmpty(),
+	check('style', 'style is required!').notEmpty(),
+	check('description', 'description is required!').notEmpty(),
+	check('price', 'price is required!').notEmpty(),
+	check('category', 'category is required!').notEmpty(),
+	check('year_created', 'year_created is required!').notEmpty(),
+
 	body('images').custom((value, meta) => {
-		const files = meta.req.files;
-		const regExp = /.*\.(webp|jpe?g|bmp|png)$/gim;
+		const files = meta.req?.files;
+		const match = ['image/jpeg', 'image/png'];
+		const isWrongExtension = files.some((file) => !match.includes(file.mimetype));
 
-		console.log({ files });
-
-		if (!files.length) {
+		if (!files || !files.length) {
 			throw 'There must be at least one image!';
 		}
 
-		const isWrongExtension = files.find((file) => regExp.test(file.originalname));
-
 		if (isWrongExtension) {
-			throw 'Wrong extension';
+			throw 'Wrong extension of file';
 		}
 
 		return true;

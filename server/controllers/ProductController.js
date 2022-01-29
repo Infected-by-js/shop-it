@@ -1,8 +1,7 @@
 const ProductService = require('../services/ProductService');
-
+const FileService = require('../services/FileService');
 const { validationResult } = require('express-validator');
 
-const generateLinkToFile = (fileName) => `http://localhost:${process.env.PORT}/static/${fileName}`;
 class ProductController {
 	async getAll(req, res) {
 		const qLimit = req.query.limit;
@@ -35,46 +34,27 @@ class ProductController {
 		}
 	}
 
-	async getImage(req, res) {
-		//
-	}
-
 	async create(req, res) {
 		const { errors } = validationResult(req);
-		const images = req.files.map((image) => image.filename);
 
 		try {
 			if (errors.length) {
+				FileService.deleteImages(req.files);
+
 				return res.status(400).json(errors);
 			}
 
-			// const newProduct = { ...req.body, images };
-			// const savedProduct = await ProductService.saveProduct(newProduct);
-			// res.status(201).json(savedProduct);
+			const images = req.files.map((image) => image.filename);
+			const newProduct = { ...req.body, images };
+			const savedProduct = await ProductService.saveProduct(newProduct);
+
+			res.status(201).json(savedProduct);
 		} catch (error) {
+			FileService.deleteImages(req.files);
+
 			res.status(500).json(error.message);
 		}
 	}
 }
 
 module.exports = new ProductController();
-
-// localhost/images/filename
-
-/* 
-	product: {
-		_id: objectId, 
-		title: string,
-		author: string,
-		style: string,
-		size: string,
-		description: string,
-		price: number,
-    category: string,
-		year_created: number,
-    images: [
-			'1234567890-product_name'
-		]
-	}
-
-*/

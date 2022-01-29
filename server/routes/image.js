@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const ImageController = require('../controllers/ImageController.js');
+const FileController = require('../controllers/FileController');
 
-router.get('/:id', ImageController.getOne);
+router.get('/:id', FileController.getOne);
 
 module.exports = router;

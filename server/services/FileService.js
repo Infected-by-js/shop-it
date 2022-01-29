@@ -1,13 +1,17 @@
-const { v4 } = require('uuid');
 const path = require('path');
+const fs = require('fs');
 
 class FileService {
-	saveFile(file) {
-		const fileName = v4() + '.jpg';
-		const filePath = path.resolve('static', fileName);
-		file.mv(filePath);
+	getImage(id) {
+		const dirPath = path.resolve('static');
 
-		return fileName;
+		return `${dirPath}/${id}`;
+	}
+
+	deleteImages(images) {
+		images.forEach((image) => {
+			fs.unlinkSync(image.path);
+		});
 	}
 }
 

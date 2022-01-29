@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 class UserService {
-	async getOne(username) {
+	async getUser(username) {
 		const user = await User.findOne({ username });
 
 		if (!user) {
@@ -11,7 +11,7 @@ class UserService {
 		return user;
 	}
 
-	async createOne(candidate) {
+	async createUser(candidate) {
 		const user = await User.findOne({ username: candidate.username });
 
 		if (user) {

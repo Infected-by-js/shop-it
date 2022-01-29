@@ -18,7 +18,7 @@ class AuthController {
 				password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString(),
 			};
 
-			const createdUser = await UserService.createOne(newUser);
+			const createdUser = await UserService.createUser(newUser);
 
 			res.status(201).json(createdUser);
 		} catch (err) {
@@ -34,7 +34,7 @@ class AuthController {
 				return res.status(400).json(errors);
 			}
 
-			const user = await UserService.getOne(req.body.username);
+			const user = await UserService.getUser(req.body.username);
 
 			const encryptedPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
 			const originalPassword = encryptedPassword.toString(CryptoJS.enc.Utf8);
