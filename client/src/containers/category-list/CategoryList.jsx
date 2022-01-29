@@ -8,19 +8,13 @@ import { CategoryItem } from '../../components/';
 import { Main } from './CategoryList.styled';
 
 export const CategoryList = () => {
-	const navigate = useNavigate();
-
-	const navigateToCategoryPage = (value) => {
-		navigate(routeToCategoryPage(value));
-	};
-
 	return (
 		<Main>
 			{categories.map(({ title, value, image }) =>
 				image ? (
 					<CategoryItem
 						key={value}
-						onClick={() => navigateToCategoryPage(value)}
+						url={routeToCategoryPage(value)}
 						title={title}
 						imageSrc={image}
 					/>

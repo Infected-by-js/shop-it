@@ -22,9 +22,8 @@ export const HomePage = () => {
 			<Header />
 			<Main>
 				<Slider />
+				<CategoryList />
 				<Container>
-					<CategoryList />
-
 					<ProductList products={products} />
 				</Container>
 			</Main>

@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Wrapper, Image, Title } from './CategoryItem.styled';
 
-export const CategoryItem = ({ imageSrc, title, ...rest }) => {
+export const CategoryItem = ({ imageSrc, title, url, ...rest }) => {
 	return (
 		<Wrapper {...rest}>
-			<Image src={imageSrc} />
-			<Title>{title}</Title>
+			<Link to={url}>
+				<Image src={imageSrc} />
+				<Title>{title}</Title>
+			</Link>
 		</Wrapper>
 	);
 };
