@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/';
-import { TRANSION_MS } from '../../styles/constants';
+import { color, TRANSION_MS } from '../../styles/constants';
 
 export const ModalContainer = styled.div`
 	position: fixed;
@@ -42,15 +42,27 @@ export const Content = styled.div`
 
 export const ButtonClose = styled.button`
 	position: absolute;
-	right: 0;
-	top: 0;
+	right: 1%;
+	top: 1%;
 	background-color: transparent;
 
 	opacity: 0.6;
 	transition: opacity ${TRANSION_MS} ease;
 
+	svg {
+		width: 50px;
+		height: 50px;
+
+		g {
+			transition: fill ${TRANSION_MS} ease;
+		}
+	}
+
 	&:hover,
 	&:focus-visible {
 		opacity: 1;
+		g {
+			fill: ${color.white};
+		}
 	}
 `;

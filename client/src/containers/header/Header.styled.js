@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { color, headerHeight } from '../../styles/constants';
+import { color, device, headerHeight } from '../../styles/constants';
 
-export const Wrapper = styled.header`
+export const Wrapper = styled.div`
 	background-color: ${color.white};
 	position: fixed;
 	top: 0;
@@ -11,8 +11,10 @@ export const Wrapper = styled.header`
 	will-change: transform;
 `;
 export const Content = styled.header`
+	min-width: 300px;
 	height: ${headerHeight};
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 `;

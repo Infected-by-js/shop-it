@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
-export const Wrapper = styled.nav``;
-
 export const NavList = styled.ul`
 	display: none;
 	align-items: center;
@@ -43,7 +41,7 @@ export const NavItem = styled.li`
 	}
 `;
 
-export const HeartIconWrapp = styled.button`
+export const HeartIconWrapp = styled.a`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -73,7 +71,7 @@ export const HeartIconWrapp = styled.button`
 	}
 `;
 
-export const CartIconWrapp = styled.span`
+export const CartIconWrapp = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -94,23 +92,6 @@ export const CartIconWrapp = styled.span`
 	}
 `;
 
-export const BurgerButton = styled.button`
-	display: flex;
-
-	background-color: transparent;
-	border: 0;
-
-	&:active {
-		g {
-			fill: ${color.red};
-		}
-	}
-
-	@media ${device.laptop} {
-		display: none;
-	}
-`;
-
 export const QuantityIcon = styled.span`
 	position: absolute;
 	right: -15px;
@@ -128,4 +109,6 @@ export const QuantityIcon = styled.span`
 	color: ${color.white};
 	background-color: ${color.red};
 	border-radius: 50%;
+
+	transition: color ${TRANSION_MS} ease-in-out, background-color ${TRANSION_MS} ease-in-out;
 `;
