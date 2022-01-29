@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import { Header, Overview, Info } from '../../containers';
 import ProductService from '../../api/ProductService';
-import { PRODUCTS } from '../../api/endpoints';
 import { Main, Column } from './ProductPage.styled';
 import { addProduct } from '../../redux/features/cart/cartSlice';
 import { useDispatch } from 'react-redux';
@@ -15,7 +14,7 @@ export const ProductPage = () => {
 
 	useEffect(() => {
 		const getProduct = async () => {
-			const response = await ProductService.fetchOne(PRODUCTS, params.productId);
+			const response = await ProductService.fetchOne(params.productId);
 
 			setProduct(response);
 		};
@@ -27,8 +26,6 @@ export const ProductPage = () => {
 		dispatch(addProduct(product));
 	};
 
-	console.log(product);
-
 	return (
 		<>
 			<Header />
@@ -37,7 +34,7 @@ export const ProductPage = () => {
 					<Info product={product} addToCart={handleAddtoCart} />
 				</Column>
 				<Column>
-					<Overview images={product.image_set} />
+					<Overview images={product.images} />
 				</Column>
 			</Main>
 		</>

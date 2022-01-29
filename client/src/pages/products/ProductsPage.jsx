@@ -8,7 +8,6 @@ import { Container, SortBlock } from '../../components/';
 import { Main, MainTitle, ProductsPageWrapper } from './ProductsPage.styled';
 
 import { categories } from '../../assets/categories';
-import { PRODUCTS } from '../../api/endpoints';
 import { setCategory } from '../../redux/features/products/productsSlice';
 
 export const ProductsPage = () => {
@@ -21,7 +20,7 @@ export const ProductsPage = () => {
 		const isDefaultCategory = activeCategory === categories[0].value;
 
 		const getProducts = async () => {
-			const response = await ProductService.fetchAll(PRODUCTS, {
+			const response = await ProductService.fetchAll({
 				category: isDefaultCategory ? '' : activeCategory,
 			});
 			setProducts(response);

@@ -1,40 +1,47 @@
-import axios from 'axios';
+import axios from './axiosInstance';
 import { ENDPOINTS } from './endpoints';
 
-const BASE_URL = 'http://localhost:5000/api';
-const TOKEN =
-	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTJkYmI5OGI2MGE5ZWYzOWM2YWM2MiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MjU5MzczNCwiZXhwIjoxNjQyODUyOTM0fQ.R5-kzXGE2m--nlIaq86KP6hSj5TAIKam52tfoy6Swso';
-
 class ProductService {
-	constructor(baseUrl, endpoints, token) {
-		this.baseUrl = baseUrl;
+	constructor(endpoints, token) {
 		this.endpoints = endpoints;
 		this.token = token;
 	}
 
-	async fetchAll(endpoint, { category, limit }) {
-		const url = this.endpoints[endpoint];
+	createImagesUrl = (images) => {
+		return images.map((image) => `${this.endpoints.images}/${image}`);
+	};
 
-		const response = await axios.get(`${this.baseUrl}${url}`, {
+	async fetchAll({ category, limit }) {
+		const productsUrl = this.endpoints.products;
+
+		const response = await axios.get(productsUrl, {
 			params: {
 				category,
 				limit,
 			},
 		});
-		return response.data;
+
+		const products = response.data.map((product) => {
+			return { ...product, images: this.createImagesUrl(product.images) };
+		});
+
+		return products;
 	}
 
-	async fetchOne(endpoint, id) {
-		const url = this.endpoints[endpoint];
+	async fetchOne(id) {
+		const productsUrl = this.endpoints.products;
 
-		const response = await axios.get(`${this.baseUrl}${url}/find/${id}`);
-		return response.data;
+		const response = await axios.get(`${productsUrl}/${id}`);
+		const product = response.data;
+		const images = this.createImagesUrl(product.images);
+
+		return { ...product, images };
 	}
 
-	async createOne(endpoint, requestBody) {
-		const url = this.endpoints[endpoint];
+	async createOne(requestBody) {
+		const productsUrl = this.endpoints.products;
 
-		const response = await axios.post(`${this.baseUrl}${url}`, requestBody, {
+		const response = await axios.post(productsUrl, requestBody, {
 			headers: {
 				token: `Bearer ${this.token}`,
 			},
@@ -43,4 +50,4 @@ class ProductService {
 	}
 }
 
-export default new ProductService(BASE_URL, ENDPOINTS, TOKEN);
+export default new ProductService(ENDPOINTS);

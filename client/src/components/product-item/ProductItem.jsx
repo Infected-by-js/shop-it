@@ -23,7 +23,7 @@ export const ProductItem = ({ product }) => {
 
 	return (
 		<Wrapper>
-			<Image src={product.image_set[0]} alt={product.title} />
+			<Image src={product.images[0]} alt={product.title} />
 			<ButtonsWrapper>
 				<Button onClick={handleClickAddToCart}>
 					<IconCart />

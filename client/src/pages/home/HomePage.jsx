@@ -4,14 +4,13 @@ import ProductService from '../../api/ProductService';
 import { Footer, Header, ProductList, CategoryList } from '../../containers';
 import { Container, Slider } from '../../components';
 import { Main } from './HomePage.styled';
-import { PRODUCTS } from '../../api/endpoints';
 
 export const HomePage = () => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const response = await ProductService.fetchAll(PRODUCTS, { limit: 8 });
+			const response = await ProductService.fetchAll({ limit: 8 });
 			setProducts(response);
 		};
 
