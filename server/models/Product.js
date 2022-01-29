@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema(
 		price: { type: Number, required: true },
 		category: { type: String, required: true },
 		year_created: { type: Number, required: true },
-		image_set: { type: Array, required: true },
+		images: { type: [String], required: true },
 	},
 	{
 		timestamps: true,

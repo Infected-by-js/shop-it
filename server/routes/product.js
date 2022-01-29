@@ -1,10 +1,19 @@
 const router = require('express').Router();
+
+const { saveProductValidators } = require('../utils/validators');
 const ProductController = require('../controllers/ProductController');
-const Product = require('../models/Product');
-const verifyToken = require('../utils/verifyToken');
+const verifyToken = require('../middlewares/verifyToken');
+const upload = require('../middlewares/uploadImage');
 
 router.get('/', ProductController.getAll);
 router.get('/:id', ProductController.getOne);
-router.post('/', verifyToken, ProductController.create);
+router.get('/images/:id', ProductController.getImage);
+router.post(
+	'/',
+	verifyToken,
+	upload.array('images'),
+	saveProductValidators,
+	ProductController.create
+);
 
 module.exports = router;
