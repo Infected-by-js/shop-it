@@ -12,7 +12,7 @@ export const Main = styled.div`
 	margin-top: 80px;
 	margin-bottom: 80px;
 
-	background-color: rgba(0, 0, 0, 0.05);
+	background-color: rgba(0, 0, 0, 0.03);
 
 	@media ${device.tablet} {
 		flex-direction: row;

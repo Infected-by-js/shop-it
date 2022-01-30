@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../styles/constants';
+import { device, fonts, fontWeight } from '../../styles/constants';
 
 export const Wrapper = styled.div`
 	margin-top: 35px;
@@ -20,4 +20,13 @@ export const Wrapper = styled.div`
 	@media ${device.laptopL} {
 		grid-template-columns: repeat(4, 1fr);
 	}
+`;
+
+export const EmptyStateTitle = styled.h2`
+	margin-top: 35px;
+
+	text-align: center;
+	font-family: ${fonts.arsenal};
+	font-weight: ${fontWeight.arsenal.m};
+	font-size: 2rem;
 `;

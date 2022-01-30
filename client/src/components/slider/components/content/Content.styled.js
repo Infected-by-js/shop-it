@@ -40,8 +40,8 @@ export const InfoContainer = styled.div`
 export const Title = styled.h1`
 	margin: 0 0 20px 0;
 	padding: 0 1.5rem;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.m};
+	font-family: ${fonts.arsenal};
+	font-weight: ${fontWeight.arsenal.m};
 	font-size: 3rem;
 	text-align: center;
 	color: ${color.black};
@@ -49,8 +49,8 @@ export const Title = styled.h1`
 export const Description = styled.p`
 	margin-bottom: 20px;
 	padding: 0 1.5rem;
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.m};
+	font-family: ${fonts.arsenal};
+	font-weight: ${fontWeight.arsenal.m};
 	font-size: 1.5rem;
 	text-align: center;
 
@@ -68,10 +68,12 @@ export const Image = styled.img`
 	height: 100%;
 	object-fit: cover;
 	box-shadow: -2px 4px 10px ${color.greyLight};
+	filter: blur(2px);
 
 	@media ${device.tablet} {
 		position: relative;
 		left: 0;
 		transform: translateX(0);
+		filter: unset;
 	}
 `;

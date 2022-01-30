@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 	width: 300px;
 	height: 300px;
 	border-radius: 40px;
-	opacity: 0.7;
+	opacity: 0.8;
 
 	box-shadow: 1px 2px 4px ${color.greyLight};
 	transition: opacity ${TRANSION_MS} ease, box-shadow ${TRANSION_MS} ease;

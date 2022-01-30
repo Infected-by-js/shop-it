@@ -10,15 +10,14 @@ export const ProductsPageWrapper = styled.div`
 
 export const Main = styled.main`
 	margin-top: ${headerHeight};
-	padding-top: 10px;
-	padding-bottom: 110px;
+	padding-bottom: 80px;
 	flex: 1;
 
 	background-color: ${darken(0.03, color.white)};
 `;
 
 export const MainTitle = styled.h1`
-	margin-bottom: 20px;
+	margin: 30px 0;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.s};
 	text-align: center;

@@ -4,7 +4,7 @@ import { TRANSION_MS, color, device } from '../../styles/constants';
 
 export const Wrapper = styled.div`
 	position: relative;
-	width: 320px;
+	width: 300px;
 	height: 460px;
 	border-radius: 15px;
 

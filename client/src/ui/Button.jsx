@@ -13,8 +13,8 @@ const StyledButton = styled.button`
 	align-items: center;
 	justify-content: center;
 
-	font-family: ${fonts.inter};
-	font-weight: ${fontWeight.inter.s};
+	font-family: ${fonts.arsenal};
+	font-weight: ${fontWeight.arsenal.m};
 	border: 1px solid transparent;
 	border-radius: 2px;
 

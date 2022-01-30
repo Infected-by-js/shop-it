@@ -13,16 +13,18 @@ import { setCategory } from '../../redux/features/products/productsSlice';
 export const ProductsPage = () => {
 	const params = useParams();
 	const [products, setProducts] = useState([]);
-	const [activeCategory, setActveCategory] = useState(params.categoryId || categories[0].value);
+	const [activeCategory, setActiveCategory] = useState(params.categoryId || categories[0].value);
+	// const {products} = useSelector(({products}) => products)
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const isDefaultCategory = activeCategory === categories[0].value;
+		const category = isDefaultCategory ? '' : activeCategory;
+
+		// dispatch(getProducts({category}));
 
 		const getProducts = async () => {
-			const response = await ProductService.fetchAll({
-				category: isDefaultCategory ? '' : activeCategory,
-			});
+			const response = await ProductService.fetchAll({ category });
 			setProducts(response);
 		};
 
@@ -30,7 +32,7 @@ export const ProductsPage = () => {
 	}, [activeCategory]);
 
 	const changeCategory = (value) => {
-		setActveCategory(value);
+		setActiveCategory(value);
 		dispatch(setCategory(value));
 	};
 

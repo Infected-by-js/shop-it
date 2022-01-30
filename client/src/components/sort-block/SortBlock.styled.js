@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { color, device, fonts, fontWeight, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.div`
-	padding: 15px 0;
 	width: 100%;
 	display: flex;
 	align-items: center;
