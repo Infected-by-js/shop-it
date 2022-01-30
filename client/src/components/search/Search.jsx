@@ -6,9 +6,9 @@ import { Wrapper, Input, Label } from './Search.styled';
 export const Search = () => {
 	return (
 		<Wrapper>
-			<Input />
 			<Label>
 				<IconSearch />
+				<Input />
 			</Label>
 		</Wrapper>
 	);
