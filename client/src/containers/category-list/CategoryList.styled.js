@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { device } from '../../styles/constants';
+import { darken } from 'polished';
+import { color, device } from '../../styles/constants';
 
 export const Main = styled.div`
 	display: flex;
@@ -12,7 +13,7 @@ export const Main = styled.div`
 	margin-top: 80px;
 	margin-bottom: 80px;
 
-	background-color: rgba(0, 0, 0, 0.03);
+	background-color: ${darken(0.04, color.white)};
 
 	@media ${device.tablet} {
 		flex-direction: row;

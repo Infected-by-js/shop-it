@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color, device, fontWeight } from '../../styles/constants';
+import { color, device, fontWeight, TRANSION_MS } from '../../styles/constants';
 
 export const MobileMenuWrapp = styled.nav`
 	${({ isShow }) =>
@@ -81,5 +81,29 @@ export const BurgerButton = styled.button`
 
 	@media ${device.laptop} {
 		display: none;
+	}
+`;
+
+export const ButtonClose = styled.button`
+	position: absolute;
+	right: 50px;
+	top: 50px;
+	background-color: transparent;
+
+	svg {
+		width: 50px;
+		height: 50px;
+
+		g {
+			fill: ${color.white};
+			transition: fill ${TRANSION_MS} ease;
+		}
+	}
+
+	&:hover,
+	&:focus-visible {
+		g {
+			fill: ${color.red};
+		}
 	}
 `;

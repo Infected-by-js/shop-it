@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/';
+import styled from 'styled-components/';
 import { color, TRANSION_MS } from '../../styles/constants';
 
 export const ModalContainer = styled.div`
@@ -38,31 +38,5 @@ export const Content = styled.div`
 	min-width: 300px;
 	min-height: 200px;
 	background-color: white;
-`;
-
-export const ButtonClose = styled.button`
-	position: absolute;
-	right: 1%;
-	top: 1%;
-	background-color: transparent;
-
-	opacity: 0.6;
-	transition: opacity ${TRANSION_MS} ease;
-
-	svg {
-		width: 50px;
-		height: 50px;
-
-		g {
-			transition: fill ${TRANSION_MS} ease;
-		}
-	}
-
-	&:hover,
-	&:focus-visible {
-		opacity: 1;
-		g {
-			fill: ${color.white};
-		}
-	}
+	border: 3px solid ${color.black};
 `;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { MobileMenuWrapp, BurgerButton } from './Navbar.styled';
+import { MobileMenuWrapp, BurgerButton, ButtonClose } from './Navbar.styled';
 import { IconBurger, IconClose } from '../../assets/images/icons';
 import { NavMenu, Modal } from '../../components';
 
@@ -29,6 +29,9 @@ export const Navbar = () => {
 					style={{ position: 'fixed', width: '100%', height: '100%' }}
 					onClose={handleCloseBurgerMenu}
 				>
+					<ButtonClose onClick={handleCloseBurgerMenu}>
+						<IconClose />
+					</ButtonClose>
 					<MobileMenuWrapp isShow={burgerOpen}>
 						<NavMenu quantity={quantity} />
 					</MobileMenuWrapp>

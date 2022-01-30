@@ -13,7 +13,7 @@ import {
 export const CartProduct = ({ product, removeProduct }) => {
 	return (
 		<Wrapper>
-			<Image src={product.image_set[0]} />
+			<Image src={product.images[0]} />
 
 			<Details>
 				<TextWrapp>

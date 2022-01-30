@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { categories } from '../../assets/categories';
 import { routeToCategoryPage } from '../../router/routes';

@@ -5,13 +5,14 @@ import { Wrapper, Title, Item, ItemText, ItemPrice, Button } from './CartSummary
 export const CartSummary = ({ totalPrice, onOpenModal }) => {
 	const shippingPrice = 5.9;
 	const discount = 5.9;
+	const total = totalPrice.toFixed(2);
 
 	return (
 		<Wrapper>
 			<Title>ORDER SUMMARY</Title>
 			<Item>
 				<ItemText>Subtotal</ItemText>
-				<ItemPrice>$ {totalPrice}</ItemPrice>
+				<ItemPrice>$ {total}</ItemPrice>
 			</Item>
 			<Item>
 				<ItemText>Estimated Shipping</ItemText>
@@ -23,7 +24,7 @@ export const CartSummary = ({ totalPrice, onOpenModal }) => {
 			</Item>
 			<Item type='total'>
 				<ItemText>Total</ItemText>
-				<ItemPrice>$ {totalPrice}</ItemPrice>
+				<ItemPrice>$ {total}</ItemPrice>
 			</Item>
 			<Button onClick={onOpenModal}>CHECKOUT NOW</Button>
 		</Wrapper>

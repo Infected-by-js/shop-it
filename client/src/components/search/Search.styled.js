@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
 		&:focus-within {
 			& label {
 				border-color: ${color.red};
-				box-shadow: 0.2px 0.5px 2px ${color.red};
 			}
 
 			& g {
@@ -28,7 +27,7 @@ export const Label = styled.label`
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
-	transition: border-color ${TRANSION_MS} ease-in-out, box-shadow ${TRANSION_MS} ease-in-out;
+	transition: border-color ${TRANSION_MS} ease-in-out;
 
 	border: none;
 	border-radius: 8px;

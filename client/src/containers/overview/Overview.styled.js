@@ -1,11 +1,14 @@
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
-import { color, fonts, TRANSION_MS } from '../../styles/constants';
+import { color, fonts, TRANSION_MS, device } from '../../styles/constants';
 
 export const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 2rem;
+	height: 100%;
+	width: 100%;
 
 	&:before {
 		content: '';
@@ -14,15 +17,21 @@ export const Wrapper = styled.section`
 		right: 0;
 		width: 50%;
 		height: 100%;
-		background-color: ${darken(0.03, color.white)};
+		background-color: transparent;
 		z-index: -1;
+	}
+
+	@media ${device.laptop} {
+		&:before {
+			background-color: ${darken(0.03, color.white)};
+		}
 	}
 `;
 
 export const Content = styled.div`
 	position: relative;
-	width: 600px;
-	height: 700px;
+	height: 100%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -31,14 +40,24 @@ export const Content = styled.div`
 	@supports (filter: drop-shadow(0px 6px 12px rgb(0 0 0 / 40%))) {
 		filter: drop-shadow(0px 6px 12px rgb(0 0 0 / 40%));
 	}
+
+	@media ${device.laptopL} {
+		width: 600px;
+		height: 700px;
+	}
 `;
 
 export const Image = styled.img`
+	display: none;
 	margin-bottom: 20px;
 
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
+
+	@media ${device.laptopL} {
+		display: block;
+	}
 `;
 export const Buttons = styled.div`
 	position: absolute;
@@ -95,17 +114,29 @@ export const PreviewList = styled.ul`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	gap: 10px;
+
+	@media ${device.laptop} {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	@media ${device.laptopL} {
+		position: relative;
+		flex-direction: row;
+	}
 `;
 
 export const PreviewItem = styled.li`
 	padding: 4px;
 	margin-bottom: 10px;
-	height: 4.5rem;
-	width: 4.5rem;
+	height: 400px;
+	width: 300px;
 	border: 3px solid transparent;
-	opacity: 0.5;
-	cursor: pointer;
+	opacity: 1;
 
 	transition: opacity ${TRANSION_MS} ease, border-color ${TRANSION_MS} ease;
 
@@ -113,6 +144,23 @@ export const PreviewItem = styled.li`
 		object-fit: contain;
 		width: 100%;
 		height: 100%;
+	}
+
+	@media ${device.tablet} {
+		height: 700px;
+		width: 600px;
+	}
+
+	@media ${device.laptop} {
+		height: 600px;
+		width: 500px;
+	}
+
+	@media ${device.laptopL} {
+		opacity: 0.5;
+		max-height: 4.5rem;
+		max-width: 4.5rem;
+		cursor: pointer;
 	}
 
 	&:last-child {

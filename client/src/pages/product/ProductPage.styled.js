@@ -1,12 +1,17 @@
 import styled from 'styled-components';
-import { headerHeight } from '../../styles/constants';
+import { headerHeight, device } from '../../styles/constants';
 
 export const Main = styled.main`
 	margin-top: ${headerHeight};
 	position: relative;
-	display: grid;
-	grid-template-columns: repeat(2, 50%);
-	grid-template-rows: 100%;
+	display: flex;
+	flex-direction: column;
+
+	@media ${device.laptop} {
+		display: grid;
+		grid-template-columns: repeat(2, 50%);
+		grid-template-rows: 100%;
+	}
 `;
 
 export const Column = styled.div`
@@ -14,5 +19,23 @@ export const Column = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	height: calc(100vh - ${headerHeight});
+	height: auto;
+	margin: 3rem;
+	overflow-x: hidden;
+	overflow-y: unset;
+
+	@media ${device.laptop} {
+		margin: 0;
+		height: calc(100vh - ${headerHeight});
+	}
+
+	&:last-child {
+		@media ${device.laptop} {
+			overflow-y: auto;
+		}
+
+		@media ${device.laptopL} {
+			overflow-y: hidden;
+		}
+	}
 `;

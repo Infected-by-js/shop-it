@@ -64,7 +64,7 @@ export const Title = styled.h2`
 export const Description = styled.p`
 	margin-bottom: 2rem;
 	font-family: ${fonts.arsenal};
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	line-height: 1;
 	color: ${color.grey};
 `;
