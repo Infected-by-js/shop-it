@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import ProductService from '../../api/ProductService';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Footer, Header, ProductList, CategoryList } from '../../containers';
 import { Container, Slider } from '../../components';
 import { Main } from './HomePage.styled';
+import { getProducts } from '../../redux/actions/products';
 
 export const HomePage = () => {
-	const [products, setProducts] = useState([]);
+	const { products, isLoading, error } = useSelector(({ products }) => products);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const getProducts = async () => {
-			const response = await ProductService.fetchAll({ limit: 8 });
-			setProducts(response);
-		};
-
-		getProducts();
+		dispatch(getProducts());
 	}, []);
+
+	if (isLoading) {
+		return <h2>Loading...</h2>;
+	}
 
 	return (
 		<>

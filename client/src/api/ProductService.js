@@ -2,16 +2,16 @@ import axios from './axiosInstance';
 import { ENDPOINTS } from './endpoints';
 
 class ProductService {
+	#createImagesUrl = (images) => {
+		return images.map((image) => `${this.endpoints.images}/${image}`);
+	};
+
 	constructor(endpoints, token) {
 		this.endpoints = endpoints;
 		this.token = token;
 	}
 
-	createImagesUrl = (images) => {
-		return images.map((image) => `${this.endpoints.images}/${image}`);
-	};
-
-	async fetchAll({ category, limit }) {
+	async fetchAll({ category = '', limit = '' }) {
 		const productsUrl = this.endpoints.products;
 
 		const response = await axios.get(productsUrl, {
@@ -22,7 +22,7 @@ class ProductService {
 		});
 
 		const products = response.data.map((product) => {
-			return { ...product, images: this.createImagesUrl(product.images) };
+			return { ...product, images: this.#createImagesUrl(product.images) };
 		});
 
 		return products;
@@ -33,7 +33,7 @@ class ProductService {
 
 		const response = await axios.get(`${productsUrl}/${id}`);
 		const product = response.data;
-		const images = this.createImagesUrl(product.images);
+		const images = this.#createImagesUrl(product.images);
 
 		return { ...product, images };
 	}
