@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import { Wrapper, SortButton } from './SortBlock.styled';
 
-export const SortBlock = ({ categories, activeCategory, changeActiveCategory }) => {
-	const [activeItem, setActiveItem] = useState(activeCategory || categories[0].value);
-
+export const SortBlock = ({ categories, activeCategory, changeCategory }) => {
 	const handleChangeItem = (value) => {
-		changeActiveCategory(value);
-		setActiveItem(value);
+		changeCategory(value);
 	};
 
 	return (
@@ -15,7 +11,7 @@ export const SortBlock = ({ categories, activeCategory, changeActiveCategory }) 
 			{categories.map(({ title, value }) => (
 				<SortButton
 					key={value}
-					active={activeItem === value}
+					active={activeCategory === value}
 					onClick={() => handleChangeItem(value)}
 				>
 					{title}
