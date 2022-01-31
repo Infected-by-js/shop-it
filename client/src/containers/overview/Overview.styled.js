@@ -6,7 +6,7 @@ export const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 2rem;
+	padding: 1rem;
 	height: 100%;
 	width: 100%;
 
@@ -22,6 +22,7 @@ export const Wrapper = styled.section`
 	}
 
 	@media ${device.laptop} {
+		padding: 2rem;
 		&:before {
 			background-color: ${darken(0.03, color.white)};
 		}
@@ -48,12 +49,16 @@ export const Content = styled.div`
 `;
 
 export const Image = styled.img`
-	display: none;
+	display: flex;
 	margin-bottom: 20px;
 
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
+
+	@media ${device.laptop} {
+		display: none;
+	}
 
 	@media ${device.laptopL} {
 		display: block;
@@ -111,13 +116,14 @@ export const Button = styled.button`
 `;
 
 export const PreviewList = styled.ul`
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	gap: 10px;
 
 	@media ${device.laptop} {
+		display: flex;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -133,7 +139,7 @@ export const PreviewList = styled.ul`
 export const PreviewItem = styled.li`
 	padding: 4px;
 	margin-bottom: 10px;
-	height: 400px;
+	height: 300px;
 	width: 300px;
 	border: 3px solid transparent;
 	opacity: 1;

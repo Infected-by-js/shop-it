@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 	border: 0.5px solid ${color.greyLight};
 	border-radius: 10px;
 	padding: 20px;
-	min-width: 350px;
+	min-width: 300px;
 	max-width: 80%;
 	align-self: center;
 `;

@@ -3,7 +3,7 @@ import { color, fonts, TRANSION_MS, fontWeight } from '../../styles/constants';
 
 export const Section = styled.section`
 	position: relative;
-	width: 450px;
+	max-width: 450px;
 `;
 export const BackButton = styled.button`
 	position: absolute;

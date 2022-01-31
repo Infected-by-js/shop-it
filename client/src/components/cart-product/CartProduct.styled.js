@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 	align-items: center;
 	gap: 20px;
 	max-width: 50%;
-	min-width: 350px;
+	min-width: 300px;
 
 	border: 1px solid ${color.greyLight};
 	border-radius: 8px;

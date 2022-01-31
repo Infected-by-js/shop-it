@@ -5,7 +5,7 @@ export const Main = styled.main`
 	margin-top: ${headerHeight};
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 
 	@media ${device.laptop} {
 		display: grid;
