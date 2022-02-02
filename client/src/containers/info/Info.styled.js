@@ -55,16 +55,16 @@ export const Title = styled.h2`
 	margin-bottom: 1rem;
 	font-family: ${fonts.arsenal};
 	font-weight: ${fontWeight.arsenal.l};
-	font-size: 40px;
-	line-height: 48px;
+	font-size: 32px;
+	line-height: 40px;
 
 	color: ${color.black};
 `;
 
 export const Description = styled.p`
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	font-family: ${fonts.arsenal};
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 	line-height: 1;
 	color: ${color.grey};
 `;
@@ -77,7 +77,7 @@ export const Footer = styled.div`
 `;
 
 export const Price = styled.div`
-	margin-bottom: 1.25rem;
+	margin-bottom: 1rem;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.l};
 	font-size: 1.75rem;

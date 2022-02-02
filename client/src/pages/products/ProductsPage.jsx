@@ -20,9 +20,7 @@ export const ProductsPage = () => {
 	}, [category]);
 
 	const changeCategory = (value) => {
-		if (value !== category) {
-			navigate(value);
-		}
+		navigate(value);
 	};
 
 	return (

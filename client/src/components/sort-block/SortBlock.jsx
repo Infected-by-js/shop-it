@@ -3,7 +3,9 @@ import { Wrapper, SortButton } from './SortBlock.styled';
 
 export const SortBlock = ({ categories, activeCategory, changeCategory }) => {
 	const handleChangeItem = (value) => {
-		changeCategory(value);
+		if (value !== activeCategory) {
+			changeCategory(value);
+		}
 	};
 
 	return (

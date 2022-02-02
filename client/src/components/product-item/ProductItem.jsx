@@ -14,9 +14,11 @@ export const ProductItem = ({ product }) => {
 	const handleClickAddToCart = () => {
 		dispatch(addProduct(product));
 	};
+
 	const handleClickDetails = () => {
 		navigate(routeToDetailsPage(product._id));
 	};
+
 	const handleClickAddToFavourite = () => {
 		console.log('Add to Favourite');
 	};
