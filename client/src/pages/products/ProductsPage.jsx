@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getProducts } from '../../redux/actions/products';
-
-import { Header, Footer, ProductList } from '../../containers';
-import { Container, SortBlock } from '../../components/';
-import { Main, MainTitle, ProductsPageWrapper } from './ProductsPage.styled';
 import { categories } from '../../assets/categories';
 
+import { Header, Footer, ProductList } from '../../containers';
+import { Container, SortByCategory } from '../../components/';
+import { Main, MainTitle, ProductsPageWrapper } from './ProductsPage.styled';
+
 export const ProductsPage = () => {
-	const { products, isLoading, error } = useSelector(({ products }) => products);
-	const dispatch = useDispatch();
 	const params = useParams();
 	const navigate = useNavigate();
-	const category = params.categoryId ?? '';
-
-	useEffect(() => {
-		dispatch(getProducts({ category }));
-	}, [category]);
+	const activeCategory = params.categoryId ?? '';
 
 	const changeCategory = (value) => {
 		navigate(value);
@@ -27,14 +19,14 @@ export const ProductsPage = () => {
 		<ProductsPageWrapper>
 			<Header />
 			<Main>
-				<MainTitle>Original {category ? category : 'arts'} for sale</MainTitle>
+				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
 				<Container>
-					<SortBlock
+					<SortByCategory
 						categories={categories}
-						activeCategory={category}
+						activeCategory={activeCategory}
 						changeCategory={changeCategory}
 					/>
-					<ProductList products={products} />
+					<ProductList category={activeCategory} />
 				</Container>
 			</Main>
 			<Footer />

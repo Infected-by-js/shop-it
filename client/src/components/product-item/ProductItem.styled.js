@@ -64,16 +64,18 @@ export const Button = styled.button`
 		height: 50%;
 
 		g {
+			transition: stroke ${TRANSION_MS} ease, fill ${TRANSION_MS} ease;
+
 			stroke: ${color.black};
 		}
 	}
 
-	${({ active }) =>
-		active &&
+	${({ isActive }) =>
+		isActive &&
 		css`
 			svg g {
-				fill: ${color.blue};
-				stroke: ${color.blue};
+				fill: ${color.red};
+				stroke: ${color.red};
 			}
 		`}
 

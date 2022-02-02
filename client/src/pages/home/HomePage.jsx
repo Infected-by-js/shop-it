@@ -1,23 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 
 import { Footer, Header, ProductList, CategoryList } from '../../containers';
 import { Container, Slider } from '../../components';
 import { Main } from './HomePage.styled';
-import { getProducts } from '../../redux/actions/products';
 
 export const HomePage = () => {
-	const { products, isLoading, error } = useSelector(({ products }) => products);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(getProducts());
-	}, []);
-
-	if (isLoading) {
-		return <h2>Loading...</h2>;
-	}
-
 	return (
 		<>
 			<Header />
@@ -25,7 +12,7 @@ export const HomePage = () => {
 				<Slider />
 				<CategoryList />
 				<Container>
-					<ProductList products={products} />
+					<ProductList />
 				</Container>
 			</Main>
 			<Footer />

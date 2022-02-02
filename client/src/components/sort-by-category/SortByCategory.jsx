@@ -1,7 +1,7 @@
 import React from 'react';
-import { Wrapper, SortButton } from './SortBlock.styled';
+import { Wrapper, SortButton } from './SortByCategory.styled';
 
-export const SortBlock = ({ categories, activeCategory, changeCategory }) => {
+export const SortByCategory = ({ categories, activeCategory, changeCategory }) => {
 	const handleChangeItem = (value) => {
 		if (value !== activeCategory) {
 			changeCategory(value);
@@ -12,7 +12,7 @@ export const SortBlock = ({ categories, activeCategory, changeCategory }) => {
 		<Wrapper>
 			{categories.map(({ title, value }) => (
 				<SortButton
-					key={value}
+					key={title}
 					active={activeCategory === value}
 					onClick={() => handleChangeItem(value)}
 				>

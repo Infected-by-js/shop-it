@@ -1,39 +1,56 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
 import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
-import { routeToDetailsPage } from '../../router/routes';
-import { useDispatch } from 'react-redux';
-import { addProduct } from '../../redux/features/cart/cartSlice';
+import { useSelector } from 'react-redux';
 
-export const ProductItem = ({ product }) => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
+export const ProductItem = ({ product, onToggleToCart, onToggleToFavourite, onClickDetails }) => {
+	const cartProducts = useSelector(({ cart }) => cart.products);
+	const [isInCart, setIsInCart] = useState(false);
+	const [isFavourite, setIsFavourite] = useState(false);
 
-	const handleClickAddToCart = () => {
-		dispatch(addProduct(product));
+	const handleToggleToCart = () => {
+		setIsInCart((prev) => !prev);
+		onToggleToCart(product);
 	};
 
 	const handleClickDetails = () => {
-		navigate(routeToDetailsPage(product._id));
+		onClickDetails(product);
 	};
 
-	const handleClickAddToFavourite = () => {
-		console.log('Add to Favourite');
+	const handleToggleToFavourite = () => {
+		setIsFavourite((prev) => !prev);
+		onToggleToFavourite(product);
 	};
+
+	useEffect(() => {
+		const isAlreadyInCart = cartProducts.some((cartProduct) => cartProduct._id === product._id);
+
+		if (isAlreadyInCart) {
+			setIsInCart(true);
+		}
+		/*
+			
+
+			if (product._id === productFavourite) {
+				setIsFavourite(true)
+			}
+
+		
+		*/
+	}, []);
 
 	return (
 		<Wrapper>
 			<Image src={product.images[0]} alt={product.title} />
 			<ButtonsWrapper>
-				<Button onClick={handleClickAddToCart}>
+				<Button onClick={handleToggleToCart} isActive={isInCart}>
 					<IconCart />
 				</Button>
 				<Button onClick={handleClickDetails}>
 					<IconSearch />
 				</Button>
-				<Button onClick={handleClickAddToFavourite}>
+				<Button onClick={handleToggleToFavourite} isActive={isFavourite}>
 					<IconHeart />
 				</Button>
 			</ButtonsWrapper>

@@ -1,6 +1,6 @@
 export { Container } from './container/Container';
 export { Logo } from './logo/Logo';
-export { SortBlock } from './sort-block/SortBlock';
+export { SortByCategory } from './sort-by-category/SortByCategory';
 export { Search } from './search/Search';
 export { NavMenu } from './nav-menu/NavMenu';
 export { Slider } from './slider/Slider';
