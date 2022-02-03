@@ -22,7 +22,10 @@ class ProductService {
 		});
 
 		const products = response.data.map((product) => {
-			return { ...product, images: this.#createImagesUrl(product.images) };
+			const productId = product._id;
+			delete product._id;
+
+			return { ...product, id: productId, images: this.#createImagesUrl(product.images) };
 		});
 
 		return products;
@@ -34,8 +37,10 @@ class ProductService {
 		const response = await axios.get(`${productsUrl}/${id}`);
 		const product = response.data;
 		const images = this.#createImagesUrl(product.images);
+		const productId = product._id;
+		delete product._id;
 
-		return { ...product, images };
+		return { ...product, id: productId, images };
 	}
 
 	async createOne(requestBody) {
