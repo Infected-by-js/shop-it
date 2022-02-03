@@ -2,6 +2,7 @@ import ProductService from '../../api/ProductService';
 import {
 	productsLoading,
 	productsLoaded,
+	activeProductLoaded,
 	productsLoadingFailed,
 } from '../features/products/productsSlice';
 
@@ -24,9 +25,9 @@ export const getOneProduct = (id) => {
 		try {
 			dispatch(productsLoading());
 
-			const products = await ProductService.fetchOne(id);
+			const product = await ProductService.fetchOne(id);
 
-			dispatch(productsLoaded(products));
+			dispatch(activeProductLoaded(product));
 		} catch (error) {
 			dispatch(productsLoadingFailed(error.response.data));
 		}

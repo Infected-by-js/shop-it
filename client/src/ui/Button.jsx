@@ -20,6 +20,7 @@ const StyledButton = styled.button`
 
 	color: ${color.white};
 	background-color: ${color.black};
+	box-shadow: 1px 1px 4px ${lighten(0.4, color.black)};
 
 	cursor: pointer;
 	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;
@@ -44,6 +45,20 @@ const StyledButton = styled.button`
 			&:hover {
 				color: ${color.white};
 				background-color: ${color.black};
+			}
+		`}
+
+	${({ lighten }) =>
+		lighten &&
+		css`
+			color: ${color.white};
+			border: 1px solid ${color.red};
+			background-color: ${color.red};
+
+			&:hover {
+				color: ${color.black};
+				border: 1px solid ${color.black};
+				background-color: ${color.red};
 			}
 		`}
 `;

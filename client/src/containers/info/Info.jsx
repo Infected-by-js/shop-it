@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { Button } from '../../ui/Button.jsx';
-import { IconDelivery, IconLocation, IconArrowLeft } from '../../assets/images/icons/';
+import { IconDelivery, IconLocation, IconArrowLeft, IconHeart } from '../../assets/images/icons/';
 
 import {
 	Section,
+	Header,
 	BackButton,
+	FavouriteButton,
 	Main,
 	Title,
 	Description,
@@ -15,13 +17,25 @@ import {
 	HelperText,
 } from './Info.styled.js';
 
-export const Info = ({ product, addToCart }) => {
+export const Info = ({
+	product,
+	toggleToCart,
+	toggleToFavourite,
+	isInCart,
+	isFavourite,
+	onClickBack,
+}) => {
 	return (
 		<Section>
-			<BackButton>
-				<IconArrowLeft />
-				Back
-			</BackButton>
+			<Header>
+				<BackButton onClick={onClickBack}>
+					<IconArrowLeft />
+					Back
+				</BackButton>
+				<FavouriteButton onClick={toggleToFavourite} isActive={isFavourite}>
+					<IconHeart />
+				</FavouriteButton>
+			</Header>
 			<Main>
 				<Title>
 					{product.title} ({product.year_created})
@@ -42,7 +56,9 @@ export const Info = ({ product, addToCart }) => {
 					<IconDelivery />
 					<p>Estimated to ship in 3 - 7 days within USA</p>
 				</DeliveryInfo>
-				<Button onClick={addToCart}>Add to cart</Button>
+				<Button onClick={toggleToCart} lighten={isInCart}>
+					{isInCart ? 'Already in cart' : 'Add to cart'}
+				</Button>
 				<HelperText>Taxes and shipping fees will apply upon checkout</HelperText>
 			</Footer>
 		</Section>

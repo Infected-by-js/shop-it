@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, device, headerHeight } from '../../styles/constants';
+import { color, headerHeight } from '../../styles/constants';
 
 export const Wrapper = styled.div`
 	background-color: ${color.white};
