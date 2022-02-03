@@ -7,7 +7,7 @@ export const REGISTER_PAGE_ROUTE = '/register';
 export const LOGIN_PAGE_ROUTE = '/login';
 export const CART_PAGE_ROUTE = '/cart';
 
-export const routeToDetailsPage = (productId) => {
+export const routeToProductPage = (productId) => {
 	return `/product/${productId}`;
 };
 

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { subDollars, sumDollars } from '../../../helpers/handleMoney';
-import { addProductToListUtil, removeProductFromListUtil } from '../../utils';
+import { subDollars, sumDollars } from '../../../utils/handleMoney';
+import { addProductToList } from '../../../utils/addProductInList';
+import { removeProductFromList } from '../../../utils/removeProductFromList';
 
 const initialState = {
 	products: [],
@@ -15,12 +16,12 @@ const cartSlice = createSlice({
 		addProduct: (state, action) => {
 			state.quantity += 1;
 			state.totalPrice = sumDollars(state.totalPrice, action.payload.price);
-			state.products = addProductToListUtil(state.products, action.payload);
+			state.products = addProductToList(state.products, action.payload);
 		},
 		removeProduct: (state, action) => {
 			state.quantity -= 1;
 			state.totalPrice = subDollars(state.totalPrice, action.payload.price);
-			state.products = removeProductFromListUtil(state.products, action.payload);
+			state.products = removeProductFromList(state.products, action.payload);
 		},
 	},
 });

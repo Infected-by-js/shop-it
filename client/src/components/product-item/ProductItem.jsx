@@ -1,20 +1,35 @@
 import React, { useEffect, useState } from 'react';
-
-import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
-import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addToFavourites, removeFromFavourites } from '../../redux/actions/favourites';
+import { addToCart, removeFromCart } from '../../redux/actions/cart';
+import { routeToProductPage } from '../../router/routes';
+import { checkProductsInList } from '../../utils/checkProductInList';
+
+import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
+import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
 
 export const ProductItem = ({ product }) => {
+	const cartProducts = useSelector(({ cart }) => cart.products);
+	const favourites = useSelector(({ favourites }) => favourites.products);
 	const [isInCart, setIsInCart] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleToggleToCart = () => {
+		if (isInCart) {
+			dispatch(removeFromCart(product));
+		} else {
+			dispatch(addToCart(product));
+		}
 		setIsInCart((prev) => !prev);
 	};
 
-	const handleClickDetails = () => {};
+	const handleClickDetails = () => {
+		navigate(routeToProductPage(product.id));
+	};
 
 	const handleToggleToFavourite = () => {
 		if (isFavourite) {
@@ -26,7 +41,13 @@ export const ProductItem = ({ product }) => {
 		setIsFavourite((prev) => !prev);
 	};
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		const isAlreadyInCart = checkProductsInList(cartProducts, product);
+		const isAlreadyProductsInFavourites = checkProductsInList(favourites, product);
+
+		isAlreadyInCart && setIsInCart(true);
+		isAlreadyProductsInFavourites && setIsFavourite(true);
+	}, []);
 
 	return (
 		<Wrapper>
