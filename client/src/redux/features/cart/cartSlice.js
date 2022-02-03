@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { subDollars, sumDollars } from '../../../helpers/handleMoney';
 import { addProductToListUtil, removeProductFromListUtil } from '../../utils';
 
 const initialState = {
@@ -13,12 +14,12 @@ const cartSlice = createSlice({
 	reducers: {
 		addProduct: (state, action) => {
 			state.quantity += 1;
-			state.totalPrice += action.payload.price;
+			state.totalPrice = sumDollars(state.totalPrice, action.payload.price);
 			state.products = addProductToListUtil(state.products, action.payload);
 		},
 		removeProduct: (state, action) => {
 			state.quantity -= 1;
-			state.totalPrice -= action.payload.price;
+			state.totalPrice = subDollars(state.totalPrice, action.payload.price);
 			state.products = removeProductFromListUtil(state.products, action.payload);
 		},
 	},
