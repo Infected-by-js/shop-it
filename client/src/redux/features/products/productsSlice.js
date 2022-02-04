@@ -13,6 +13,8 @@ export const productsSlice = createSlice({
 	reducers: {
 		productsLoading: (state, action) => {
 			state.error = '';
+			state.products = [];
+			state.activeProduct = {};
 			state.isLoading = true;
 		},
 		productsLoaded: (state, action) => {
