@@ -8,15 +8,14 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 20px;
-	max-width: 50%;
-	min-width: 300px;
+	width: 320px;
 
 	border: 1px solid ${color.greyLight};
 	border-radius: 8px;
 
 	@media ${device.laptop} {
 		flex-direction: row;
-		max-width: 100%;
+		width: 100%;
 		margin: 0;
 	}
 `;
@@ -39,6 +38,14 @@ export const Details = styled.div`
 
 export const TextWrapp = styled.div`
 	flex: 1;
+
+	a {
+		transition: color ${TRANSION_MS} ease;
+	}
+
+	a:hover {
+		color: ${color.red};
+	}
 `;
 
 export const Text = styled.p`

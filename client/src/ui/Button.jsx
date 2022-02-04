@@ -20,7 +20,7 @@ const StyledButton = styled.button`
 
 	color: ${color.white};
 	background-color: ${color.black};
-	box-shadow: 1px 1px 4px ${lighten(0.4, color.black)};
+	box-shadow: 0.5px 0.5px 2px ${lighten(0.65, color.black)};
 
 	cursor: pointer;
 	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;

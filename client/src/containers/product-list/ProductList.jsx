@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts } from '../../redux/actions/products';
 
-import { ProductItem } from '../../components';
-import { Wrapper } from './ProductList.styled';
+import { ProductItem, ProductItemSkeleton } from '../../components';
+import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 
 export const ProductList = ({ category = '', limit = 8 }) => {
 	const { products, isLoading, error } = useSelector(({ products }) => products);
@@ -13,7 +13,20 @@ export const ProductList = ({ category = '', limit = 8 }) => {
 		dispatch(getProducts({ category, limit }));
 	}, [category, limit]);
 
-	return (
+	if (isLoading) {
+		const emptyArray = Array.from({ length: 4 });
+		return (
+			<Wrapper>
+				{emptyArray.map((_, index) => (
+					<ProductItemSkeleton key={index} />
+				))}
+			</Wrapper>
+		);
+	}
+
+	return !products.length ? (
+		<EmptyStateTitle>There will be products soon!</EmptyStateTitle>
+	) : (
 		<Wrapper>
 			{products.map((product) => (
 				<ProductItem key={product.id} product={product} />

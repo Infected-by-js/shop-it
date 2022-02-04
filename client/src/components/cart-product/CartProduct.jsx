@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { routeToProductPage } from '../../router/routes';
 
 import {
 	Wrapper,
@@ -17,7 +19,9 @@ export const CartProduct = ({ product, removeProduct }) => {
 
 			<Details>
 				<TextWrapp>
-					<Text style={{ fontWeight: 700 }}>{product.title}</Text>
+					<Link to={routeToProductPage(product.id)}>
+						<Text style={{ fontWeight: 700 }}>{product.title}</Text>
+					</Link>
 					<Text>by {product.author}</Text>
 					<Text>{product.style}</Text>
 					<Text>{product.size}</Text>

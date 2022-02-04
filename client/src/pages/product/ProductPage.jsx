@@ -8,6 +8,7 @@ import { getOneProduct } from '../../redux/actions/products';
 import { addToCart, removeFromCart } from '../../redux/actions/cart';
 import { checkProductsInList } from '../../utils/checkProductInList';
 import { addToFavourites, removeFromFavourites } from '../../redux/actions/favourites';
+import { InfoSkeleton, OverviewSkeleton } from '../../components';
 
 export const ProductPage = () => {
 	const { activeProduct, isLoading, error } = useSelector(({ products }) => products);
@@ -46,29 +47,29 @@ export const ProductPage = () => {
 	};
 
 	const handleClickBack = () => {
-		navigate('/');
+		navigate(-1);
 	};
-
-	if (isLoading) {
-		return <h3>Loading...</h3>;
-	}
 
 	return (
 		<>
 			<Header />
 			<Main>
 				<Column>
-					<Info
-						product={activeProduct}
-						toggleToCart={handleToggleToCart}
-						toggleToFavourite={handleToggleToFavourite}
-						isInCart={isAlreadyInCart}
-						isFavourite={isAlreadyFavourite}
-						onClickBack={handleClickBack}
-					/>
+					{isLoading ? (
+						<InfoSkeleton />
+					) : (
+						<Info
+							product={activeProduct}
+							toggleToCart={handleToggleToCart}
+							toggleToFavourite={handleToggleToFavourite}
+							isInCart={isAlreadyInCart}
+							isFavourite={isAlreadyFavourite}
+							onClickBack={handleClickBack}
+						/>
+					)}
 				</Column>
 				<Column>
-					<Overview images={activeProduct.images} />
+					{isLoading ? <OverviewSkeleton /> : <Overview images={activeProduct.images} />}
 				</Column>
 			</Main>
 		</>
