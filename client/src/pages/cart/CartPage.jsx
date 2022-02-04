@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../ui/Button';
 import { Container, CartProduct, CartSummary } from '../../components';
@@ -23,8 +24,8 @@ import { Modal } from '../../components/modal/Modal';
 export const CartPage = () => {
 	const { products, totalPrice } = useSelector((state) => state.cart);
 	const [openModal, setOpenModal] = useState(false);
-
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleRemoveFromCart = (product) => {
 		dispatch(removeProduct(product));
@@ -38,6 +39,10 @@ export const CartPage = () => {
 		setOpenModal(false);
 	};
 
+	const handleBack = () => {
+		navigate(-1);
+	};
+
 	return (
 		<Wrapper>
 			<Header />
@@ -45,11 +50,11 @@ export const CartPage = () => {
 			<Container>
 				<Title>Your Basket</Title>
 				<ButtonsWrapp>
-					<Button outlined>
+					<Button outlined onClick={handleBack}>
 						<IconShevronLeft />
 						CONTINUE SHOPPING
 					</Button>
-					<Button outlined>
+					<Button outlined onClick={handleOpenModal}>
 						CHECKOUT NOW
 						<IconShevronRight />
 					</Button>
@@ -63,7 +68,7 @@ export const CartPage = () => {
 							<ProductsList>
 								{products.map((product) => (
 									<CartProduct
-										key={product._id}
+										key={product.id}
 										product={product}
 										removeProduct={handleRemoveFromCart}
 									/>
@@ -73,7 +78,7 @@ export const CartPage = () => {
 					</ProductsContainer>
 
 					<SummaryContainer>
-						<CartSummary totalPrice={totalPrice} onOpenModal={handleOpenModal} />
+						<CartSummary totalPrice={totalPrice} onCheckOut={handleOpenModal} />
 					</SummaryContainer>
 				</Content>
 			</Container>

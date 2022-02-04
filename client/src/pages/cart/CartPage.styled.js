@@ -55,7 +55,6 @@ export const Content = styled.div`
 	display: flex;
 	justify-content: space-between;
 	gap: 50px;
-	padding: 0 10px;
 	margin-bottom: 50px;
 
 	flex-direction: column;
@@ -65,7 +64,7 @@ export const Content = styled.div`
 	}
 	@media ${device.laptopL} {
 		max-width: 80%;
-		margin: 0 auto;
+		margin: 0 auto 50px;
 	}
 `;
 

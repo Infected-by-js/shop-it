@@ -2,10 +2,11 @@ import React from 'react';
 
 import { Wrapper, Title, Item, ItemText, ItemPrice, Button } from './CartSummary.styled';
 
-export const CartSummary = ({ totalPrice, onOpenModal }) => {
-	const shippingPrice = 5.9;
-	const discount = 5.9;
+const mockDiscount = 5.9;
+
+export const CartSummary = ({ totalPrice, onCheckOut }) => {
 	const total = totalPrice.toFixed(2);
+	const discount = totalPrice ? mockDiscount : 0;
 
 	return (
 		<Wrapper>
@@ -16,17 +17,17 @@ export const CartSummary = ({ totalPrice, onOpenModal }) => {
 			</Item>
 			<Item>
 				<ItemText>Estimated Shipping</ItemText>
-				<ItemPrice>$ {shippingPrice}</ItemPrice>
+				<ItemPrice>$ {discount}</ItemPrice>
 			</Item>
 			<Item>
 				<ItemText>Shipping Discount</ItemText>
-				<ItemPrice>$ -{discount}</ItemPrice>
+				<ItemPrice>$ {discount * -1}</ItemPrice>
 			</Item>
 			<Item type='total'>
 				<ItemText>Total</ItemText>
 				<ItemPrice>$ {total}</ItemPrice>
 			</Item>
-			<Button onClick={onOpenModal}>CHECKOUT NOW</Button>
+			<Button onClick={onCheckOut}>CHECKOUT NOW</Button>
 		</Wrapper>
 	);
 };
