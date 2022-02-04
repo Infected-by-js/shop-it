@@ -1,11 +1,11 @@
 const Product = require('../models/Product');
 class ProductService {
-	getProducts(limit = '6') {
+	getProducts(limit = 8) {
 		return Product.find().limit(limit);
 	}
 
-	getProductsByCategory(category) {
-		return Product.find({ category });
+	getProductsByCategory(category, limit = 8) {
+		return Product.find({ category }).limit(limit);
 	}
 
 	getProduct(productId) {

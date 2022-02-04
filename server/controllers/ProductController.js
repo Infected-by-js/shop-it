@@ -10,12 +10,10 @@ class ProductController {
 		try {
 			let products;
 
-			if (qLimit) {
-				products = await ProductService.getProducts(qLimit);
-			} else if (qCategory) {
-				products = await ProductService.getProductsByCategory(qCategory);
+			if (qCategory) {
+				products = await ProductService.getProductsByCategory(qCategory, qLimit);
 			} else {
-				products = await ProductService.getProducts();
+				products = await ProductService.getProducts(qLimit);
 			}
 
 			res.status(200).json(products);
