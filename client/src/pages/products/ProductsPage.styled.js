@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { color, fonts, fontWeight, headerHeight } from '../../styles/constants';
+import { color, fonts, fontWeight, headerHeight, device } from '../../styles/constants';
 
 export const ProductsPageWrapper = styled.div`
 	display: flex;
@@ -18,8 +18,17 @@ export const Main = styled.main`
 
 export const MainTitle = styled.h1`
 	margin: 30px 0;
+	font-size: 1.25rem;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.s};
 	text-align: center;
 	text-transform: uppercase;
+
+	@media ${device.tablet} {
+		font-size: 1.5rem;
+	}
+
+	@media ${device.laptop} {
+		font-size: 2rem;
+	}
 `;

@@ -53,7 +53,7 @@ export const Image = styled.img`
 	margin-bottom: 20px;
 
 	width: 100%;
-	height: 100%;
+	max-height: 600px;
 	object-fit: contain;
 
 	@media ${device.laptop} {

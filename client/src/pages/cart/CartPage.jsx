@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { removeProduct } from '../../redux/features/cart/cartSlice';
+
+import { Header } from '../../containers/';
+import { Container, CartProduct, CartSummary } from '../../components';
+import { Modal } from '../../components/modal/Modal';
 
 import { Button } from '../../ui/Button';
-import { Container, CartProduct, CartSummary } from '../../components';
-import { Header } from '../../containers/';
-
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
-import { removeProduct } from '../../redux/features/cart/cartSlice';
 import {
 	Wrapper,
 	Title,
@@ -19,7 +20,7 @@ import {
 	Placeholder,
 	ModalSuccess,
 } from './CartPage.styled.js';
-import { Modal } from '../../components/modal/Modal';
+import { PRODUCTS_PAGE_ROUTE } from '../../router/routes';
 
 export const CartPage = () => {
 	const { products, totalPrice } = useSelector((state) => state.cart);
@@ -40,7 +41,7 @@ export const CartPage = () => {
 	};
 
 	const handleBack = () => {
-		navigate(-1);
+		navigate(PRODUCTS_PAGE_ROUTE);
 	};
 
 	return (
@@ -77,9 +78,11 @@ export const CartPage = () => {
 						)}
 					</ProductsContainer>
 
-					<SummaryContainer>
-						<CartSummary totalPrice={totalPrice} onCheckOut={handleOpenModal} />
-					</SummaryContainer>
+					{totalPrice > 0 && (
+						<SummaryContainer>
+							<CartSummary totalPrice={totalPrice} onCheckOut={handleOpenModal} />
+						</SummaryContainer>
+					)}
 				</Content>
 			</Container>
 

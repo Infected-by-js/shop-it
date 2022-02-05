@@ -3,6 +3,7 @@ import { color, TRANSION_MS } from '../../styles/constants';
 
 export const Wrapper = styled.a.attrs({
 	href: 'https://github.com/Infected-by-js',
+	target: '_blank',
 })`
 	color: ${color.white};
 
