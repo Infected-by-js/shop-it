@@ -11,7 +11,7 @@ export const productsSlice = createSlice({
 	name: 'products',
 	initialState,
 	reducers: {
-		productsLoading: (state, action) => {
+		productsLoading: (state) => {
 			state.error = '';
 			state.products = [];
 			state.activeProduct = {};

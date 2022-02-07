@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { subDollars, sumDollars } from '../../../utils/handleMoney';
-import { addProductToList } from '../../../utils/addProductInList';
+import { addProductToList } from '../../../utils/addProductToList';
 import { removeProductFromList } from '../../../utils/removeProductFromList';
 
 const initialState = {

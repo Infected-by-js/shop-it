@@ -11,13 +11,14 @@ class ProductService {
 		this.token = token;
 	}
 
-	async fetchAll({ category = '', limit = '' }) {
+	async fetchAll({ category = '', limit = '', query = '' }) {
 		const productsUrl = this.endpoints.products;
 
 		const response = await axios.get(productsUrl, {
 			params: {
 				category,
 				limit,
+				query,
 			},
 		});
 

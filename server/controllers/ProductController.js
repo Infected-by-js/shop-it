@@ -6,12 +6,15 @@ class ProductController {
 	async getAll(req, res) {
 		const qLimit = req.query.limit;
 		const qCategory = req.query.category;
+		const qQuery = req.query.query;
 
 		try {
 			let products;
 
 			if (qCategory) {
 				products = await ProductService.getProductsByCategory(qCategory, qLimit);
+			} else if (qQuery) {
+				products = await ProductService.getProductsByQuery(qQuery);
 			} else {
 				products = await ProductService.getProducts(qLimit);
 			}
@@ -28,7 +31,7 @@ class ProductController {
 
 			res.status(200).json(product);
 		} catch (error) {
-			res.status(500).json(error.message);
+			res.status(500).json('Product not found!');
 		}
 	}
 

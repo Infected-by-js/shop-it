@@ -20,7 +20,7 @@ export const ProductPage = () => {
 
 	useEffect(() => {
 		dispatch(getOneProduct(params.productId));
-	}, []);
+	}, [params.productId]);
 
 	const isAlreadyInCart = useMemo(() => {
 		return checkProductsInList(productsInCart, activeProduct);
@@ -54,23 +54,29 @@ export const ProductPage = () => {
 		<>
 			<Header />
 			<Main>
-				<Column>
-					{isLoading ? (
-						<InfoSkeleton />
-					) : (
-						<Info
-							product={activeProduct}
-							toggleToCart={handleToggleToCart}
-							toggleToFavourite={handleToggleToFavourite}
-							isInCart={isAlreadyInCart}
-							isFavourite={isAlreadyFavourite}
-							onClickBack={handleClickBack}
-						/>
-					)}
-				</Column>
-				<Column>
-					{isLoading ? <OverviewSkeleton /> : <Overview images={activeProduct.images} />}
-				</Column>
+				{error ? (
+					<h1>{error}</h1>
+				) : (
+					<>
+						<Column>
+							{isLoading ? (
+								<InfoSkeleton />
+							) : (
+								<Info
+									product={activeProduct}
+									toggleToCart={handleToggleToCart}
+									toggleToFavourite={handleToggleToFavourite}
+									isInCart={isAlreadyInCart}
+									isFavourite={isAlreadyFavourite}
+									onClickBack={handleClickBack}
+								/>
+							)}
+						</Column>
+						<Column>
+							{isLoading ? <OverviewSkeleton /> : <Overview images={activeProduct.images} />}
+						</Column>
+					</>
+				)}
 			</Main>
 		</>
 	);

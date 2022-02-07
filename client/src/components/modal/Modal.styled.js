@@ -1,5 +1,4 @@
 import styled from 'styled-components/';
-import { color, TRANSION_MS } from '../../styles/constants';
 
 export const ModalContainer = styled.div`
 	position: fixed;
@@ -23,6 +22,7 @@ export const Overlay = styled.div`
 	left: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(5px);
 	cursor: pointer;
 `;
 
@@ -38,5 +38,5 @@ export const Content = styled.div`
 	min-width: 300px;
 	min-height: 200px;
 	background-color: white;
-	border: 3px solid ${color.black};
+	border-radius: 10px;
 `;

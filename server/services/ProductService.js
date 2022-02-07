@@ -8,6 +8,15 @@ class ProductService {
 		return Product.find({ category }).limit(limit);
 	}
 
+	getProductsByQuery(query) {
+		return Product.find({
+			$or: [
+				{ title: { $regex: query, $options: 'i' } },
+				{ author: { $regex: query, $options: 'i' } },
+			],
+		});
+	}
+
 	getProduct(productId) {
 		return Product.findById(productId);
 	}

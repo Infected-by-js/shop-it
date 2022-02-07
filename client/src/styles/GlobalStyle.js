@@ -1,6 +1,6 @@
 import { normalize } from 'polished';
 import { createGlobalStyle } from 'styled-components';
-import { fonts } from './constants';
+import { color, fonts } from './constants';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -17,11 +17,26 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+ 
+  *::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: ${color.grey};
+    border-radius: 3px;
+  }
 
   body {
     min-width: 350px;
     
   }
+
 
 #root {
   
