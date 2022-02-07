@@ -4,9 +4,19 @@ import { ModalContainer, Overlay, Content } from './Modal.styled';
 
 export const Modal = ({ onClose, children, ...props }) => {
 	useEffect(() => {
-		document.body.style.overflow = 'hidden';
+		const handleEscButton = (event) => {
+			if (event.key === 'Escape') {
+				onClose();
+			}
+		};
 
-		return () => (document.body.style.overflow = 'visible');
+		document.body.style.overflow = 'hidden';
+		document.addEventListener('keydown', handleEscButton);
+
+		return () => {
+			document.removeEventListener('keydown', handleEscButton);
+			document.body.style.overflow = 'visible';
+		};
 	}, []);
 
 	return (
