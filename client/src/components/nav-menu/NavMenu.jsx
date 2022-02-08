@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IconCart, IconHeart } from '../../assets/images/icons';
-import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE, CART_PAGE_ROUTE } from '../../router/routes';
+import {
+	LOGIN_PAGE_ROUTE,
+	REGISTER_PAGE_ROUTE,
+	CART_PAGE_ROUTE,
+	FAVOURITES_PAGE_ROUTE,
+} from '../../router/routes';
 
 import { NavList, NavItem, CartIconWrapp, HeartIconWrapp, QuantityIcon } from './NavMenu.styled';
 
@@ -17,9 +22,11 @@ export const NavMenu = ({ quantity }) => {
 				<Link to={LOGIN_PAGE_ROUTE}>Log in</Link>
 			</NavItem>
 			<NavItem>
-				<HeartIconWrapp>
-					<IconHeart />
-				</HeartIconWrapp>
+				<Link to={FAVOURITES_PAGE_ROUTE}>
+					<HeartIconWrapp>
+						<IconHeart />
+					</HeartIconWrapp>
+				</Link>
 			</NavItem>
 			<NavItem>
 				<Link to={CART_PAGE_ROUTE}>
