@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { CartPage, ProductPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
 
+import { FavouritesPage } from '../pages/favourites/FavouritesPage';
 import {
 	CART_PAGE_ROUTE,
 	PRODUCTS_CATEGORY_ROUTE,
@@ -11,6 +12,7 @@ import {
 	LOGIN_PAGE_ROUTE,
 	REGISTER_PAGE_ROUTE,
 	PRODUCTS_PAGE_ROUTE,
+	FAVOURITES_PAGE_ROUTE,
 } from './routes';
 
 export const AppRouter = () => {
@@ -19,18 +21,16 @@ export const AppRouter = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				{/* <Route element={<PrivateRoute isLogged={!!user} />}> */}
 				<Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
 				<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
 					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
 				</Route>
 				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
 				<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
-				{/* </Route> */}
-				{/* <Route element={<PublicRoute isLogged={!!user} />}> */}
+				<Route path={FAVOURITES_PAGE_ROUTE} element={<FavouritesPage />} />
+
 				<Route path={REGISTER_PAGE_ROUTE} element={<RegisterPage />} />
 				<Route path={LOGIN_PAGE_ROUTE} element={<LoginPage />} />
-				{/* </Route> */}
 
 				<Route path='*' element={<Navigate to={HOME_PAGE_ROUTE} />} />
 			</Routes>

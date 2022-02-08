@@ -41,6 +41,7 @@ export const SearchModal = ({ onClose }) => {
 	};
 
 	const handleCloseModal = () => {
+		clearTimeout(timerRef.current.timer);
 		onClose();
 		setValue('');
 		dispatch(changeInputValue(''));
