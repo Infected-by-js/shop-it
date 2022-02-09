@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { ENDPOINTS } from './endpoints';
+import { BASE } from './endpoints';
 
-export default axios.create({
-	baseURL: ENDPOINTS.base,
-});
+export default axios.create({ baseURL: BASE });
