@@ -6,7 +6,11 @@ import { Modal, SearchRecent, SearchResult } from '..';
 import { IconSearch } from '../../assets/images/icons';
 
 import { routeToProductPage } from '../../router/routes';
-import { searchProducts, changeInputValue, addToRecentSearch } from '../../redux/actions/search';
+import {
+	searchProducts,
+	changeInputValue,
+	addToRecentSearch,
+} from '../../redux/features/search/searchActions';
 
 import {
 	Content,

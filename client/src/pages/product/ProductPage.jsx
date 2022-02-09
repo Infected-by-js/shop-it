@@ -1,19 +1,26 @@
 import React, { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { productsSelector, favouritesSelector, cartProductsSelector } from '../../redux/selectors';
+import {
+	getOneProduct,
+	addToCart,
+	removeFromCart,
+	addToFavourites,
+	removeFromFavourites,
+} from '../../redux/actions';
+
+import { checkProductsInList } from '../../utils/checkProductInList';
+
+import { InfoSkeleton, OverviewSkeleton } from '../../components';
 import { Header, Overview, Info } from '../../containers';
 import { Main, Column } from './ProductPage.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { getOneProduct } from '../../redux/actions/products';
-import { addToCart, removeFromCart } from '../../redux/actions/cart';
-import { checkProductsInList } from '../../utils/checkProductInList';
-import { addToFavourites, removeFromFavourites } from '../../redux/actions/favourites';
-import { InfoSkeleton, OverviewSkeleton } from '../../components';
 
 export const ProductPage = () => {
-	const { activeProduct, isLoading, error } = useSelector(({ products }) => products);
-	const productsInCart = useSelector(({ cart }) => cart.products);
-	const favourites = useSelector(({ favourites }) => favourites.products);
+	const { activeProduct, isLoading, error } = useSelector(productsSelector);
+	const productsInCart = useSelector(cartProductsSelector);
+	const favourites = useSelector(favouritesSelector);
 	const params = useParams();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

@@ -1,7 +1,4 @@
-import {
-	addFavouriteProduct,
-	removeFavouriteProduct,
-} from '../features/favourites/favouritesSlice';
+import { addFavouriteProduct, removeFavouriteProduct } from './favouritesSlice';
 
 export const addToFavourites = (product) => {
 	return addFavouriteProduct(product);

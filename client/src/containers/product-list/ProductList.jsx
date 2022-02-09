@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts } from '../../redux/actions/products';
+import { getProducts } from '../../redux/actions';
+import { productsSelector } from '../../redux/selectors';
 
 import { ProductItem, ProductItemSkeleton } from '../../components';
 import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 
 export const ProductList = ({ category = '', limit = 8 }) => {
-	const { products, isLoading, error } = useSelector(({ products }) => products);
+	const { products, isLoading, error } = useSelector(productsSelector);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

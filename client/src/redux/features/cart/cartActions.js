@@ -1,4 +1,4 @@
-import { addProduct, removeProduct } from '../features/cart/cartSlice';
+import { addProduct, removeProduct } from './cartSlice';
 
 export const addToCart = (product) => {
 	return addProduct(product);

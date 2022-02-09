@@ -1,10 +1,10 @@
-import ProductService from '../../api/ProductService';
+import ProductService from '../../../api/services/ProductService';
 import {
 	productsLoading,
 	productsLoaded,
 	activeProductLoaded,
 	productsLoadingFailed,
-} from '../features/products/productsSlice';
+} from './productsSlice';
 
 export const getProducts = ({ category, limit } = {}) => {
 	return async (dispatch) => {

@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addToFavourites, removeFromFavourites } from '../../redux/actions/favourites';
-import { addToCart, removeFromCart } from '../../redux/actions/cart';
+import {
+	addToCart,
+	removeFromCart,
+	addToFavourites,
+	removeFromFavourites,
+} from '../../redux/actions';
+import { cartProductsSelector, favouritesSelector } from '../../redux/selectors';
 import { routeToProductPage } from '../../router/routes';
 import { checkProductsInList } from '../../utils/checkProductInList';
 
@@ -11,8 +16,8 @@ import { IconHeart, IconSearch, IconCart } from '../../assets/images/icons';
 import { Wrapper, Image, ButtonsWrapper, Button } from './ProductItem.styled';
 
 export const ProductItem = ({ product }) => {
-	const cartProducts = useSelector(({ cart }) => cart.products);
-	const favourites = useSelector(({ favourites }) => favourites.products);
+	const cartProducts = useSelector(cartProductsSelector);
+	const favourites = useSelector(favouritesSelector);
 	const [isInCart, setIsInCart] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
 	const dispatch = useDispatch();

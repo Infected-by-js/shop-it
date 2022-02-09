@@ -1,11 +1,11 @@
-import ProductService from '../../api/ProductService';
+import ProductService from '../../../api/services/ProductService';
 import {
 	searchResultLoaded,
 	searchResultLoading,
 	searchResultLoadingFailed,
 	setRecentSearch,
 	setInputValue,
-} from '../features/search/searchSlice';
+} from './searchSlice';
 
 export const searchProducts = (inputValue) => async (dispatch) => {
 	try {
