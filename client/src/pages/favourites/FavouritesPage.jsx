@@ -7,7 +7,7 @@ import { favouritesSelector } from '../../redux/selectors';
 import { CART_PAGE_ROUTE, PRODUCTS_PAGE_ROUTE } from '../../router/routes';
 
 import { Header } from '../../containers/';
-import { Container, ProductItem } from '../../components';
+import { Container, ProductCard } from '../../components';
 import { Button } from '../../ui/Button';
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
 import {
@@ -59,7 +59,7 @@ export const FavouritesPage = () => {
 					) : (
 						<ProductsList>
 							{products.map((product) => (
-								<ProductItem key={product.id} product={product} />
+								<ProductCard key={product.id} />
 							))}
 						</ProductsList>
 					)}
