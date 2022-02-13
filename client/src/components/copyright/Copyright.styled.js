@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { color, TRANSION_MS } from '../../styles/constants';
+import { color, animationSpeed } from '../../styles/constants';
 
-export const Wrapper = styled.a.attrs({
+export const CopyrightLink = styled.a.attrs({
 	href: 'https://github.com/Infected-by-js',
 	target: '_blank',
 })`
 	color: ${color.white};
 
-	transition: color ${TRANSION_MS} ease;
+	transition: color ${animationSpeed.middle} ease;
 
 	&:hover,
 	&:focus {

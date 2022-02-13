@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Wrapper } from './Logo.styled';
 import { IconLogo } from '../../assets/images/icons';
+import { Wrapper } from './Logo.styled';
 
-export const Logo = ({ color }) => {
+export const Logo = () => {
 	return (
 		<Wrapper>
 			<Link to='/'>
-				<IconLogo color={color} />
+				<IconLogo />
 			</Link>
 		</Wrapper>
 	);

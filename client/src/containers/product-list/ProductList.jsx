@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProducts } from '../../redux/actions/products';
+import { addToCart, getProducts, removeFromCart } from '../../redux/actions';
+import { cartProductsSelector, favouritesSelector, productsSelector } from '../../redux/selectors';
 
-import { ProductItem, ProductItemSkeleton } from '../../components';
+import { ProductCard, ProductItemSkeleton } from '../../components';
+import { useNavigate } from 'react-router-dom';
+
+import { routeToProductPage } from '../../router/routes';
 import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 
 export const ProductList = ({ category = '', limit = 8 }) => {
-	const { products, isLoading, error } = useSelector(({ products }) => products);
+	const { products, isLoading, error } = useSelector(productsSelector);
+	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -24,12 +30,32 @@ export const ProductList = ({ category = '', limit = 8 }) => {
 		);
 	}
 
+	const handleToggleToCart = (product) => {
+		console.log('add to cart');
+	};
+
+	const handleRouteToDetalsPage = (product) => {
+		const productId = product.id;
+		navigate(routeToProductPage(productId));
+	};
+	const handleToggleToFavourite = () => {
+		console.log('add to fav');
+	};
+
 	return !products.length ? (
 		<EmptyStateTitle>There will be products soon!</EmptyStateTitle>
 	) : (
 		<Wrapper>
 			{products.map((product) => (
-				<ProductItem key={product.id} product={product} />
+				<ProductCard
+					key={product.id}
+					product={product}
+					image={product.images[0]}
+					title={product.title}
+					onAddToCart={handleToggleToCart}
+					onDetails={handleRouteToDetalsPage}
+					onAddToFavourites={handleToggleToFavourite}
+				/>
 			))}
 		</Wrapper>
 	);

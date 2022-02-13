@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getFavouritesSelector } from '../../redux/selectors/favourites';
-import { removeFromFavourites } from '../../redux/actions/favourites';
-
+import { removeFromFavourites } from '../../redux/actions';
+import { favouritesSelector } from '../../redux/selectors';
 import { CART_PAGE_ROUTE, PRODUCTS_PAGE_ROUTE } from '../../router/routes';
 
 import { Header } from '../../containers/';
-import { Container, CartProduct } from '../../components';
+import { Container, ProductCard } from '../../components';
 import { Button } from '../../ui/Button';
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
-import { ProductItem } from '../../components/product-item/ProductItem';
 import {
 	Wrapper,
 	Title,
@@ -22,7 +20,7 @@ import {
 } from './FavouritesPage.styled.js';
 
 export const FavouritesPage = () => {
-	const { products } = useSelector(getFavouritesSelector);
+	const products = useSelector(favouritesSelector);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -61,7 +59,7 @@ export const FavouritesPage = () => {
 					) : (
 						<ProductsList>
 							{products.map((product) => (
-								<ProductItem key={product.id} product={product} />
+								<ProductCard key={product.id} />
 							))}
 						</ProductsList>
 					)}

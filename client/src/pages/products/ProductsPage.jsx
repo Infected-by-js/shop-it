@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { categories } from '../../assets/categories';
 
 import { Header, Footer, ProductList } from '../../containers';
-import { Container, SortByCategory } from '../../components/';
+import { Container, Filters } from '../../components/';
 import { Main, MainTitle, ProductsPageWrapper } from './ProductsPage.styled';
 
 export const ProductsPage = () => {
@@ -21,10 +21,10 @@ export const ProductsPage = () => {
 			<Main>
 				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
 				<Container>
-					<SortByCategory
-						categories={categories}
-						activeCategory={activeCategory}
-						changeCategory={changeCategory}
+					<Filters
+						list={categories}
+						activeItemValue={activeCategory}
+						changeActiveItem={changeCategory}
 					/>
 					<ProductList category={activeCategory} />
 				</Container>

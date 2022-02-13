@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { subDollars, sumDollars } from '../../../utils/handleMoney';
-import { addProductToList } from '../../../utils/addProductToList';
 import { removeProductFromList } from '../../../utils/removeProductFromList';
+import { checkProductsInList } from '../../../utils/checkProductInList';
 
 const initialState = {
 	products: [],
@@ -14,14 +14,22 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addProduct: (state, action) => {
-			state.quantity += 1;
-			state.totalPrice = sumDollars(state.totalPrice, action.payload.price);
-			state.products = addProductToList(state.products, action.payload);
+			const isAlreadyInCart = checkProductsInList(state.products, action.payload);
+
+			if (!isAlreadyInCart) {
+				state.quantity += 1;
+				state.totalPrice = sumDollars(state.totalPrice, action.payload.price);
+				state.products.push(action.payload);
+			}
 		},
 		removeProduct: (state, action) => {
-			state.quantity -= 1;
-			state.totalPrice = subDollars(state.totalPrice, action.payload.price);
-			state.products = removeProductFromList(state.products, action.payload);
+			const isAlreadyInCart = checkProductsInList(state.products, action.payload);
+
+			if (isAlreadyInCart) {
+				state.quantity -= 1;
+				state.totalPrice = subDollars(state.totalPrice, action.payload.price);
+				state.products = state.products.filter((product) => product.id !== action.payload.id);
+			}
 		},
 	},
 });

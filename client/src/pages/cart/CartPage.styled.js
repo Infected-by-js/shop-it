@@ -5,7 +5,7 @@ import {
 	fonts,
 	fontWeight,
 	headerHeight,
-	TRANSION_MS,
+	animationSpeed,
 } from '../../styles/constants';
 
 export const Wrapper = styled.main``;
@@ -33,7 +33,7 @@ export const ButtonsWrapp = styled.div`
 		height: 14px;
 
 		g {
-			transition: fill ${TRANSION_MS} ease;
+			transition: fill ${animationSpeed.fast} ease;
 		}
 	}
 
@@ -51,41 +51,3 @@ export const ButtonsWrapp = styled.div`
 		}
 	}
 `;
-export const Content = styled.div`
-	display: flex;
-	justify-content: space-between;
-	gap: 50px;
-	margin-bottom: 50px;
-
-	flex-direction: column;
-
-	@media ${device.laptop} {
-		flex-direction: row;
-	}
-	@media ${device.laptopL} {
-		max-width: 80%;
-		margin: 0 auto 50px;
-	}
-`;
-
-export const ProductsList = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	gap: 40px;
-`;
-
-export const ProductsContainer = styled.div`
-	width: 100%;
-`;
-
-export const SummaryContainer = styled.div`
-	position: relative;
-`;
-
-export const Placeholder = styled.div`
-	font-size: 2rem;
-	text-align: center;
-`;
-
-export const ModalSuccess = styled.div``;

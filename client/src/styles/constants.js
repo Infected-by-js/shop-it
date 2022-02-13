@@ -32,6 +32,12 @@ export const color = {
 
 export const TRANSION_MS = '200ms';
 
+export const animationSpeed = {
+	fast: '100ms',
+	middle: '200ms',
+	slow: '300ms',
+};
+
 export const size = {
 	mobileS: '320px',
 	mobileM: '375px',

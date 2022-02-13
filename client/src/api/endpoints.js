@@ -1,7 +1,5 @@
-export const ENDPOINTS = {
-	products: '/products',
-	images: 'http://localhost:5000/images',
-	login: 'auth/login',
-	register: 'auth/register',
-	base: 'http://localhost:5000/api',
-};
+export const BASE = 'http://localhost:5000/api';
+export const PRODUCTS = '/products';
+export const IMAGES = 'http://localhost:5000/images';
+export const LOGIN = 'auth/login';
+export const REGISTER = 'auth/register';
