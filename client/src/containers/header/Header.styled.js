@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, headerHeight } from '../../styles/constants';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
 	background-color: ${color.white};
 	position: fixed;
 	top: 0;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 	z-index: 10;
 	will-change: transform;
 `;
-export const Content = styled.header`
+export const Content = styled.div`
 	min-width: 300px;
 	height: ${headerHeight};
 	display: flex;

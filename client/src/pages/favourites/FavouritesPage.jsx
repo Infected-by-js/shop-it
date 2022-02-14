@@ -8,7 +8,7 @@ import { CART_PAGE_ROUTE, PRODUCTS_PAGE_ROUTE } from '../../router/routes';
 
 import { Header } from '../../containers/';
 import { Container, ProductCard } from '../../components';
-import { Button } from '../../ui/Button';
+import { Button } from '../../ui/';
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
 import {
 	Wrapper,

@@ -1,40 +1,68 @@
 import React from 'react';
-import { IconCart, IconHeart } from '../../assets/images/icons';
-import { NavMenu } from './components/menu/NavMenu';
+import { Link } from 'react-router-dom';
+
+import { useViewport } from '../../hooks/useViewport';
 import {
+	CART_PAGE_ROUTE,
+	FAVOURITES_PAGE_ROUTE,
 	HOME_PAGE_ROUTE,
 	PRODUCTS_PAGE_ROUTE,
-	FAVOURITES_PAGE_ROUTE,
-	CART_PAGE_ROUTE,
 } from '../../router/routes';
-import { Link } from 'react-router-dom';
-import { IconWithBange } from '../../ui/icon-with-bange/IconWithBange';
-import { NavMenuMobile } from './components/menu-mobile/NavMenuMobile';
 
-const pages = [
-	{ title: 'Home', value: 'home', link: HOME_PAGE_ROUTE, icon: null },
-	{ title: 'Shop', value: 'shop', link: PRODUCTS_PAGE_ROUTE, icon: null },
-	{ title: 'Favourites', value: 'favourites', link: FAVOURITES_PAGE_ROUTE, icon: IconHeart },
-	{ title: 'Cart', value: 'cart', link: CART_PAGE_ROUTE, icon: IconCart },
-];
+import { Dropdown } from '../../ui';
+import { NavItem, NavMenu, NavMenuMobile } from './components/';
+import { IconCart, IconHeart } from '../../assets/images/icons';
+
+const MOBILE_WIDTH = 1024;
 
 export const Navigation = () => {
+	const { isBreakpoint } = useViewport(MOBILE_WIDTH);
+
 	return (
 		<>
-			<NavMenu>
-				{pages.map(({ title, link, icon }) => (
-					<NavMenu.Item key={link}>
-						<Link to={link}>{icon ? <IconWithBange bangeLabel={2} icon={icon} /> : title}</Link>
-					</NavMenu.Item>
-				))}
-			</NavMenu>
-			<NavMenuMobile>
-				{pages.map(({ title, link, icon }) => (
-					<NavMenu.Item key={link}>
-						<Link to={link}>{icon ? <IconWithBange bangeLabel={2} icon={icon} /> : title}</Link>
-					</NavMenu.Item>
-				))}
-			</NavMenuMobile>
+			{isBreakpoint ? (
+				<NavMenuMobile>
+					<NavItem>
+						<Link to={HOME_PAGE_ROUTE}>Home</Link>
+					</NavItem>
+					<NavItem>
+						<Link to={PRODUCTS_PAGE_ROUTE}>Shop</Link>
+					</NavItem>
+					<NavItem>
+						<Link to={CART_PAGE_ROUTE}>
+							<IconCart />
+						</Link>
+					</NavItem>
+					<NavItem>
+						<Link to={FAVOURITES_PAGE_ROUTE}>
+							<IconHeart />
+						</Link>
+					</NavItem>
+					<NavItem>
+						<button>Log-Out</button>
+					</NavItem>
+				</NavMenuMobile>
+			) : (
+				<NavMenu>
+					<NavItem>
+						<Dropdown label='Pages'>
+							<Dropdown.Item>Home</Dropdown.Item>
+							<Dropdown.Item>Shop</Dropdown.Item>
+						</Dropdown>
+					</NavItem>
+					<NavItem>
+						<IconCart />
+					</NavItem>
+					<NavItem>
+						<IconHeart />
+					</NavItem>
+					<NavItem>
+						<Dropdown label='Guest'>
+							<Dropdown.Item>Sign-In</Dropdown.Item>
+						</Dropdown>
+					</NavItem>
+				</NavMenu>
+			)}
 		</>
 	);
 };

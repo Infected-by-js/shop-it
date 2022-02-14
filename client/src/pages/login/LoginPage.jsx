@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '../../ui/Button.jsx';
+import { Button } from '../../ui/';
 import { Wrapper, Content, Title, Form, Input, LinkText, Error } from './LoginPage.styled.js';
 import { REGISTER_PAGE_ROUTE } from '../../router/routes';
 

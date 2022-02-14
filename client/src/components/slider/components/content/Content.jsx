@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../../../ui/Button';
+import { Button } from '../../../../ui/';
 import { Wrapper, InfoContainer, Title, Description, Image } from './Content.styled';
 
 export const Content = ({ imageSrc, title, description, buttonLabel, isActiveSlide, href }) => {

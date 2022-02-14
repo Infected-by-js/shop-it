@@ -1,11 +1,7 @@
 import React from 'react';
 
-import { NavList, NavItem } from './NavMenu.styled';
+import { NavList } from './NavMenu.styled';
 
 export const NavMenu = ({ children }) => {
 	return <NavList>{children}</NavList>;
-};
-
-NavMenu.Item = ({ children }) => {
-	return <NavItem>{children}</NavItem>;
 };

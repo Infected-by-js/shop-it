@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../../ui/Button.jsx';
+import { Button } from '../../ui/';
 import { Wrapper, Content, Title, Form, Input, Agreement } from './RegisterPage.styled.js';
 
 export const RegisterPage = () => {

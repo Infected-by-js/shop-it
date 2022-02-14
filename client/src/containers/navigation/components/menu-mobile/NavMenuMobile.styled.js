@@ -1,116 +1,81 @@
-import styled, { css } from 'styled-components';
-import { animationSpeed, color, device, fontWeight } from '../../../../styles/constants';
+import styled from 'styled-components';
+import { animationSpeed, color, fontWeight } from '../../../../styles/constants';
 
-export const NavList = styled.ul`
-	display: none;
-	align-items: center;
+export const NavMobileContainer = styled.div`
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	overflow-y: hidden;
+	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(5px);
+	transition: opacity ${animationSpeed.slow} 50ms ease;
+	pointer-events: ${({ isMenuOpen }) => (isMenuOpen ? 'auto' : 'none')};
 
-	@media ${device.laptop} {
-		display: flex;
-	}
+	opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
 `;
-export const MobileMenuWrapp = styled.nav`
-	${({ isShow }) =>
-		isShow &&
-		css`
-			width: 100%;
-			height: 100%;
+
+export const NavMobileList = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: ${color.black};
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 30px;
+		width: 100%;
+	}
+
+	li {
+		width: 100%;
+		height: 130px;
+		margin: 0;
+		padding: 0;
+		font-size: 1.75rem;
+		font-weight: ${fontWeight.inter.l};
+		color: ${color.white};
+
+		a {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background-color: ${color.black};
+		}
 
-			ul {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 30px;
-				width: 100%;
+		svg {
+			width: 50px;
+			height: 50px;
+			g {
+				stroke: ${color.white};
 			}
+		}
 
-			li {
-				width: 100%;
-				height: 130px;
-				margin: 0;
-				padding: 0;
-				font-size: 1.75rem;
-				font-weight: ${fontWeight.inter.l};
+		span {
+			width: 35px;
+			height: 35px;
+			font-size: 1.25rem;
+			font-weight: ${fontWeight.inter.l};
+
+			color: ${color.black};
+			background-color: ${color.white};
+		}
+
+		&:active,
+		&:hover {
+			background-color: ${color.silverLight};
+
+			span {
 				color: ${color.white};
 
-				a {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-				}
-
-				svg {
-					width: 50px;
-					height: 50px;
-					g {
-						stroke: ${color.white};
-					}
-				}
-
-				span {
-					width: 35px;
-					height: 35px;
-					font-size: 1.25rem;
-					font-weight: ${fontWeight.inter.l};
-
-					color: ${color.black};
-					background-color: ${color.white};
-				}
-
-				&:active,
-				&:hover {
-					background-color: ${color.silverLight};
-
-					span {
-						color: ${color.white};
-
-						background-color: ${color.red};
-					}
-				}
+				background-color: ${color.red};
 			}
-		`}
-`;
-export const BurgerButton = styled.button`
-	display: flex;
-
-	background-color: transparent;
-	border: 0;
-
-	&:active {
-		g {
-			fill: ${color.red};
-		}
-	}
-
-	@media ${device.laptop} {
-		display: none;
-	}
-`;
-
-export const ButtonClose = styled.button`
-	position: absolute;
-	right: 50px;
-	top: 50px;
-	background-color: transparent;
-
-	svg {
-		width: 50px;
-		height: 50px;
-
-		g {
-			fill: ${color.white};
-			transition: fill ${animationSpeed.fast} ease;
-		}
-	}
-
-	&:hover,
-	&:focus-visible {
-		g {
-			fill: ${color.red};
 		}
 	}
 `;
