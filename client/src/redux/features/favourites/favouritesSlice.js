@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkProductsInList } from '../../../utils/checkProductInList';
+import { addProductToList } from '../../../utils/addProductToList';
+import { removeProductFromList } from '../../../utils/removeProductFromList';
 
 const initialState = {
 	products: [],
-	quantity: 0,
 };
 
 export const favouritesSlice = createSlice({
@@ -11,21 +11,11 @@ export const favouritesSlice = createSlice({
 	initialState,
 	reducers: {
 		addFavouriteProduct: (state, action) => {
-			const isAlreadyFavourite = checkProductsInList(state.products, action.payload);
-
-			if (!isAlreadyFavourite) {
-				state.quantity += 1;
-				state.products.push(action.payload);
-			}
+			state.products = addProductToList(state.products, action.payload);
 		},
 
 		removeFavouriteProduct: (state, action) => {
-			const isAlreadyFavourite = checkProductsInList(state.products, action.payload);
-
-			if (isAlreadyFavourite) {
-				state.quantity -= 1;
-				state.products = state.products.filter((product) => product.id !== action.payload.id);
-			}
+			state.products = removeProductFromList(state.products, action.payload);
 		},
 	},
 });

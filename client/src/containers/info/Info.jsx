@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../../ui/';
+import { Button } from '../../ui/Button.jsx';
 import { IconDelivery, IconLocation, IconArrowLeft, IconHeart } from '../../assets/images/icons/';
 
 import {

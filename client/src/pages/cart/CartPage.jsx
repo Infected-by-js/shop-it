@@ -8,7 +8,7 @@ import { cartSelector } from '../../redux/selectors';
 
 import { Header, Cart } from '../../containers/';
 import { Container, Modal } from '../../components';
-import { Button } from '../../ui/';
+import { Button } from '../../ui/Button';
 
 import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
 import { Wrapper, Title, ButtonsWrapp } from './CartPage.styled.js';

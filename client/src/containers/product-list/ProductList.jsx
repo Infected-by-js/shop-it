@@ -1,53 +1,50 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart, getProducts, removeFromCart } from '../../redux/actions';
+import { cartProductsSelector, favouritesSelector, productsSelector } from '../../redux/selectors';
+
+import { ProductCard, ProductItemSkeleton } from '../../components';
 import { useNavigate } from 'react-router-dom';
 
 import { routeToProductPage } from '../../router/routes';
-import { addToCart, addToFavourites, getProducts, removeFromCart } from '../../redux/actions';
-import { productsSelector } from '../../redux/selectors';
-
-import { ProductCard, ProductItemSkeleton } from '../../components';
 import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 
 export const ProductList = ({ category = '', limit = 8 }) => {
-	const { products, isLoading } = useSelector(productsSelector);
+	const { products, isLoading, error } = useSelector(productsSelector);
 	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getProducts({ category, limit }));
 	}, [category, limit]);
 
-	const handleToggleToCart = (product) => {
-		dispatch(addToCart(product));
-	};
-
-	const handleRouteToDetalsPage = (product) => {
-		const productId = product.id;
-
-		navigate(routeToProductPage(productId));
-	};
-
-	const handleToggleToFavourite = (product) => {
-		dispatch(addToFavourites(product));
-	};
-
 	if (isLoading) {
-		const skeletons = Array.from({ length: 4 });
+		const emptyArray = Array.from({ length: 4 });
 		return (
 			<Wrapper>
-				{skeletons.map((_, index) => (
+				{emptyArray.map((_, index) => (
 					<ProductItemSkeleton key={index} />
 				))}
 			</Wrapper>
 		);
 	}
 
-	if (!products.length) {
-		return <EmptyStateTitle>There will be products soon!</EmptyStateTitle>;
-	}
+	const handleToggleToCart = (product) => {
+		console.log('add to cart');
+	};
 
-	return (
+	const handleRouteToDetalsPage = (product) => {
+		const productId = product.id;
+		navigate(routeToProductPage(productId));
+	};
+	const handleToggleToFavourite = () => {
+		console.log('add to fav');
+	};
+
+	return !products.length ? (
+		<EmptyStateTitle>There will be products soon!</EmptyStateTitle>
+	) : (
 		<Wrapper>
 			{products.map((product) => (
 				<ProductCard

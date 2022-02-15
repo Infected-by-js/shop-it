@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
-import { useSkipFirstMount } from '../../../../hooks/useSkipFirstMount';
-
-import { Burger } from '../burger/Burger';
-import { NavMobileContainer, NavMobileList } from './NavMenuMobile.styled';
+import { IconClose, IconBurger } from '../../../../assets/images/icons';
+import { Modal } from '../../../../components';
+import { NavList, BurgerButton, ButtonClose, MobileMenuWrapp } from './NavMenuMobile.styled';
 
 export const NavMenuMobile = ({ children }) => {
-	const [menuOpen, setMenuOpen] = useState(false);
+	const [burgerOpen, setBurgerOpen] = useState(false);
 
-	useSkipFirstMount(() => {
-		document.body.style.overflow = 'hidden';
-		return () => (document.body.style.overflow = 'visible');
-	}, menuOpen);
+	const handleOpenBurgerMenu = () => {
+		setBurgerOpen(true);
+	};
+	const handleCloseBurgerMenu = () => {
+		setBurgerOpen(false);
+	};
 
 	return (
 		<>
-			<Burger isMenuOpen={menuOpen} onClick={() => setMenuOpen((prev) => !prev)} />
-			<NavMobileContainer isMenuOpen={menuOpen}>
-				<NavMobileList>{children}</NavMobileList>
-			</NavMobileContainer>
+			<BurgerButton onClick={handleOpenBurgerMenu}>
+				{burgerOpen ? <IconClose /> : <IconBurger />}
+			</BurgerButton>
+			{burgerOpen && (
+				<Modal
+					style={{ position: 'fixed', width: '100%', height: '100%' }}
+					onClose={handleCloseBurgerMenu}
+				>
+					<ButtonClose onClick={handleCloseBurgerMenu}>
+						<IconClose />
+					</ButtonClose>
+					<MobileMenuWrapp isShow={burgerOpen}>
+						<NavList>{children}</NavList>
+					</MobileMenuWrapp>
+				</Modal>
+			)}
 		</>
 	);
 };

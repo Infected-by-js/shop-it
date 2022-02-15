@@ -1,8 +1,7 @@
 import React from 'react';
+import { Wrapper, Content } from './Header.styled.js';
 import { Container, Logo } from '../../components/';
 import { Navigation, SearchBar } from '../';
-
-import { Wrapper, Content } from './Header.styled.js';
 
 export const Header = () => {
 	return (
