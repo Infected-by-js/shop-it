@@ -1,14 +1,32 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, device, TRANSION_MS } from '../../../../styles/constants';
 
 export const Wrapper = styled.div`
 	position: absolute;
 	bottom: 10px;
-	right: 0;
 	display: none;
 	align-items: center;
 	justify-content: center;
-	width: 50%;
+
+	${({ position }) => {
+		switch (position) {
+			case 'left':
+				return css`
+					left: 0;
+					width: 50%;
+				`;
+			case 'right':
+				return css`
+					right: 0;
+					width: 50%;
+				`;
+			default:
+				return css`
+					left: 0;
+					width: 100%;
+				`;
+		}
+	}}
 
 	@media ${device.tablet} {
 		display: flex;

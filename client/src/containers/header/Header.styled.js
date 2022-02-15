@@ -7,7 +7,7 @@ export const Wrapper = styled.header`
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 10;
+	z-index: 100;
 	will-change: transform;
 `;
 export const Content = styled.div`

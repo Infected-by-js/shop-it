@@ -1,7 +1,8 @@
 import React from 'react';
+import { slides } from '../../assets/slides';
 
 import { Footer, Header, ProductList, CategoryList } from '../../containers';
-import { Container, Slider } from '../../components';
+import { Container, Carousel, Banner } from '../../components';
 import { Main } from './HomePage.styled';
 
 export const HomePage = () => {
@@ -9,7 +10,13 @@ export const HomePage = () => {
 		<>
 			<Header />
 			<Main>
-				<Slider />
+				<Carousel arrowPosition='right' dotsPosition='right'>
+					{slides.map((slide) => (
+						<Carousel.Item key={slide.title}>
+							<Banner {...slide} />
+						</Carousel.Item>
+					))}
+				</Carousel>
 				<CategoryList />
 				<Container>
 					<ProductList />

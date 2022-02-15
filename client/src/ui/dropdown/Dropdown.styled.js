@@ -40,8 +40,7 @@ export const Menu = styled.ul`
 	width: 100%;
 	display: none;
 	background-color: ${color.white};
-	border: 1px solid ${color.grey};
-	box-shadow: 2px 4px 6px ${color.grey};
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 
 	animation: growDown 300ms ease-in-out forwards;
 	transform-origin: top center;
@@ -75,8 +74,9 @@ export const Item = styled.li`
 	display: none;
 	justify-content: center;
 	align-items: center;
+	word-wrap: normal;
 
-	padding: 20px;
+	padding: 10px;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};
 	font-size: 1.5rem;

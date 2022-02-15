@@ -1,109 +1,30 @@
-import styled, { css } from 'styled-components';
-import { color, device, fontWeight, animationSpeed } from '../../styles/constants';
+import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
+import { animationSpeed, color, fonts, fontWeight } from '../../styles/constants';
 
-export const MobileMenuWrapp = styled.nav`
-	${({ isShow }) =>
-		isShow &&
-		css`
-			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background-color: ${color.black};
-
-			ul {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 30px;
-				width: 100%;
-			}
-
-			li {
-				width: 100%;
-				height: 130px;
-				margin: 0;
-				padding: 0;
-				font-size: 1.75rem;
-				font-weight: ${fontWeight.inter.l};
-				color: ${color.white};
-
-				a {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-				}
-
-				svg {
-					width: 50px;
-					height: 50px;
-					g {
-						stroke: ${color.white};
-					}
-				}
-
-				span {
-					width: 35px;
-					height: 35px;
-					font-size: 1.25rem;
-					font-weight: ${fontWeight.inter.l};
-
-					color: ${color.black};
-					background-color: ${color.white};
-				}
-
-				&:active,
-				&:hover {
-					background-color: ${color.silverLight};
-
-					span {
-						color: ${color.white};
-
-						background-color: ${color.red};
-					}
-				}
-			}
-		`}
-`;
-
-export const BurgerButton = styled.button`
+export const IconWrapp = styled.div`
 	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
 
+export const SignButton = styled.button`
 	background-color: transparent;
-	border: 0;
+	border: none;
+	font-family: ${fonts.inter};
+	font-weight: ${fontWeight.inter.xs};
+	padding: 20px;
 
-	&:active {
-		g {
-			fill: ${color.red};
-		}
-	}
+	transition: color ${animationSpeed.fast} ease;
 
-	@media ${device.laptop} {
-		display: none;
+	&:hover {
+		color: ${color.red};
 	}
 `;
 
-export const ButtonClose = styled.button`
-	position: absolute;
-	right: 50px;
-	top: 50px;
-	background-color: transparent;
-
-	svg {
-		width: 50px;
-		height: 50px;
-
-		g {
-			fill: ${color.white};
-			transition: fill ${animationSpeed.fast} ease;
-		}
-	}
-
-	&:hover,
-	&:focus-visible {
-		g {
-			fill: ${color.red};
-		}
-	}
+export const Link = styled(RouterLink)`
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
 `;
