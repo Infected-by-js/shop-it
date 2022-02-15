@@ -2,7 +2,11 @@ import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { productsSelector, favouritesSelector, cartProductsSelector } from '../../redux/selectors';
+import {
+	productsSelector,
+	cartProductsSelector,
+	favouriteProductsSelector,
+} from '../../redux/selectors';
 import {
 	getOneProduct,
 	addToCart,
@@ -20,7 +24,7 @@ import { Main, Column } from './ProductPage.styled';
 export const ProductPage = () => {
 	const { activeProduct, isLoading, error } = useSelector(productsSelector);
 	const productsInCart = useSelector(cartProductsSelector);
-	const favourites = useSelector(favouritesSelector);
+	const favourites = useSelector(favouriteProductsSelector);
 	const params = useParams();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();

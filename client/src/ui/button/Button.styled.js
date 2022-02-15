@@ -1,13 +1,8 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
-import { color, fonts, TRANSION_MS, fontWeight } from '../styles/constants';
+import { animationSpeed, color, fonts, fontWeight } from '../../styles/constants';
 import { lighten } from 'polished';
 
-export const Button = ({ children, ...props }) => {
-	return <StyledButton {...props}>{children}</StyledButton>;
-};
-
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
 	padding: 15px 20px;
 	display: flex;
 	align-items: center;
@@ -23,7 +18,7 @@ const StyledButton = styled.button`
 	box-shadow: 0.5px 0.5px 2px ${lighten(0.65, color.black)};
 
 	cursor: pointer;
-	transition: color ${TRANSION_MS} ease, background-color ${TRANSION_MS} ease;
+	transition: color ${animationSpeed.fast} ease, background-color ${animationSpeed.fast} ease;
 
 	&:hover,
 	&:focus-visible {
