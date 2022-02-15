@@ -67,13 +67,22 @@ export const NavMobileList = styled.div`
 			background-color: ${color.white};
 		}
 
+		button {
+			font-size: 1.75rem;
+			font-weight: ${fontWeight.inter.l};
+			color: ${color.white};
+		}
+
 		&:active,
 		&:hover {
 			background-color: ${color.silverLight};
 
+			button {
+				color: ${color.red};
+			}
+
 			span {
 				color: ${color.white};
-
 				background-color: ${color.red};
 			}
 		}

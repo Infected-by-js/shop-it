@@ -9,7 +9,7 @@ export const NavMenuItem = styled.li`
 	font-size: 1.25rem;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};
-	text-transform: uppercase;
+	text-transform: capitalize;
 
 	a {
 		display: inline-block;
@@ -30,18 +30,15 @@ export const NavMenuItem = styled.li`
 	}
 
 	svg {
-		width: 26px;
+		width: 30px;
 		height: 22px;
+
+		g {
+			stroke: ${color.black};
+		}
 	}
 
 	& g {
 		transition: stroke ${animationSpeed.middle} ease-in-out;
-	}
-
-	&:hover,
-	&:focus-visible {
-		& g {
-			stroke: ${color.red};
-		}
 	}
 `;
