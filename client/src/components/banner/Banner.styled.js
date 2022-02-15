@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { color, device, fonts, fontWeight, headerHeight } from '../../../../styles/constants';
+import { color, device, fonts, fontWeight, headerHeight } from '../../assets/styles/constants';
 
-export const Wrapper = styled.li`
+export const Wrapper = styled.div`
 	position: relative;
-	min-width: 100vw;
-	max-width: 100vw;
-	width: 100%;
+	width: 100vw;
+	flex-shrink: 0;
 	height: calc(100vh - ${headerHeight});
 	display: flex;
 	align-items: center;
