@@ -30,8 +30,6 @@ export const color = {
 	white: '#FFF',
 };
 
-export const TRANSION_MS = '200ms';
-
 export const animationSpeed = {
 	fast: '100ms',
 	middle: '200ms',
