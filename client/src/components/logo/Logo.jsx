@@ -1,15 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { IconLogo } from '../../assets/images/icons';
-import { Wrapper } from './Logo.styled';
+import { Link, LogoStyled } from './Logo.styled';
+import MainLogo from '../../assets/images/logo.svg';
 
 export const Logo = () => {
 	return (
-		<Wrapper>
-			<Link to='/'>
-				<IconLogo />
-			</Link>
-		</Wrapper>
+		<Link to='/'>
+			<LogoStyled src={MainLogo} />
+		</Link>
 	);
 };

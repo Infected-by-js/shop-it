@@ -1,16 +1,23 @@
+import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { color, TRANSION_MS } from '../../styles/constants';
+import { animationSpeed } from '../../styles/constants';
 
-export const Wrapper = styled.div`
+export const Link = styled(RouterLink)`
+	width: 230px;
+	height: 100%;
 	margin: 0 auto;
 
+	transition: transform ${animationSpeed.fast} ease-out;
+
 	&:hover,
-	&:focus-within {
-		g {
-			fill: ${color.red};
-		}
+	&:focus-visible {
+		transform: scale(1.05);
 	}
-	g {
-		transition: fill ${TRANSION_MS} ease;
-	}
+`;
+
+export const LogoStyled = styled.img.attrs({
+	alt: 'logo',
+})`
+	width: 100%;
+	height: 100%;
 `;
