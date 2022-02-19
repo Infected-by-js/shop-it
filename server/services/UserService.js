@@ -12,7 +12,9 @@ class UserService {
 	}
 
 	async createUser(candidate) {
-		const user = await User.findOne({ username: candidate.username });
+		const user = await User.findOne({
+			$or: [{ username: candidate.username }, { email: candidate.email }],
+		});
 
 		if (user) {
 			throw 'User already exist!';

@@ -1,23 +1,63 @@
 import React from 'react';
-import { Button } from '../../ui/';
-import { Wrapper, Content, Title, Form, Input, Agreement } from './RegisterPage.styled.js';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { LOGIN_PAGE_ROUTE } from '../../router/routes';
+import { useFormValidation } from '../../hooks/useFormValidation';
+import { registerSchema } from './Register.schema';
+
+import inputs from './inputs.json';
+import { FcGoogle, FcBadDecision } from 'react-icons/fc';
+import { Button, Input } from '../../ui/';
+import {
+	Wrapper,
+	Content,
+	Title,
+	Form,
+	Label,
+	Link,
+	OthersBlock,
+	OtherLoginButton,
+	InputWrapper,
+	ErrorMessage,
+} from './RegisterPage.styled.js';
+import { registerUser } from '../../redux/actions';
 
 export const RegisterPage = () => {
+	const { register, handleSubmit, errors } = useFormValidation(registerSchema);
+	const dispatch = useDispatch();
+
+	const handleSubmitForm = (formData) => {
+		const { confirm_password, ...userCredentials } = formData;
+		dispatch(registerUser(userCredentials));
+	};
+
 	return (
 		<Wrapper>
 			<Content>
-				<Title>Create an account</Title>
-				<Form>
-					<Input placeholder='Username' type='text' />
-					<Input placeholder='Email' type='email' />
-					<Input placeholder='Password' type='password' />
-					<Input placeholder='Confirm Password' type='password' />
-					<Agreement>
-						By creating an account, I consent to the processing of my personal data in accordance
-						with the <b>PRIVACY POLICY</b>
-					</Agreement>
-					<Button>Create</Button>
+				<Title>Sign Up</Title>
+
+				<Form onSubmit={handleSubmit(handleSubmitForm)} noValidate>
+					{inputs.map(({ name, type, label, placeholder }) => (
+						<InputWrapper key={name} isError={!!errors[name]}>
+							<Label>{label}</Label>
+							<Input placeholder={placeholder} type={type} name={name} {...register(name)} />
+							<ErrorMessage>{errors[name]?.message}</ErrorMessage>
+						</InputWrapper>
+					))}
+					<Button>Sign Up</Button>
 				</Form>
+
+				<OthersBlock>
+					<OtherLoginButton>
+						<FcGoogle />
+						Login with Google
+					</OtherLoginButton>
+					<OtherLoginButton>
+						<FcBadDecision />
+						Login as Anonymous
+					</OtherLoginButton>
+				</OthersBlock>
+				<Link to={LOGIN_PAGE_ROUTE}>Already have an account?</Link>
 			</Content>
 		</Wrapper>
 	);

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { checkProductsInList } from '../../../utils/checkProductInList';
+import { checkProductsInList } from '../../../helpers/checkProductInList';
 
 const initialState = {
 	products: [],

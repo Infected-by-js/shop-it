@@ -16,7 +16,7 @@ import {
 } from './routes';
 
 export const AppRouter = () => {
-	const user = useSelector((state) => state.user.currentUser);
+	const user = useSelector((state) => state.auth.currentUser);
 
 	return (
 		<BrowserRouter>

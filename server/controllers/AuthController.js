@@ -22,7 +22,7 @@ class AuthController {
 
 			res.status(201).json(createdUser);
 		} catch (err) {
-			res.status(500).json(err);
+			res.status(409).json(err);
 		}
 	}
 

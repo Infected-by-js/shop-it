@@ -15,7 +15,7 @@ import {
 	removeFromFavourites,
 } from '../../redux/actions';
 
-import { checkProductsInList } from '../../utils/checkProductInList';
+import { checkProductsInList } from '../../helpers/checkProductInList';
 
 import { InfoSkeleton, OverviewSkeleton } from '../../components';
 import { Header, Overview, Info } from '../../containers';
