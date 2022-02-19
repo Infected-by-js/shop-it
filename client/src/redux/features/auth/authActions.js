@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import UserService from '../../../api/services/UserService';
 
 export const loginUser = createAsyncThunk(
@@ -6,8 +6,6 @@ export const loginUser = createAsyncThunk(
 	async (credentials, { rejectWithValue }) => {
 		try {
 			const user = await UserService.login(credentials);
-
-			console.log(user);
 
 			return user;
 		} catch (error) {
@@ -28,3 +26,5 @@ export const registerUser = createAsyncThunk(
 		}
 	}
 );
+
+export const logOutUser = createAction('auth/logout');

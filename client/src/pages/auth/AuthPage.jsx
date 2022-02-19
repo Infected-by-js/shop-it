@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
 import { useFormValidation, useRouting } from '../../hooks/';
-import { loginUser, registerUser } from '../../redux/actions';
+import { loginUser, logOutUser, registerUser } from '../../redux/actions';
 
 import { loginSchema, registerSchema } from './helpers/validationSchemas';
 import { loginInputs, registerInputs } from './helpers/formInputs';
@@ -20,11 +20,13 @@ import {
 	OthersBlock,
 	OtherLoginButton,
 } from './AuthPage.styled.js';
+import { selectUser } from '../../redux/selectors';
 
 export const AuthPage = () => {
 	const [isLoginPage, setIsLoginPage] = useState(false);
+	const { isLoading, authError } = useSelector(selectUser);
 	const { currentPage } = useRouting();
-	const { register, handleSubmit, errors } = useFormValidation(
+	const { register, handleSubmit, validationErrors } = useFormValidation(
 		isLoginPage ? loginSchema : registerSchema
 	);
 	const dispatch = useDispatch();
@@ -52,7 +54,7 @@ export const AuthPage = () => {
 					{(isLoginPage ? loginInputs : registerInputs).map((input) => (
 						<FormInput
 							key={input.name}
-							errorMessage={errors[input.name]?.message}
+							errorMessage={validationErrors[input.name]?.message}
 							register={register}
 							{...input}
 						/>
@@ -61,7 +63,7 @@ export const AuthPage = () => {
 				</Form>
 
 				<OthersBlock>
-					<OtherLoginButton>
+					<OtherLoginButton onClick={() => dispatch(logOutUser())}>
 						<FcGoogle />
 						Login with Google
 					</OtherLoginButton>

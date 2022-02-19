@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useViewport } from '../../hooks/useViewport';
 
 import {
@@ -16,6 +16,7 @@ import { NavItem, NavMenu, NavMenuMobile } from './components/';
 
 import { IconCart, IconHeart } from '../../assets/images/icons';
 import { IconWrapp, SignButton, Link } from './Navigation.styled';
+import { logOutUser } from '../../redux/features/auth/authActions';
 
 const MOBILE_BREAKPOINT = 1024;
 
@@ -23,6 +24,11 @@ export const Navigation = () => {
 	const { isBreakpoint } = useViewport(MOBILE_BREAKPOINT);
 	const productsInCart = useSelector(cartQuantitySelector);
 	const productsInFavourites = useSelector(favouriteQuantitySelector);
+	const dispatch = useDispatch();
+
+	const handleLogOut = () => {
+		dispatch(logOutUser());
+	};
 
 	return (
 		<>
@@ -53,7 +59,7 @@ export const Navigation = () => {
 						</Link>
 					</NavItem>
 					<NavItem>
-						<SignButton>Log-Out</SignButton>
+						<SignButton onClick={handleLogOut}>Log-Out</SignButton>
 					</NavItem>
 				</NavMenuMobile>
 			) : (

@@ -9,5 +9,5 @@ export const useFormValidation = (schema) => {
 		formState: { errors },
 	} = useForm(options);
 
-	return { register, handleSubmit, errors };
+	return { register, handleSubmit, validationErrors: errors };
 };
