@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import { CartPage, ProductPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
+import { CartPage, ProductPage, HomePage, ProductsPage, AuthPage } from '../pages';
 
 import { FavouritesPage } from '../pages/favourites/FavouritesPage';
 import {
@@ -29,8 +29,8 @@ export const AppRouter = () => {
 				<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
 				<Route path={FAVOURITES_PAGE_ROUTE} element={<FavouritesPage />} />
 
-				<Route path={REGISTER_PAGE_ROUTE} element={<RegisterPage />} />
-				<Route path={LOGIN_PAGE_ROUTE} element={<LoginPage />} />
+				<Route path={REGISTER_PAGE_ROUTE} element={<AuthPage />} />
+				<Route path={LOGIN_PAGE_ROUTE} element={<AuthPage />} />
 
 				<Route path='*' element={<Navigate to={HOME_PAGE_ROUTE} />} />
 			</Routes>

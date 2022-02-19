@@ -12,3 +12,4 @@ export { Filters } from './filters/Filters';
 export { Carousel } from './carousel/Carousel';
 export { ProductItemSkeleton, InfoSkeleton, OverviewSkeleton } from './skeletons/';
 export { Banner } from './banner/Banner';
+export { FormInput } from './form-input/FormInput';

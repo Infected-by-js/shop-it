@@ -100,6 +100,15 @@ export const OthersBlock = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	gap: 20px;
+	padding-bottom: 20px;
+
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+	@media ${device.tablet} {
+		padding-bottom: 0;
+
+		border: none;
+	}
 `;
 
 export const OtherLoginButton = styled.button`
@@ -135,16 +144,6 @@ export const OtherLoginButton = styled.button`
 	}
 `;
 
-export const InputWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-
-	${StyledInput} {
-		border-color: ${({ isError }) => isError && color.red};
-	}
-`;
-
 export const Link = styled(RouterLink)`
 	grid-area: link;
 	justify-self: center;
@@ -152,6 +151,16 @@ export const Link = styled(RouterLink)`
 	&:hover {
 		color: ${color.blue};
 		text-decoration: underline;
+	}
+`;
+
+export const InputWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	${StyledInput} {
+		border-color: ${({ isError }) => isError && color.red};
 	}
 `;
 
