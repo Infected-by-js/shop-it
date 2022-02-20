@@ -24,7 +24,7 @@ import { selectUser } from '../../redux/selectors';
 
 export const AuthPage = () => {
 	const [isLoginPage, setIsLoginPage] = useState(false);
-	const { isLoading, authError } = useSelector(selectUser);
+	const { isLoading, authError, currentUser } = useSelector(selectUser);
 	const { currentPage } = useRouting();
 	const { register, handleSubmit, validationErrors } = useFormValidation(
 		isLoginPage ? loginSchema : registerSchema

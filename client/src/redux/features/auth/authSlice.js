@@ -1,4 +1,4 @@
-import { createSlice, isRejectedWithValue, isPending } from '@reduxjs/toolkit';
+import { createSlice, isRejectedWithValue, isPending, isFulfilled } from '@reduxjs/toolkit';
 import { registerUser, loginUser, logOutUser } from './authActions';
 
 const initialState = {
@@ -11,23 +11,17 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	extraReducers: ({ addCase, addMatcher }) => {
-		addCase(registerUser.fulfilled, (state, action) => {
-			state.isLoading = false;
-			state.currentUser = action.payload;
-			// checkLocalStore();
-		});
-		addCase(loginUser.fulfilled, (state, action) => {
-			state.isLoading = false;
-			state.currentUser = action.payload;
-			// saveInLocalStore();
-		});
 		addCase(logOutUser, (state) => {
 			state.currentUser = null;
 		});
-		addMatcher(isPending(registerUser, loginUser), (state, action) => {
+		addMatcher(isPending(registerUser, loginUser), (state) => {
 			state.isLoading = true;
 			state.currentUser = null;
 			state.authError = false;
+		});
+		addMatcher(isFulfilled(registerUser, loginUser), (state, action) => {
+			state.isLoading = false;
+			state.currentUser = action.payload;
 		});
 		addMatcher(isRejectedWithValue(registerUser, loginUser), (state, action) => {
 			state.isLoading = false;
