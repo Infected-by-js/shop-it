@@ -10,6 +10,8 @@ export const loginUser = createAsyncThunk(
 
 			return restUserCredentials;
 		} catch (error) {
+			console.log(error.response.data);
+
 			return rejectWithValue(error.response.data);
 		}
 	}
@@ -23,9 +25,22 @@ export const registerUser = createAsyncThunk(
 
 			return user;
 		} catch (error) {
+			console.log(error.response.data);
 			return rejectWithValue(error.response.data);
 		}
 	}
 );
 
-export const logOutUser = createAction('auth/logout');
+export const requestAuth = createAsyncThunk('auth/requestAuth', async (token) => {
+	try {
+		const user = await UserService.requestAuth(token);
+		return user;
+	} catch (error) {
+		console.log(error.response.data);
+	}
+});
+
+export const logOutUser = createAction('auth/logout', () => {
+	UserService.logout();
+	return {};
+});

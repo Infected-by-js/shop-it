@@ -1,5 +1,5 @@
 import axiosInstance from './axiosInstance';
-import { PRODUCTS, IMAGES, LOGIN, REGISTER } from './endpoints';
+import { PRODUCTS, IMAGES, LOGIN, REGISTER, AUTH } from './endpoints';
 
 export const requests = {
 	fetchProducts,
@@ -8,6 +8,7 @@ export const requests = {
 	getImageUrl,
 	login,
 	register,
+	auth,
 };
 
 function fetchProducts(params) {
@@ -26,6 +27,10 @@ function saveProduct(product, token) {
 			Authorization: `Bearer ${token}`,
 		},
 	});
+}
+
+function auth() {
+	return axiosInstance.get(AUTH);
 }
 
 function login(userCredentials) {

@@ -7,4 +7,4 @@ export {
 	removeRecentSearch,
 	changeInputValue,
 } from './features/search/searchActions';
-export { loginUser, registerUser, logOutUser } from './features/auth/authActions';
+export { loginUser, registerUser, logOutUser, requestAuth } from './features/auth/authActions';

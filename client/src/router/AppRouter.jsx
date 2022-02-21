@@ -1,9 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import { CartPage, ProductPage, HomePage, ProductsPage, AuthPage } from '../pages';
+import StorageService from '../api/services/StorageService';
+import { CartPage, ProductPage, HomePage, ProductsPage, AuthPage, FavouritesPage } from '../pages';
 
-import { FavouritesPage } from '../pages/favourites/FavouritesPage';
+import { requestAuth } from '../redux/actions';
+import { selectCurrentUser } from '../redux/selectors';
 import {
 	CART_PAGE_ROUTE,
 	PRODUCTS_CATEGORY_ROUTE,
@@ -16,7 +18,16 @@ import {
 } from './routes';
 
 export const AppRouter = () => {
-	const user = useSelector((state) => state.auth.currentUser);
+	const currentUser = useSelector(selectCurrentUser);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const token = StorageService.getItem('token');
+
+		if (token) {
+			dispatch(requestAuth(token));
+		}
+	}, []);
 
 	return (
 		<BrowserRouter>
@@ -25,12 +36,18 @@ export const AppRouter = () => {
 				<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
 					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
 				</Route>
-				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
-				<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
-				<Route path={FAVOURITES_PAGE_ROUTE} element={<FavouritesPage />} />
 
-				<Route path={REGISTER_PAGE_ROUTE} element={<AuthPage />} />
-				<Route path={LOGIN_PAGE_ROUTE} element={<AuthPage />} />
+				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
+
+				<Route element={<PrivateRoute isLogged={!!currentUser} />}>
+					<Route path={CART_PAGE_ROUTE} element={<CartPage />} />
+					<Route path={FAVOURITES_PAGE_ROUTE} element={<FavouritesPage />} />
+				</Route>
+
+				<Route element={<PublicRoute isLogged={!!currentUser} />}>
+					<Route path={REGISTER_PAGE_ROUTE} element={<AuthPage />} />
+					<Route path={LOGIN_PAGE_ROUTE} element={<AuthPage />} />
+				</Route>
 
 				<Route path='*' element={<Navigate to={HOME_PAGE_ROUTE} />} />
 			</Routes>
@@ -39,9 +56,13 @@ export const AppRouter = () => {
 };
 
 const PrivateRoute = ({ isLogged }) => {
-	return isLogged ? <Outlet /> : <Navigate to={LOGIN_PAGE_ROUTE} />;
+	return isLogged ? <Outlet /> : <Navigate to={HOME_PAGE_ROUTE} />;
 };
 
 const PublicRoute = ({ isLogged }) => {
 	return isLogged ? <Navigate to={HOME_PAGE_ROUTE} /> : <Outlet />;
+};
+
+const StrangePage = () => {
+	return <p>YOURE LOGGED IN</p>;
 };

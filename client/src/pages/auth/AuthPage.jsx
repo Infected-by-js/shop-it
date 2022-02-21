@@ -32,12 +32,12 @@ export const AuthPage = () => {
 	const dispatch = useDispatch();
 
 	const handleSubmitForm = (formData) => {
-		const { confirm_password, ...userCredentials } = formData;
+		const { username, password, email } = formData;
 
 		if (isLoginPage) {
-			dispatch(loginUser(userCredentials));
+			dispatch(loginUser({ username, password }));
 		} else {
-			dispatch(registerUser(userCredentials));
+			dispatch(registerUser({ username, password, email }));
 		}
 	};
 

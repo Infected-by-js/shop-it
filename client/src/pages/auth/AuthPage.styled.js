@@ -94,7 +94,6 @@ export const Form = styled.form`
 
 export const OthersBlock = styled.div`
 	grid-area: other;
-	height: 100%;
 	display: flex;
 	align-items: stretch;
 	justify-content: center;
@@ -157,7 +156,6 @@ export const Link = styled(RouterLink)`
 export const InputWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	flex: 1;
 
 	${StyledInput} {
 		border-color: ${({ isError }) => isError && color.red};
