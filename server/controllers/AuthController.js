@@ -1,6 +1,4 @@
 const UserService = require('../services/UserService');
-const CryptoJS = require('crypto-js');
-const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 
 class AuthController {
@@ -12,15 +10,10 @@ class AuthController {
 				return res.status(400).json(errors);
 			}
 
-			const newUser = {
-				username: req.body.username,
-				email: req.body.email,
-				password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString(),
-			};
+			const { username, email, password } = req.body;
+			const newUser = await UserService.register(username, email, password);
 
-			const createdUser = await UserService.createUser(newUser);
-
-			res.status(201).json(createdUser);
+			res.status(201).json(newUser);
 		} catch (err) {
 			res.status(409).json(err);
 		}
@@ -34,27 +27,21 @@ class AuthController {
 				return res.status(400).json(errors);
 			}
 
-			const user = await UserService.getUser(req.body.username);
+			const { username, password } = req.body;
+			const user = await UserService.login(username, password);
 
-			const encryptedPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
-			const originalPassword = encryptedPassword.toString(CryptoJS.enc.Utf8);
+			res.status(200).json(user);
+		} catch (err) {
+			res.status(400).json(err);
+		}
+	}
 
-			if (originalPassword !== req.body.password) {
-				return res.status(401).json('Incorrect password!');
-			}
+	async auth(req, res) {
+		try {
+			const { id } = req.user[0];
+			const user = await UserService.auth(id);
 
-			const accessToken = jwt.sign(
-				{
-					id: user._id,
-					username: user.username,
-				},
-				process.env.JWT_SEC,
-				{ expiresIn: '2d' }
-			);
-
-			const { password, ...restCredentials } = user._doc;
-
-			res.status(200).json({ ...restCredentials, accessToken });
+			res.status(200).json(user);
 		} catch (err) {
 			res.status(400).json(err);
 		}

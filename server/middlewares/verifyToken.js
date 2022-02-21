@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
 		next();
 	}
 
-	const authHeader = req.headers.authorization;
+	const authHeader = req.headers['x-access-token'];
 
 	if (authHeader) {
 		const token = authHeader.split(' ')[1];
