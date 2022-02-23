@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { color, headerHeight } from '../../styles/constants';
+import { color, headerHeight } from '../../assets/styles/constants';
 
 export const Main = styled.main`
 	margin-top: ${headerHeight};

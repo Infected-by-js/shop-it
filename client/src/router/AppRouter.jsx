@@ -44,10 +44,8 @@ export const AppRouter = () => {
 					<Route path={FAVOURITES_PAGE_ROUTE} element={<FavouritesPage />} />
 				</Route>
 
-				<Route element={<PublicRoute isLogged={!!currentUser} />}>
-					<Route path={REGISTER_PAGE_ROUTE} element={<AuthPage />} />
-					<Route path={LOGIN_PAGE_ROUTE} element={<AuthPage />} />
-				</Route>
+				<Route path={REGISTER_PAGE_ROUTE} element={<AuthPage />} />
+				<Route path={LOGIN_PAGE_ROUTE} element={<AuthPage />} />
 
 				<Route path='*' element={<Navigate to={HOME_PAGE_ROUTE} />} />
 			</Routes>
@@ -61,8 +59,4 @@ const PrivateRoute = ({ isLogged }) => {
 
 const PublicRoute = ({ isLogged }) => {
 	return isLogged ? <Navigate to={HOME_PAGE_ROUTE} /> : <Outlet />;
-};
-
-const StrangePage = () => {
-	return <p>YOURE LOGGED IN</p>;
 };

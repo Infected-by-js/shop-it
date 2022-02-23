@@ -5,8 +5,8 @@ import {
 	fonts,
 	fontWeight,
 	headerHeight,
-	TRANSION_MS,
-} from '../../styles/constants';
+	animationSpeed,
+} from '../../assets/styles/constants';
 
 export const Wrapper = styled.main``;
 
@@ -33,7 +33,7 @@ export const ButtonsWrapp = styled.div`
 		height: 14px;
 
 		g {
-			transition: fill ${TRANSION_MS} ease;
+			transition: fill ${animationSpeed.fast} ease;
 		}
 	}
 

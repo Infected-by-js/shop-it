@@ -6,7 +6,7 @@ import {
 	fontWeight,
 	headerHeight,
 	animationSpeed,
-} from '../../styles/constants';
+} from '../../assets/styles/constants';
 
 export const Wrapper = styled.main``;
 

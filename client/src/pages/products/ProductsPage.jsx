@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { categories } from '../../assets/categories';
 
-import { Header, Footer, ProductList } from '../../containers';
-import { Container, Filters } from '../../components/';
 import { Main, MainTitle, ProductsPageWrapper } from './ProductsPage.styled';
+import { Header, Container, ProductList, Footer } from '../../shared/';
+import { Filters } from './components';
+import { categories } from '../../assets/categories';
 
 export const ProductsPage = () => {
 	const params = useParams();

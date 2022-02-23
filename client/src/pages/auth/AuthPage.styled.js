@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { StyledInput } from '../../ui/input/Input.styled';
+import { StyledInput } from '../../shared/input/Input.styled';
 import { color, device, fonts, fontWeight, animationSpeed } from '../../assets/styles/constants';
 
 export const Wrapper = styled.div`

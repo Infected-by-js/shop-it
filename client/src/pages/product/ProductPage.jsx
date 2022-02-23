@@ -17,8 +17,9 @@ import {
 
 import { checkProductsInList } from '../../helpers/checkProductInList';
 
-import { InfoSkeleton, OverviewSkeleton } from '../../components';
-import { Header, Overview, Info } from '../../containers';
+import { InfoSkeleton, OverviewSkeleton } from '../../shared/skeletons/';
+import { Info, Overview } from './components';
+import { Header } from '../../shared';
 import { Main, Column } from './ProductPage.styled';
 
 export const ProductPage = () => {

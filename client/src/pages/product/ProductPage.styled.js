@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { headerHeight, device } from '../../styles/constants';
+import { headerHeight, device } from '../../assets/styles/constants';
 
 export const Main = styled.main`
 	margin-top: ${headerHeight};

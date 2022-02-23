@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { color, fonts, fontWeight, headerHeight, device } from '../../styles/constants';
+import { color, fonts, fontWeight, headerHeight, device } from '../../assets/styles/constants';
 
 export const ProductsPageWrapper = styled.div`
 	display: flex;

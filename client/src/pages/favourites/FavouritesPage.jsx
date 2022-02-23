@@ -1,15 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { removeFromFavourites } from '../../redux/actions';
 import { favouritesSelector } from '../../redux/selectors';
 import { CART_PAGE_ROUTE, PRODUCTS_PAGE_ROUTE } from '../../router/routes';
 
-import { Header } from '../../containers/';
-import { Container, ProductCard } from '../../components';
-import { Button } from '../../ui/';
-import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
+import { Container, ProductCard, Button, Header } from '../../shared';
+
 import {
 	Wrapper,
 	Title,
@@ -44,12 +43,12 @@ export const FavouritesPage = () => {
 				<Title>Your Favourites</Title>
 				<ButtonsWrapp>
 					<Button outlined onClick={handleBack}>
-						<IconShevronLeft />
+						<HiChevronLeft />
 						CONTINUE SHOPPING
 					</Button>
 					<Button outlined onClick={handleNavigateToCart}>
 						CHECKOUT NOW
-						<IconShevronRight />
+						<HiChevronRight />
 					</Button>
 				</ButtonsWrapp>
 

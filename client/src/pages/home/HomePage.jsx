@@ -1,8 +1,8 @@
 import React from 'react';
 import { slides } from '../../assets/slides';
 
-import { Footer, Header, ProductList, CategoryList } from '../../containers';
-import { Container, Carousel, Banner } from '../../components';
+import { Footer, Header, ProductList, Container, Carousel } from '../../shared';
+import { Banner, CategoryList } from './components/';
 import { Main } from './HomePage.styled';
 
 export const HomePage = () => {

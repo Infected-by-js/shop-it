@@ -9,8 +9,7 @@ import { loginSchema, registerSchema } from './helpers/validationSchemas';
 import { loginInputs, registerInputs } from './helpers/formInputs';
 
 import { FcGoogle, FcBadDecision } from 'react-icons/fc';
-import { FormInput } from '../../components/';
-import { Button } from '../../ui';
+import { FormInput, Button } from '../../shared/';
 import {
 	Wrapper,
 	Content,
@@ -44,6 +43,15 @@ export const AuthPage = () => {
 	useEffect(() => {
 		setIsLoginPage(currentPage === LOGIN_PAGE_ROUTE);
 	}, [currentPage]);
+
+	if (currentUser) {
+		return (
+			<div>
+				..You are already register
+				<span>Logout?</span>
+			</div>
+		);
+	}
 
 	return (
 		<Wrapper>
