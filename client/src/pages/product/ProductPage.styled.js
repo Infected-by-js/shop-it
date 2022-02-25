@@ -1,41 +1,38 @@
 import styled from 'styled-components';
-import { headerHeight, device } from '../../assets/styles/constants';
+import {
+	headerHeight,
+	device,
+	color,
+	fonts,
+	fontWeight,
+	animationSpeed,
+} from '../../assets/styles/constants';
 
 export const Main = styled.main`
 	margin-top: ${headerHeight};
-	position: relative;
-	display: flex;
-	flex-direction: column-reverse;
+
+	width: 100%;
+	height: 100%;
+	background: ${color.white};
+
+	display: grid;
+
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(auto);
+	grid-auto-columns: 1fr;
+	grid-template-areas:
+		'nav'
+		'image'
+		'content';
 
 	@media ${device.laptop} {
-		display: grid;
-		grid-template-columns: repeat(2, 50%);
-		grid-template-rows: 100%;
-	}
-`;
-
-export const Column = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: auto;
-	margin: 3rem;
-	overflow-x: hidden;
-	overflow-y: unset;
-
-	@media ${device.laptop} {
-		margin: 0;
-		height: calc(100vh - ${headerHeight});
-	}
-
-	&:last-child {
-		@media ${device.laptop} {
-			overflow-y: auto;
-		}
-
-		@media ${device.laptopL} {
-			overflow-y: hidden;
-		}
+		margin-top: calc(${headerHeight} + 10px);
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 0.2fr 2.2fr 0.6fr;
+		grid-auto-columns: 1fr;
+		grid-template-areas:
+			'image nav'
+			'image content'
+			'previews content';
 	}
 `;

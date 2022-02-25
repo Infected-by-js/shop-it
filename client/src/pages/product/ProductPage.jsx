@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-
 import {
 	productsSelector,
 	cartProductsSelector,
@@ -17,10 +16,9 @@ import {
 
 import { checkProductsInList } from '../../helpers/checkProductInList';
 
-import { InfoSkeleton, OverviewSkeleton } from '../../shared/skeletons/';
-import { Info, Overview } from './components';
-import { Header } from '../../shared';
-import { Main, Column } from './ProductPage.styled';
+import { Container, Header } from '../../shared';
+import { ImageSection, DescriptionSection, Navigation } from './components/';
+import { Main } from './ProductPage.styled';
 
 export const ProductPage = () => {
 	const { activeProduct, isLoading, error } = useSelector(productsSelector);
@@ -32,7 +30,7 @@ export const ProductPage = () => {
 
 	useEffect(() => {
 		dispatch(getOneProduct(params.productId));
-	}, [params.productId]);
+	}, []);
 
 	const isAlreadyInCart = useMemo(() => {
 		return checkProductsInList(productsInCart, activeProduct);
@@ -62,34 +60,22 @@ export const ProductPage = () => {
 		navigate(-1);
 	};
 
+	console.log('render');
+
 	return (
 		<>
 			<Header />
-			<Main>
-				{error ? (
-					<h1>{error}</h1>
+			<Container>
+				{isLoading ? (
+					<p>loading</p>
 				) : (
-					<>
-						<Column>
-							{isLoading ? (
-								<InfoSkeleton />
-							) : (
-								<Info
-									product={activeProduct}
-									toggleToCart={handleToggleToCart}
-									toggleToFavourite={handleToggleToFavourite}
-									isInCart={isAlreadyInCart}
-									isFavourite={isAlreadyFavourite}
-									onClickBack={handleClickBack}
-								/>
-							)}
-						</Column>
-						<Column>
-							{isLoading ? <OverviewSkeleton /> : <Overview images={activeProduct.images} />}
-						</Column>
-					</>
+					<Main>
+						<Navigation />
+						<ImageSection images={activeProduct?.images} />
+						<DescriptionSection />
+					</Main>
 				)}
-			</Main>
+			</Container>
 		</>
 	);
 };

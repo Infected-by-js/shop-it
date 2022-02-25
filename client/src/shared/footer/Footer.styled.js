@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { color, device } from '../../assets/styles/constants';
 
 export const Wrapper = styled.footer`
+	margin-top: auto;
 	padding: 20px;
 	display: flex;
 	align-items: center;

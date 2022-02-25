@@ -5,7 +5,7 @@ import { animationSpeed } from '../../assets/styles/constants';
 export const Link = styled(RouterLink)`
 	width: 230px;
 	height: 100%;
-	margin: 0 auto;
+	margin-right: auto;
 
 	transition: transform ${animationSpeed.fast} ease-out;
 

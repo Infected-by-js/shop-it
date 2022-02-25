@@ -10,15 +10,14 @@ export const StyledButton = styled.button`
 
 	font-family: ${fonts.arsenal};
 	font-weight: ${fontWeight.arsenal.m};
-	border: 1px solid transparent;
+	border: 2px solid transparent;
 	border-radius: 2px;
 
 	color: ${color.white};
 	background-color: ${color.black};
-	box-shadow: 0.5px 0.5px 2px ${lighten(0.65, color.black)};
 
 	cursor: pointer;
-	transition: color ${animationSpeed.fast} ease, background-color ${animationSpeed.fast} ease;
+	transition: color ${animationSpeed.middle} ease, background-color ${animationSpeed.middle} ease;
 
 	&:hover,
 	&:focus-visible {
@@ -34,7 +33,7 @@ export const StyledButton = styled.button`
 		outlined &&
 		css`
 			color: ${color.black};
-			border: 1px solid ${color.black};
+			border: 2px solid ${color.black};
 			background-color: transparent;
 
 			&:hover {
@@ -47,12 +46,12 @@ export const StyledButton = styled.button`
 		lighten &&
 		css`
 			color: ${color.white};
-			border: 1px solid ${color.red};
+			border: 2px solid ${color.red};
 			background-color: ${color.red};
 
 			&:hover {
 				color: ${color.black};
-				border: 1px solid ${color.black};
+				border: 2px solid ${color.black};
 				background-color: ${color.red};
 			}
 		`}

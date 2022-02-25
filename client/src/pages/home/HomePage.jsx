@@ -3,26 +3,39 @@ import { slides } from '../../assets/slides';
 
 import { Footer, Header, ProductList, Container, Carousel } from '../../shared';
 import { Banner, CategoryList } from './components/';
-import { Main } from './HomePage.styled';
+import { Main, Wrapper, BgVideo, Overlay } from './HomePage.styled';
+import mainVideo from '../../assets/images/main.mp4';
+
+const config = {
+	lazyload: true,
+	shownNav: true,
+	showNav: false,
+	showThumbnails: false,
+	showFullscreenButton: false,
+	showPlayButton: false,
+	showBullets: true,
+	autoPlay: true,
+	slideDuration: 700,
+	slideInterval: 6000,
+};
 
 export const HomePage = () => {
 	return (
 		<>
 			<Header />
 			<Main>
-				<Carousel arrowPosition='right' dotsPosition='right'>
-					{slides.map((slide) => (
-						<Carousel.Item key={slide.title}>
-							<Banner {...slide} />
-						</Carousel.Item>
-					))}
-				</Carousel>
-				<CategoryList />
 				<Container>
-					<ProductList />
+					<Wrapper>
+						<BgVideo src={mainVideo} autoPlay loop muted />
+						<Overlay />
+						{/* <Carousel>
+							{slides.map((slide) => (
+								<Banner key={slide.title} {...slide} />
+							))}
+						</Carousel>  */}
+					</Wrapper>
 				</Container>
 			</Main>
-			<Footer />
 		</>
 	);
 };

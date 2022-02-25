@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Wrapper, InfoContainer, Title, Description, Image } from './Banner.styled';
 import { Button } from '../../../../shared';
+import { Wrapper, InfoContainer, Title, Description, Image, ImageContainer } from './Banner.styled';
 
-export const Banner = ({ imageSrc, title, description, buttonLabel, isActiveSlide, href }) => {
+export const Banner = ({ imageSrc, title, description, buttonLabel, href }) => {
 	const navigate = useNavigate();
 
 	const handleNavigate = () => {
@@ -16,12 +16,12 @@ export const Banner = ({ imageSrc, title, description, buttonLabel, isActiveSlid
 			<InfoContainer>
 				<Title>{title}</Title>
 				<Description>{description}</Description>
-				<Button tabIndex={isActiveSlide ? 0 : -1} onClick={handleNavigate}>
-					{buttonLabel}
-				</Button>
+				<Button onClick={handleNavigate}>{buttonLabel}</Button>
 			</InfoContainer>
 
-			<Image src={imageSrc} />
+			<ImageContainer>
+				<Image src={imageSrc} draggable='false' />
+			</ImageContainer>
 		</Wrapper>
 	);
 };
