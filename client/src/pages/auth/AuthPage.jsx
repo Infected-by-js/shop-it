@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { FcGoogle, FcBadDecision } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
+import { HOME_PAGE_ROUTE, LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
 import { useFormValidation, useRouting } from '../../hooks/';
-import { loginUser, logOutUser, registerUser } from '../../redux/actions';
+import { loginUser, registerUser } from '../../redux/actions';
 
 import { loginSchema, registerSchema } from './helpers/validationSchemas';
 import { loginInputs, registerInputs } from './helpers/formInputs';
 
-import { FcGoogle, FcBadDecision } from 'react-icons/fc';
-import { FormInput, Button } from '../../shared/';
+import { FormInput, Button, Loader } from '../../shared/';
 import {
 	Wrapper,
 	Content,
@@ -18,17 +19,20 @@ import {
 	Link,
 	OthersBlock,
 	OtherLoginButton,
+	TitleContainer,
+	Error,
 } from './AuthPage.styled.js';
 import { selectUser } from '../../redux/selectors';
 
 export const AuthPage = () => {
-	const [isLoginPage, setIsLoginPage] = useState(false);
+	const [isLoginPage, setIsLoginPage] = useState(true);
 	const { isLoading, authError, currentUser } = useSelector(selectUser);
 	const { currentPage } = useRouting();
 	const { register, handleSubmit, validationErrors } = useFormValidation(
 		isLoginPage ? loginSchema : registerSchema
 	);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleSubmitForm = (formData) => {
 		const { username, password, email } = formData;
@@ -41,49 +45,52 @@ export const AuthPage = () => {
 	};
 
 	useEffect(() => {
+		if (currentUser && !authError) {
+			navigate(HOME_PAGE_ROUTE);
+		}
+	}, [currentUser]);
+
+	useEffect(() => {
 		setIsLoginPage(currentPage === LOGIN_PAGE_ROUTE);
 	}, [currentPage]);
 
-	if (currentUser) {
-		return (
-			<div>
-				..You are already register
-				<span>Logout?</span>
-			</div>
-		);
-	}
-
 	return (
-		<Wrapper>
-			<Content>
-				<Title>{isLoginPage ? 'Sign In' : 'Sign Up'}</Title>
+		<>
+			{isLoading && <Loader />}
+			<Wrapper>
+				<Content>
+					<TitleContainer>
+						<Title>{isLoginPage ? 'Login' : 'Sign Up'}</Title>
+						<Error>{authError}</Error>
+					</TitleContainer>
 
-				<Form onSubmit={handleSubmit(handleSubmitForm)} noValidate>
-					{(isLoginPage ? loginInputs : registerInputs).map((input) => (
-						<FormInput
-							key={input.name}
-							errorMessage={validationErrors[input.name]?.message}
-							register={register}
-							{...input}
-						/>
-					))}
-					<Button>{isLoginPage ? 'Sign In' : 'Sign Up'}</Button>
-				</Form>
+					<Form onSubmit={handleSubmit(handleSubmitForm)} noValidate>
+						{(isLoginPage ? loginInputs : registerInputs).map((input) => (
+							<FormInput
+								key={input.name}
+								errorMessage={validationErrors[input.name]?.message}
+								register={register}
+								{...input}
+							/>
+						))}
+						<Button>{isLoginPage ? 'Login' : 'Sign Up'}</Button>
+					</Form>
 
-				<OthersBlock>
-					<OtherLoginButton onClick={() => dispatch(logOutUser())}>
-						<FcGoogle />
-						Login with Google
-					</OtherLoginButton>
-					<OtherLoginButton>
-						<FcBadDecision />
-						Login as Anonymous
-					</OtherLoginButton>
-				</OthersBlock>
-				<Link to={isLoginPage ? REGISTER_PAGE_ROUTE : LOGIN_PAGE_ROUTE}>
-					{isLoginPage ? 'Need an Account?' : 'Already have an account?'}
-				</Link>
-			</Content>
-		</Wrapper>
+					<OthersBlock>
+						<OtherLoginButton>
+							<FcGoogle />
+							Login with Google
+						</OtherLoginButton>
+						<OtherLoginButton>
+							<FcBadDecision />
+							Login as Anonymous
+						</OtherLoginButton>
+					</OthersBlock>
+					<Link to={isLoginPage ? REGISTER_PAGE_ROUTE : LOGIN_PAGE_ROUTE}>
+						{isLoginPage ? 'Need an Account?' : 'Already have an account?'}
+					</Link>
+				</Content>
+			</Wrapper>
+		</>
 	);
 };

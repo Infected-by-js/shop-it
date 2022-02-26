@@ -1,41 +1,36 @@
 import React from 'react';
-import { slides } from '../../assets/slides';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import { Footer, Header, ProductList, Container, Carousel } from '../../shared';
-import { Banner, CategoryList } from './components/';
-import { Main, Wrapper, BgVideo, Overlay } from './HomePage.styled';
-import mainVideo from '../../assets/images/main.mp4';
-
-const config = {
-	lazyload: true,
-	shownNav: true,
-	showNav: false,
-	showThumbnails: false,
-	showFullscreenButton: false,
-	showPlayButton: false,
-	showBullets: true,
-	autoPlay: true,
-	slideDuration: 700,
-	slideInterval: 6000,
-};
+import { Main, MainTitle, ProductsPageWrapper } from './HomePage.styled';
+import { Header, Container, ProductList, Footer } from '../../shared';
+import { Filters } from './components';
+import { categories } from '../../assets/categories';
+import { routeToCategoryPage } from '../../router/routes';
 
 export const HomePage = () => {
+	const params = useParams();
+	const navigate = useNavigate();
+	const activeCategory = params.categoryId ?? '';
+
+	const changeCategory = (value) => {
+		navigate(routeToCategoryPage(value));
+	};
+
 	return (
-		<>
+		<ProductsPageWrapper>
 			<Header />
 			<Main>
+				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
 				<Container>
-					<Wrapper>
-						<BgVideo src={mainVideo} autoPlay loop muted />
-						<Overlay />
-						{/* <Carousel>
-							{slides.map((slide) => (
-								<Banner key={slide.title} {...slide} />
-							))}
-						</Carousel>  */}
-					</Wrapper>
+					<Filters
+						list={categories}
+						activeItemValue={activeCategory}
+						changeActiveItem={changeCategory}
+					/>
+					<ProductList category={activeCategory} />
 				</Container>
 			</Main>
-		</>
+			<Footer />
+		</ProductsPageWrapper>
 	);
 };

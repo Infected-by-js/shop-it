@@ -21,21 +21,27 @@ export const Label = styled.span`
 		content: '';
 		position: absolute;
 		right: -8px;
-		border: solid black;
-		border-width: 0 1.5px 1.5px 0;
+		border: solid ${color.black};
+		border-width: 0 2px 2px 0;
 		display: inline-block;
 		padding: 3px;
 		transform: rotate(45deg);
+		transition: transform ${animationSpeed.middle} ease-in-out;
 	}
 
 	${Container}:hover & {
 		color: ${color.red};
+
+		&::after {
+			border-color: ${color.red};
+			transform: rotate(225deg);
+		}
 	}
 `;
 
 export const Menu = styled.ul`
 	position: absolute;
-	top: 110%;
+	top: 100%;
 	left: 0;
 	width: 100%;
 	display: none;

@@ -8,6 +8,7 @@ export const ImageWrapp = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	max-height: 850px;
 
 	img {
 		height: 100%;
@@ -36,6 +37,7 @@ export const Previews = styled.div`
 
 	@media ${device.laptop} {
 		display: flex;
+		align-items: flex-start;
 	}
 `;
 

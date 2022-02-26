@@ -41,22 +41,37 @@ export const Content = styled.div`
 			'link other';
 	}
 `;
+export const TitleContainer = styled.div`
+	grid-area: title;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
 
 export const Title = styled.h1`
-	grid-area: title;
 	font-family: ${fonts.inter};
 	font-size: 1.5rem;
 	font-weight: ${fontWeight.inter.xs};
 	text-align: center;
+	flex: 1;
 
 	margin: 0;
 	padding-bottom: 20px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 	@media ${device.tablet} {
 		text-align: left;
 		font-size: 2rem;
 	}
+`;
+
+export const Error = styled.p`
+	font-family: ${fonts.inter};
+	font-size: 1.15rem;
+	font-weight: ${fontWeight.inter.xs};
+	color: ${color.red};
 `;
 
 export const Form = styled.form`

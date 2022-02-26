@@ -22,8 +22,9 @@ export const registerUser = createAsyncThunk(
 	async (credentials, { rejectWithValue }) => {
 		try {
 			const user = await UserService.register(credentials);
+			const { accessToken, ...restUserCredentials } = user;
 
-			return user;
+			return restUserCredentials;
 		} catch (error) {
 			console.log(error.response.data);
 			return rejectWithValue(error.response.data);
@@ -34,7 +35,9 @@ export const registerUser = createAsyncThunk(
 export const requestAuth = createAsyncThunk('auth/requestAuth', async (token) => {
 	try {
 		const user = await UserService.requestAuth(token);
-		return user;
+		const { accessToken, ...restUserCredentials } = user;
+
+		return restUserCredentials;
 	} catch (error) {
 		console.log(error.response.data);
 	}

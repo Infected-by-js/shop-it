@@ -5,7 +5,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { removeFromFavourites } from '../../redux/actions';
 import { favouritesSelector } from '../../redux/selectors';
-import { CART_PAGE_ROUTE, PRODUCTS_PAGE_ROUTE } from '../../router/routes';
+import { CART_PAGE_ROUTE, HOME_PAGE_ROUTE } from '../../router/routes';
 
 import { Container, ProductCard, Button, Header } from '../../shared';
 
@@ -32,7 +32,7 @@ export const FavouritesPage = () => {
 	};
 
 	const handleBack = () => {
-		navigate(PRODUCTS_PAGE_ROUTE);
+		navigate(HOME_PAGE_ROUTE);
 	};
 
 	return (

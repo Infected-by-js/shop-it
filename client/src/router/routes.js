@@ -1,6 +1,6 @@
 export const HOME_PAGE_ROUTE = '/';
-export const PRODUCTS_PAGE_ROUTE = '/products';
-export const PRODUCTS_CATEGORY_ROUTE = ':categoryId';
+export const PRODUCTS_CATEGORY_ROUTE = '/category/:categoryId';
+
 export const PRODUCT_PAGE_ROUTE = '/product/:productId';
 
 export const REGISTER_PAGE_ROUTE = '/register';
@@ -13,5 +13,5 @@ export const routeToProductPage = (productId) => {
 };
 
 export const routeToCategoryPage = (categoryId) => {
-	return `/products/${categoryId}`;
+	return `/category/${categoryId}`;
 };

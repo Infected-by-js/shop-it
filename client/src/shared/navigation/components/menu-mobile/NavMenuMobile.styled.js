@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { animationSpeed, color, fontWeight } from '../../../../assets/styles/constants';
 
 export const NavMobileContainer = styled.div`
-	height: 100vh;
+	height: 110vh;
 	width: 100%;
 	position: fixed;
 	top: 0;

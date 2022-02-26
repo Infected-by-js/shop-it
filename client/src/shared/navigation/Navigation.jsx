@@ -1,108 +1,103 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FiShoppingBag, FiHeart } from 'react-icons/fi';
 import { useViewport } from '../../hooks/useViewport';
 
+import { CART_PAGE_ROUTE, FAVOURITES_PAGE_ROUTE, LOGIN_PAGE_ROUTE } from '../../router/routes';
 import {
-	CART_PAGE_ROUTE,
-	FAVOURITES_PAGE_ROUTE,
-	HOME_PAGE_ROUTE,
-	PRODUCTS_PAGE_ROUTE,
-	REGISTER_PAGE_ROUTE,
-} from '../../router/routes';
-import { cartQuantitySelector, favouriteQuantitySelector } from '../../redux/selectors';
+	cartQuantitySelector,
+	favouriteQuantitySelector,
+	selectCurrentUser,
+} from '../../redux/selectors';
+import { logOutUser } from '../../redux/actions';
 
-import { Dropdown, IconWithBange } from '../index';
+import { IconWithBange } from '../';
 import { NavItem, NavMenu, NavMenuMobile } from './components';
 
-import { IconCart, IconHeart } from '../../assets/images/icons';
 import { IconWrapp, SignButton, Link } from './Navigation.styled';
-import { logOutUser } from '../../redux/features/auth/authActions';
+import { Dropdown } from '../dropdown/Dropdown';
+import { useNavigate } from 'react-router-dom';
 
 const MOBILE_BREAKPOINT = 1024;
 
 export const Navigation = () => {
 	const { isBreakpoint } = useViewport(MOBILE_BREAKPOINT);
+	const currentUser = useSelector(selectCurrentUser);
 	const productsInCart = useSelector(cartQuantitySelector);
 	const productsInFavourites = useSelector(favouriteQuantitySelector);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const handleLogOut = () => {
-		dispatch(logOutUser());
+	const handleSign = () => {
+		if (currentUser) {
+			dispatch(logOutUser());
+		} else {
+			navigate(LOGIN_PAGE_ROUTE);
+		}
 	};
 
 	return (
 		<>
 			{isBreakpoint ? (
 				<NavMenuMobile>
+					{currentUser && (
+						<>
+							<NavItem>
+								<Link to={CART_PAGE_ROUTE}>
+									<IconWithBange
+										icon={FiHeart}
+										bangeLabel={productsInFavourites}
+										isShownBange={productsInFavourites !== 0}
+									/>
+								</Link>
+							</NavItem>
+							<NavItem>
+								<Link to={FAVOURITES_PAGE_ROUTE}>
+									<IconWithBange
+										icon={FiShoppingBag}
+										bangeLabel={productsInCart}
+										isShownBange={productsInCart !== 0}
+									/>
+								</Link>
+							</NavItem>
+						</>
+					)}
 					<NavItem>
-						<Link to={HOME_PAGE_ROUTE}>Home</Link>
-					</NavItem>
-					<NavItem>
-						<Link to={PRODUCTS_PAGE_ROUTE}>Shop</Link>
-					</NavItem>
-					<NavItem>
-						<Link to={CART_PAGE_ROUTE}>
-							<IconWithBange
-								icon={IconHeart}
-								bangeLabel={productsInFavourites}
-								isShownBange={productsInFavourites !== 0}
-							/>
-						</Link>
-					</NavItem>
-					<NavItem>
-						<Link to={FAVOURITES_PAGE_ROUTE}>
-							<IconWithBange
-								icon={IconCart}
-								bangeLabel={productsInCart}
-								isShownBange={productsInCart !== 0}
-							/>
-						</Link>
-					</NavItem>
-					<NavItem>
-						<SignButton onClick={handleLogOut}>Log-Out</SignButton>
+						<SignButton onClick={handleSign}>{currentUser ? 'Logout' : 'Login'}</SignButton>
 					</NavItem>
 				</NavMenuMobile>
 			) : (
 				<NavMenu>
-					<NavItem>
-						{/* FIXME: add active page by url*/}
-						<Dropdown label='Home'>
-							<Dropdown.Item>
-								<Link to={HOME_PAGE_ROUTE}>Home</Link>
-							</Dropdown.Item>
-							<Dropdown.Item>
-								<Link to={PRODUCTS_PAGE_ROUTE}>Shop</Link>
-							</Dropdown.Item>
-						</Dropdown>
-					</NavItem>
-					<NavItem>
-						<Dropdown label={'UserName'}>
-							<Dropdown.Item>
+					{currentUser && (
+						<>
+							<NavItem>
 								<Link to={FAVOURITES_PAGE_ROUTE}>
 									<IconWrapp>
 										<IconWithBange
-											icon={IconHeart}
+											icon={FiHeart}
 											bangeLabel={productsInFavourites}
 											isShownBange={productsInFavourites !== 0}
 										/>
 									</IconWrapp>
 								</Link>
-							</Dropdown.Item>
-							<Dropdown.Item>
+							</NavItem>
+							<NavItem>
 								<Link to={CART_PAGE_ROUTE}>
 									<IconWrapp>
 										<IconWithBange
-											icon={IconCart}
+											icon={FiShoppingBag}
 											bangeLabel={productsInCart}
 											isShownBange={productsInCart !== 0}
 										/>
 									</IconWrapp>
 								</Link>
-							</Dropdown.Item>
+							</NavItem>
+						</>
+					)}
+					<NavItem>
+						<Dropdown label={currentUser ? currentUser.username : 'Have an Account?'}>
 							<Dropdown.Item>
-								<SignButton>
-									<Link to={REGISTER_PAGE_ROUTE}>Sign-In</Link>
-								</SignButton>
+								<SignButton onClick={handleSign}>{currentUser ? 'Logout' : 'Login'}</SignButton>
 							</Dropdown.Item>
 						</Dropdown>
 					</NavItem>

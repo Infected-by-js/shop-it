@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { PRODUCTS_PAGE_ROUTE } from '../../router/routes';
+import { HOME_PAGE_ROUTE } from '../../router/routes';
 import { removeFromCart } from '../../redux/actions';
 import { cartSelector } from '../../redux/selectors';
 
@@ -31,7 +31,7 @@ export const CartPage = () => {
 	};
 
 	const handleBack = () => {
-		navigate(PRODUCTS_PAGE_ROUTE);
+		navigate(HOME_PAGE_ROUTE);
 	};
 
 	return (

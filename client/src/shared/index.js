@@ -15,3 +15,4 @@ export { Popup } from './popup/Popup';
 export { Portal } from './portal/Portal';
 export { ProductCard } from './product-card/ProductCard';
 export { ProductList } from './product-list/ProductList';
+export { Loader } from './loader/Loader';

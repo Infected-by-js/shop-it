@@ -15,7 +15,6 @@ export const NavMenuItem = styled.li`
 		display: inline-block;
 		height: 100%;
 		width: 100%;
-		padding: 20px 0;
 		border-radius: 8px;
 		transition: color ${animationSpeed.middle} ease-in-out;
 
@@ -30,8 +29,8 @@ export const NavMenuItem = styled.li`
 	}
 
 	svg {
-		width: 30px;
-		height: 22px;
+		width: 32px;
+		height: 32px;
 
 		g {
 			stroke: ${color.black};

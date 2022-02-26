@@ -1,35 +1,34 @@
 import styled from 'styled-components';
-import { color, device, headerHeight } from '../../assets/styles/constants';
+import { darken } from 'polished';
+import { color, fonts, fontWeight, headerHeight, device } from '../../assets/styles/constants';
 
-export const Main = styled.main``;
-export const Hero = styled.div`
-	min-height: 100vh;
-	width: 100%;
-	padding: 100px;
+export const ProductsPageWrapper = styled.div`
 	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-`;
-export const BgVideo = styled.video`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	object-fit: cover;
-`;
-export const Overlay = styled.div`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.3);
+	flex-direction: column;
+	height: 100vh;
 `;
 
-export const Wrapper = styled.div`
+export const Main = styled.main`
 	margin-top: ${headerHeight};
 	padding-bottom: 80px;
+	flex: 1;
+
+	background-color: ${color.white};
 `;
 
-export const Column = styled.section``;
+export const MainTitle = styled.h1`
+	margin: 30px 0;
+	font-size: 1.25rem;
+	font-family: ${fonts.inter};
+	font-weight: ${fontWeight.inter.s};
+	text-align: center;
+	text-transform: uppercase;
+
+	@media ${device.tablet} {
+		font-size: 1.5rem;
+	}
+
+	@media ${device.laptop} {
+		font-size: 2rem;
+	}
+`;

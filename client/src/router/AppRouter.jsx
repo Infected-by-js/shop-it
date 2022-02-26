@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import StorageService from '../api/services/StorageService';
-import { CartPage, ProductPage, HomePage, ProductsPage, AuthPage, FavouritesPage } from '../pages';
+import { CartPage, ProductPage, HomePage, AuthPage, FavouritesPage } from '../pages';
 
 import { requestAuth } from '../redux/actions';
 import { selectCurrentUser } from '../redux/selectors';
@@ -13,7 +13,6 @@ import {
 	HOME_PAGE_ROUTE,
 	LOGIN_PAGE_ROUTE,
 	REGISTER_PAGE_ROUTE,
-	PRODUCTS_PAGE_ROUTE,
 	FAVOURITES_PAGE_ROUTE,
 } from './routes';
 
@@ -32,9 +31,8 @@ export const AppRouter = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path={HOME_PAGE_ROUTE} element={<HomePage />} />
-				<Route path={PRODUCTS_PAGE_ROUTE} element={<ProductsPage />}>
-					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<ProductsPage />} />
+				<Route path={HOME_PAGE_ROUTE} element={<HomePage />}>
+					<Route path={PRODUCTS_CATEGORY_ROUTE} element={<HomePage />} />
 				</Route>
 
 				<Route path={PRODUCT_PAGE_ROUTE} element={<ProductPage />} />
@@ -55,8 +53,4 @@ export const AppRouter = () => {
 
 const PrivateRoute = ({ isLogged }) => {
 	return isLogged ? <Outlet /> : <Navigate to={HOME_PAGE_ROUTE} />;
-};
-
-const PublicRoute = ({ isLogged }) => {
-	return isLogged ? <Navigate to={HOME_PAGE_ROUTE} /> : <Outlet />;
 };

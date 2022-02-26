@@ -24,8 +24,8 @@ export const IconWrapp = styled.div`
 
 export const Bange = styled.span`
 	position: absolute;
-	right: -15px;
-	top: -15px;
+	right: -13px;
+	top: -13px;
 	width: 24px;
 	height: 24px;
 
