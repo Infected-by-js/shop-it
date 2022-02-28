@@ -5,7 +5,7 @@ import StorageService from '../api/services/StorageService';
 import { CartPage, ProductPage, HomePage, AuthPage, FavouritesPage } from '../pages';
 
 import { requestAuth } from '../redux/actions';
-import { selectCurrentUser } from '../redux/selectors';
+import { selectUser } from '../redux/selectors';
 import {
 	CART_PAGE_ROUTE,
 	PRODUCTS_CATEGORY_ROUTE,
@@ -17,7 +17,7 @@ import {
 } from './routes';
 
 export const AppRouter = () => {
-	const currentUser = useSelector(selectCurrentUser);
+	const { currentUser } = useSelector(selectUser);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

@@ -21,12 +21,8 @@ function fetchProduct(id) {
 	return axiosInstance.get(`${PRODUCTS}/${id}`);
 }
 
-function saveProduct(product, token) {
-	return axiosInstance.post(PRODUCTS, product, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
+function saveProduct(product) {
+	return axiosInstance.post(PRODUCTS, product);
 }
 
 function auth() {

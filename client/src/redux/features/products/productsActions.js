@@ -1,35 +1,26 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import ProductService from '../../../api/services/ProductService';
-import {
-	productsLoading,
-	productsLoaded,
-	activeProductLoaded,
-	productsLoadingFailed,
-} from './productsSlice';
 
-export const getProducts = ({ category, limit } = {}) => {
-	return async (dispatch) => {
+export const getProducts = createAsyncThunk(
+	'products/getProducts',
+	async ({ category, limit }, { rejectWithValue }) => {
 		try {
-			dispatch(productsLoading());
-
 			const products = await ProductService.fetchAll({ category, limit });
-
-			dispatch(productsLoaded(products));
+			return products;
 		} catch (error) {
-			dispatch(productsLoadingFailed(error.response.data));
+			return rejectWithValue(error.response.data);
 		}
-	};
-};
+	}
+);
 
-export const getOneProduct = (id) => {
-	return async (dispatch) => {
+export const getOneProduct = createAsyncThunk(
+	'products/getProduct',
+	async (id, { rejectWithValue, getState }) => {
 		try {
-			dispatch(productsLoading());
-
 			const product = await ProductService.fetchOne(id);
-
-			dispatch(activeProductLoaded(product));
+			return product;
 		} catch (error) {
-			dispatch(productsLoadingFailed(error.response.data));
+			return rejectWithValue(error.response.data);
 		}
-	};
-};
+	}
+);

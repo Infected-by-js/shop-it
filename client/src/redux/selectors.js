@@ -1,4 +1,11 @@
-export { productsSelector } from './features/products/productsSelector';
+export {
+	productsSelector,
+	selectProducts,
+	selectActiveProduct,
+	selectProductsLoadingState,
+	selectProductsError,
+} from './features/products/productsSelectors';
+
 export { searchSelector } from './features/search/searchSelectors';
 export {
 	cartSelector,
@@ -14,7 +21,8 @@ export {
 
 export {
 	selectUser,
+	selectIsUserAuth,
 	selectCurrentUser,
-	selectLoadingState,
+	selectAuthLoadingState,
 	selectAuthError,
 } from './features/auth/authSelectors';

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const configDB = require('./config/db');
 
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
@@ -10,10 +10,7 @@ const imageRoute = require('./routes/image');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-mongoose
-	.connect(process.env.MONGO_URL)
-	.then(() => console.log('DB connection is successfull!'))
-	.catch((err) => console.log(err));
+configDB();
 
 app.use(express.json());
 app.use(cors());

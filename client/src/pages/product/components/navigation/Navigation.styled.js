@@ -68,19 +68,36 @@ export const Icons = styled.div`
 	}
 `;
 
-export const IconWrapp = styled.span`
+export const IconCart = styled.span`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 42px;
-	width: 42px;
+	height: 52px;
+	width: 52px;
 	font-size: 2.2rem;
+
+	padding: 5px;
+	border-radius: 50%;
+	background-color: ${({ isInCart }) => (isInCart ? color.red : 'transparent')};
+
+	svg {
+		color: ${({ isInCart }) => (isInCart ? color.white : color.black)};
+		transition: color ${animationSpeed.middle} ease-in-out;
+	}
 
 	cursor: pointer;
 
-	transition: color ${animationSpeed.middle} ease-in-out;
+	transition: background-color ${animationSpeed.middle} ease-in-out;
 
 	&:hover {
-		color: ${color.red};
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+`;
+
+export const IconFavourite = styled(IconCart)`
+	background-color: ${({ isFavourite }) => (isFavourite ? color.red : 'transparent')};
+
+	& svg {
+		color: ${({ isFavourite }) => (isFavourite ? color.white : color.black)};
 	}
 `;

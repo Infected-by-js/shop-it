@@ -1,16 +1,19 @@
 import styled from 'styled-components';
-import { device, color, animationSpeed } from '../../../../assets/styles/constants';
+import { device, color } from '../../../../assets/styles/constants';
 
 export const ImageWrapp = styled.div`
+	position: relative;
 	grid-area: image;
 	padding: 10px;
+	overflow: hidden;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	max-height: 850px;
 
 	img {
+		position: absolute;
+
 		height: 100%;
 		width: 100%;
 		object-fit: contain;
@@ -18,11 +21,18 @@ export const ImageWrapp = styled.div`
 
 	@media ${device.tablet} {
 		margin-bottom: 30px;
+		height: 550px;
 	}
 
 	@media ${device.laptop} {
+		height: 700px;
+
 		margin-bottom: 0;
 		padding: 0 20px 20px 0;
+
+		img {
+			position: absolute;
+		}
 	}
 `;
 
@@ -31,11 +41,12 @@ export const Previews = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 50px;
-	border-top: 1px solid ${color.greyLight};
 
 	display: none;
 
-	@media ${device.laptop} {
+	@media ${device.tablet} {
+		border-top: 1px solid ${color.greyLight};
+
 		display: flex;
 		align-items: flex-start;
 	}
@@ -43,16 +54,9 @@ export const Previews = styled.div`
 
 export const PreviewsItem = styled.div`
 	margin-top: 20px;
-	height: 80px;
-	width: 80px;
+	height: 100px;
 	cursor: pointer;
-	opacity: 0.7;
-
-	transition: opacity ${animationSpeed.middle} ease-in;
-
-	&:hover {
-		opacity: 1;
-	}
+	overflow: hidden;
 
 	img {
 		height: 100%;

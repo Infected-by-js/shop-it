@@ -38,8 +38,7 @@ export const ButtonsWrapper = styled.div`
 	background-color: rgba(0, 0, 0, 0.5);
 	transition: all ${animationSpeed.middle} ease;
 
-	${Wrapper}:hover &,
-	${Wrapper}:focus-within & {
+	${Wrapper}:hover & {
 		opacity: 1;
 	}
 `;
@@ -54,24 +53,21 @@ export const Button = styled.button`
 	border: 0;
 	border-radius: 50%;
 	background-color: ${color.white};
+	transition: background-color ${animationSpeed.middle} ease;
 
 	svg {
 		width: 50%;
 		height: 50%;
 
-		g {
-			transition: stroke ${animationSpeed.middle} ease, fill ${animationSpeed.middle} ease;
-
-			stroke: ${color.black};
-		}
+		transition: color ${animationSpeed.middle} ease;
 	}
 
 	${({ isActive }) =>
 		isActive &&
 		css`
-			svg g {
-				fill: ${color.red};
-				stroke: ${color.red};
+			background-color: ${color.red};
+			svg {
+				color: ${color.white};
 			}
 		`}
 

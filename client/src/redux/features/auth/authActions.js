@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
 
 			return restUserCredentials;
 		} catch (error) {
-			console.log(error.response.data);
+			console.log(error.response);
 
 			return rejectWithValue(error.response.data);
 		}

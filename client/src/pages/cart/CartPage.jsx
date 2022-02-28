@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +9,6 @@ import { cartSelector } from '../../redux/selectors';
 
 import { Header, Container, Modal, Button } from '../../shared';
 
-import { IconShevronLeft, IconShevronRight } from '../../assets/images/icons';
 import { Wrapper, Title, ButtonsWrapp } from './CartPage.styled.js';
 import { Cart } from './components/cart/Cart';
 
@@ -42,12 +42,12 @@ export const CartPage = () => {
 				<Title>Your Cart</Title>
 				<ButtonsWrapp>
 					<Button outlined onClick={handleBack}>
-						<IconShevronLeft />
+						<FiChevronLeft />
 						CONTINUE SHOPPING
 					</Button>
 					<Button outlined onClick={handleOpenModal}>
 						CHECKOUT NOW
-						<IconShevronRight />
+						<FiChevronRight />
 					</Button>
 				</ButtonsWrapp>
 

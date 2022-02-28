@@ -7,14 +7,12 @@ class ProductService {
 
 	async fetchAll({ category = '', limit = '', query = '' }) {
 		const response = await this.requests.fetchProducts({ category, limit, query });
+		console.log(response.data);
 
 		const products = response.data.map((product) => {
 			const images = product.images.map(this.requests.getImageUrl);
-			const isMongo = product.hasOwnProperty('_id');
-			const productId = isMongo ? product._id : product.id;
-			delete product._id;
 
-			return { ...product, id: productId, images };
+			return { ...product, images };
 		});
 
 		return products;
@@ -25,11 +23,7 @@ class ProductService {
 		const product = response.data;
 		const images = product.images.map(this.requests.getImageUrl);
 
-		const isMongo = product.hasOwnProperty('_id');
-		const productId = isMongo ? product._id : product.id;
-		delete product._id;
-
-		return { ...product, id: productId, images };
+		return { ...product, images };
 	}
 
 	async createOne(requestBody) {

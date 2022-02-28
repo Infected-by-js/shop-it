@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { changeInputValue, searchProducts, addToRecentSearch } from '../../../../redux/actions';
 import { searchSelector } from '../../../../redux/selectors';
 import { routeToProductPage } from '../../../../router/routes';
-import { useDebounceInput } from '../../../../hooks/useDebounceInput';
+import { useDebounceInput } from '../../../../hooks/';
 
 import {
 	TriggerButton,

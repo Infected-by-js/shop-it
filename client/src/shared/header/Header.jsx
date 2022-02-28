@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Container, Logo, Navigation } from '../index';
 import { Wrapper, Content } from './Header.styled.js';
 

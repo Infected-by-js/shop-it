@@ -1,19 +1,25 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Main, MainTitle, ProductsPageWrapper } from './HomePage.styled';
-import { Header, Container, ProductList, Footer } from '../../shared';
+import { Header, Container, Footer, ProductList } from '../../shared';
 import { Filters } from './components';
 import { categories } from '../../assets/categories';
 import { routeToCategoryPage } from '../../router/routes';
 
+import { Main, MainTitle, ProductsPageWrapper } from './HomePage.styled';
+
+const initialCategory = categories[0].value;
+
 export const HomePage = () => {
-	const params = useParams();
 	const navigate = useNavigate();
-	const activeCategory = params.categoryId ?? '';
+	const params = useParams();
+
+	const activeCategory = useMemo(() => {
+		return params.categoryId ?? initialCategory;
+	}, [params.categoryId]);
 
 	const changeCategory = (value) => {
-		navigate(routeToCategoryPage(value));
+		navigate(value ? routeToCategoryPage(value) : value);
 	};
 
 	return (

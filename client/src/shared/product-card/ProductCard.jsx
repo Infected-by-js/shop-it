@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-import { IconCart, IconSearch, IconHeart } from '../../assets/images/icons';
+import { FiShoppingBag, FiSearch, FiHeart } from 'react-icons/fi';
 import { Wrapper, Image, ButtonsWrapper, Button } from './ProductCard.styled';
 
 export const ProductCard = (props) => {
-	const { image, product, title, onAddToCart, onDetails, onAddToFavourites } = props;
 	const [isInCart, setIsInCart] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
+	const {
+		image,
+		product,
+		title,
+		onAddToCart,
+		onDetails,
+		onAddToFavourites,
+		checkIsInCart,
+		checkIsFavourite,
+	} = props;
 
 	const handleToggleToCart = () => {
 		onAddToCart(product);
@@ -22,18 +32,26 @@ export const ProductCard = (props) => {
 		setIsFavourite((prev) => !prev);
 	};
 
+	useEffect(() => {
+		const isAlreadyInCart = checkIsInCart(product);
+		const isAlreadyFavourite = checkIsFavourite(product);
+
+		setIsInCart(isAlreadyInCart);
+		setIsFavourite(isAlreadyFavourite);
+	}, []);
+
 	return (
 		<Wrapper>
 			<Image src={image} alt={title} />
 			<ButtonsWrapper>
 				<Button onClick={handleToggleToCart} isActive={isInCart}>
-					<IconCart />
+					<FiShoppingBag />
 				</Button>
 				<Button onClick={handleClickDetails}>
-					<IconSearch />
+					<FiSearch />
 				</Button>
 				<Button onClick={handleToggleToFavourite} isActive={isFavourite}>
-					<IconHeart />
+					<FiHeart />
 				</Button>
 			</ButtonsWrapper>
 		</Wrapper>

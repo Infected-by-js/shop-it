@@ -1,22 +1,26 @@
 import React from 'react';
 import { FiHeart, FiChevronLeft, FiShoppingBag } from 'react-icons/fi';
-import { Nav, BackButton, IconWrapp, Icons } from './Navigation.styled';
+import { Nav, BackButton, IconCart, IconFavourite, Icons } from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = (props) => {
+	const { onBack, isAuth, onAddToCart, onAddToFavourite, isInCart, isFavourite } = props;
+
 	return (
 		<Nav>
-			<BackButton>
+			<BackButton onClick={onBack}>
 				<FiChevronLeft />
-				Back to all ArtWorks
+				Back to ArtWorks
 			</BackButton>
-			<Icons>
-				<IconWrapp>
-					<FiShoppingBag />
-				</IconWrapp>
-				<IconWrapp>
-					<FiHeart />
-				</IconWrapp>
-			</Icons>
+			{isAuth && (
+				<Icons>
+					<IconCart isInCart={isInCart} onClick={onAddToCart}>
+						<FiShoppingBag />
+					</IconCart>
+					<IconFavourite isFavourite={isFavourite} onClick={onAddToFavourite}>
+						<FiHeart />
+					</IconFavourite>
+				</Icons>
+			)}
 		</Nav>
 	);
 };

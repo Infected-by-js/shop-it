@@ -1,5 +1,5 @@
 export const HOME_PAGE_ROUTE = '/';
-export const PRODUCTS_CATEGORY_ROUTE = '/category/:categoryId';
+export const PRODUCTS_CATEGORY_ROUTE = 'category/:categoryId';
 
 export const PRODUCT_PAGE_ROUTE = '/product/:productId';
 

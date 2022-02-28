@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import { IconSearch } from '../../../../../../assets/images/icons/IconSearch';
+import { FiSearch } from 'react-icons/fi';
 import { Form, IconWrapp, Input, Button } from './SearchBarForm.styled';
 
 export const SearchBarForm = ({ onChangeInput, onClickFormButton }) => {
@@ -19,7 +18,7 @@ export const SearchBarForm = ({ onChangeInput, onClickFormButton }) => {
 	return (
 		<Form>
 			<IconWrapp>
-				<IconSearch />
+				<FiSearch />
 			</IconWrapp>
 			<Input onChange={handleChangeInputValue} value={value} />
 			<Button onClick={handleClickButton}>Esc</Button>

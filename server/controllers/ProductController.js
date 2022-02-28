@@ -28,7 +28,6 @@ class ProductController {
 	async getOne(req, res) {
 		try {
 			const product = await ProductService.getProduct(req.params.id);
-
 			res.status(200).json(product);
 		} catch (error) {
 			res.status(500).json('Product not found!');

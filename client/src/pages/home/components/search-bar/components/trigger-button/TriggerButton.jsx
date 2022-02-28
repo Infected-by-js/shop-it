@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { IconSearch } from '../../../../../../assets/images/icons';
+import { FiSearch } from 'react-icons/fi';
 
 import { Button, IconWrapp, Text } from './TriggerButton.styled';
 
@@ -8,7 +7,7 @@ export const TriggerButton = ({ onTrigger }) => {
 	return (
 		<Button onClick={onTrigger}>
 			<IconWrapp>
-				<IconSearch />
+				<FiSearch />
 			</IconWrapp>
 			<Text>Search...</Text>
 		</Button>

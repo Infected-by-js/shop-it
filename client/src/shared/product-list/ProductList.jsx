@@ -4,20 +4,28 @@ import { useNavigate } from 'react-router-dom';
 
 import { routeToProductPage } from '../../router/routes';
 import { addToCart, addToFavourites, getProducts } from '../../redux/actions';
-import { productsSelector } from '../../redux/selectors';
+import {
+	cartProductsSelector,
+	favouriteProductsSelector,
+	productsSelector,
+} from '../../redux/selectors';
 
 import { ProductCard } from '../index';
 import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 import { ProductItemSkeleton } from '../skeletons';
+import { checkProductsInList } from '../../helpers/checkProductInList';
 
-export const ProductList = ({ category = '', limit = 8 }) => {
+export const ProductList = ({ category = '', limit = '' }) => {
 	const { products, isLoading } = useSelector(productsSelector);
+	const favourites = useSelector(favouriteProductsSelector);
+	const cartProducts = useSelector(cartProductsSelector);
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(getProducts({ category, limit }));
-	}, [category, limit]);
+	}, [category]);
 
 	const handleToggleToCart = (product) => {
 		dispatch(addToCart(product));
@@ -33,6 +41,14 @@ export const ProductList = ({ category = '', limit = 8 }) => {
 		dispatch(addToFavourites(product));
 	};
 
+	const checkIsInCart = (product) => {
+		return checkProductsInList(cartProducts, product);
+	};
+
+	const checkIsFavourite = (product) => {
+		return checkProductsInList(favourites, product);
+	};
+
 	if (isLoading) {
 		const skeletons = Array.from({ length: 4 });
 		return (
@@ -43,7 +59,6 @@ export const ProductList = ({ category = '', limit = 8 }) => {
 			</Wrapper>
 		);
 	}
-
 	if (!products.length) {
 		return <EmptyStateTitle>There will be products soon!</EmptyStateTitle>;
 	}
@@ -56,6 +71,8 @@ export const ProductList = ({ category = '', limit = 8 }) => {
 					product={product}
 					image={product.images[0]}
 					title={product.title}
+					checkIsInCart={checkIsInCart}
+					checkIsFavourite={checkIsFavourite}
 					onAddToCart={handleToggleToCart}
 					onDetails={handleRouteToDetalsPage}
 					onAddToFavourites={handleToggleToFavourite}
