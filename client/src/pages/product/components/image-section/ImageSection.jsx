@@ -1,122 +1,83 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ImageWrapp, Previews, PreviewsItem } from './ImageSection.styled';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const sliderVariants = {
-	incoming: (direction) => ({
-		x: direction > 0 ? '100%' : '-100%',
-		scale: 1.2,
-		opacity: 0,
-	}),
-	active: { x: 0, scale: 1, opacity: 1 },
-	exit: (direction) => ({
-		x: direction > 0 ? '-100%' : '100%',
-		scale: 1,
-		opacity: 0,
-	}),
-};
+import { useViewport } from '../../../../hooks/useViewport';
+import { Button } from '../../../../shared';
+import { MainImage, Thumbnails } from './components-animated';
+import { Buttons, ImageWrapp, Previews } from './ImageSection.styled';
 
-const sliderTransition = {
-	duration: 0.5,
-	ease: [0.4, 0.2, 0.6, 1],
-};
-
-const tabVariant = {
-	active: {
-		width: '100px',
-		opacity: 1,
-		transition: {
-			type: 'tween',
-			duration: 0.4,
-		},
-	},
-	inactive: {
-		width: '60px',
-		opacity: 0.4,
-		transition: {
-			type: 'tween',
-			duration: 0.4,
-		},
-	},
-};
-
-// on mobile show only one image
+const MOBILE_BREAKPOINT = 768;
 
 export const ImageSection = ({ images }) => {
-	const [[imageCount, direction], setImageCount] = useState([0, 0]);
-
-	const [activeImageIndex, setActiveImageIndex] = useState(0);
+	const [[activeImageIndex, direction], setImage] = useState([0, 0]);
+	const { isBreakpoint } = useViewport(MOBILE_BREAKPOINT);
+	const firstImageIndex = 0;
+	const lastImageIndex = images?.length - 1;
 
 	if (!images) {
 		return null;
 	}
 
-	const handleActiveImage = (index) => {
-		setActiveImageIndex(index);
-	};
-
-	const swipeToImage = (swipeDirection) => {
-		setActiveImageIndex(activeImageIndex + swipeDirection);
-		setImageCount([imageCount + swipeDirection, swipeDirection]);
-	};
-
-	const dragEndHandler = (dragInfo) => {
-		const draggedDistance = dragInfo.offset.x;
-		const swipeThreshold = 50;
-		if (draggedDistance > swipeThreshold) {
-			swipeToImage(-1);
-		} else if (draggedDistance < -swipeThreshold) {
-			swipeToImage(1);
+	const changeToNextImage = (index) => {
+		if (index <= lastImageIndex) {
+			setImage([index, 1]);
 		}
 	};
 
-	const skipToImage = (index) => {
-		let changeDirection;
+	const changeToPrevImage = (index) => {
+		if (index >= firstImageIndex) {
+			setImage([index, -1]);
+		}
+	};
+
+	const changeImage = (index) => {
 		if (index > activeImageIndex) {
-			changeDirection = 1;
-		} else if (index < activeImageIndex) {
-			changeDirection = -1;
+			changeToNextImage(index);
+		} else {
+			changeToPrevImage(index);
 		}
-		setActiveImageIndex(index);
-		setImageCount([index, changeDirection]);
+	};
+
+	const handleButtonChangeImage = (event) => {
+		const button = event?.target?.closest('button');
+		const buttonDirection = button?.dataset?.direction;
+		if (!buttonDirection) return;
+
+		if (buttonDirection === 'prev') {
+			changeToPrevImage(activeImageIndex - 1);
+		} else if (buttonDirection === 'next') {
+			changeToNextImage(activeImageIndex + 1);
+		}
 	};
 
 	return (
 		<>
 			<ImageWrapp>
-				<AnimatePresence custom={direction}>
-					<motion.img
-						src={images[activeImageIndex]}
-						alt='product'
-						key={images[activeImageIndex]}
-						custom={direction}
-						variants={sliderVariants}
-						initial='incoming'
-						animate='active'
-						exit='exit'
-						transition={sliderTransition}
-						drag='x'
-						dragConstraints={{ left: 0, right: 0 }}
-						dragElastic={1}
-						onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
-					/>
-				</AnimatePresence>
+				<MainImage
+					imageKey={activeImageIndex}
+					src={images[activeImageIndex]}
+					direction={direction}
+				/>
 			</ImageWrapp>
-			<Previews>
-				<AnimatePresence>
-					{images.map((image, index) => (
-						<PreviewsItem
-							as={motion.div}
-							key={image}
-							variants={tabVariant}
-							animate={activeImageIndex === index ? 'active' : 'inactive'}
-							onClick={() => skipToImage(index)}
-						>
-							<img src={image} alt='preview' />
-						</PreviewsItem>
-					))}
-				</AnimatePresence>
-			</Previews>
+
+			{isBreakpoint ? (
+				<Buttons onClick={handleButtonChangeImage}>
+					<Button outlined data-direction='prev' disabled={activeImageIndex === firstImageIndex}>
+						<FiArrowLeft />
+					</Button>
+					<Button outlined data-direction='next' disabled={activeImageIndex === lastImageIndex}>
+						<FiArrowRight />
+					</Button>
+				</Buttons>
+			) : (
+				<Previews>
+					<Thumbnails
+						images={images}
+						activeImageIndex={activeImageIndex}
+						onChangeImage={changeImage}
+					/>
+				</Previews>
+			)}
 		</>
 	);
 };

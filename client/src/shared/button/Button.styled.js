@@ -24,11 +24,6 @@ export const StyledButton = styled.button`
 		background-color: ${lighten(0.3, color.black)};
 	}
 
-	&:disabled {
-		background-color: ${lighten(0.5, color.black)};
-		cursor: not-allowed;
-	}
-
 	${({ outlined }) =>
 		outlined &&
 		css`
@@ -53,6 +48,21 @@ export const StyledButton = styled.button`
 				color: ${color.black};
 				border: 2px solid ${color.black};
 				background-color: ${color.red};
+			}
+		`}
+
+
+		${({ disabled }) =>
+		disabled &&
+		css`
+			color: ${color.white};
+			border: 2px solid transparent;
+			background-color: ${lighten(0.3, color.grey)};
+			cursor: not-allowed;
+
+			&:hover,
+			&:focus-visible {
+				background-color: ${lighten(0.3, color.grey)};
 			}
 		`}
 `;

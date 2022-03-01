@@ -13,12 +13,12 @@ export const Navigation = (props) => {
 			</BackButton>
 			{isAuth && (
 				<Icons>
-					<IconCart isInCart={isInCart} onClick={onAddToCart}>
-						<FiShoppingBag />
-					</IconCart>
 					<IconFavourite isFavourite={isFavourite} onClick={onAddToFavourite}>
 						<FiHeart />
 					</IconFavourite>
+					<IconCart isInCart={isInCart} onClick={onAddToCart}>
+						<FiShoppingBag />
+					</IconCart>
 				</Icons>
 			)}
 		</Nav>

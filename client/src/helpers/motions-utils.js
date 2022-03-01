@@ -1,12 +1,6 @@
-export const defaultEasing = [0.6, -0.05, 0.01, 0.99];
+export const defaultEasing = [0.4, 0.2, 0.6, 1];
 
-export const staggerHalf = {
-	animate: { transition: { staggerChildren: 0.05 } },
-};
-
-export const staggerOne = {
-	animate: { transition: { staggerChildren: 0.1 } },
-};
+// delete this
 
 export const modalVariants = {
 	hidden: { opacity: 0, top: '100%', transition: { duration: 0.8, ease: defaultEasing } },

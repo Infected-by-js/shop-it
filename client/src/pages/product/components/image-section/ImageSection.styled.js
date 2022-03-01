@@ -4,12 +4,14 @@ import { device, color } from '../../../../assets/styles/constants';
 export const ImageWrapp = styled.div`
 	position: relative;
 	grid-area: image;
-	padding: 10px;
-	overflow: hidden;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	height: 280px;
+	overflow: hidden;
 
 	img {
 		position: absolute;
@@ -21,7 +23,7 @@ export const ImageWrapp = styled.div`
 
 	@media ${device.tablet} {
 		margin-bottom: 30px;
-		height: 550px;
+		height: 380px;
 	}
 
 	@media ${device.laptop} {
@@ -52,19 +54,12 @@ export const Previews = styled.div`
 	}
 `;
 
-export const PreviewsItem = styled.div`
-	margin-top: 20px;
-	height: 100px;
-	cursor: pointer;
-	overflow: hidden;
+export const Buttons = styled.div`
+	grid-area: buttons;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
 
-	img {
-		height: 100%;
-		width: 100%;
-		object-fit: contain;
-	}
-
-	@media ${device.laptop} {
-		display: flex;
-	}
+	font-size: 1.5rem;
 `;

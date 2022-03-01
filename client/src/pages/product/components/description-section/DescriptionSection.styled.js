@@ -3,11 +3,16 @@ import { device, color, fonts, fontWeight } from '../../../../assets/styles/cons
 
 export const Wrapper = styled.div`
 	grid-area: content;
-
+	margin-top: 10px;
 	padding: 10px;
 	border-left: none;
 
+	@media ${device.tablet} {
+		margin-top: 30px;
+	}
+
 	@media ${device.laptop} {
+		margin-top: 0;
 		padding: 30px;
 		border-left: 1px solid ${color.greyLight};
 	}

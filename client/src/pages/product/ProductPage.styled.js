@@ -12,11 +12,12 @@ export const Main = styled.div`
 	display: grid;
 
 	grid-template-columns: 1fr;
-	grid-template-rows: 0.2fr 1fr 1fr;
-	grid-auto-columns: 1fr;
+	grid-template-rows: 0.2fr 1fr 0.1fr 1fr;
+	grid-auto-columns: 100%;
 	grid-template-areas:
 		'nav'
 		'image'
+		'buttons'
 		'content';
 
 	@media ${device.tablet} {
@@ -33,7 +34,7 @@ export const Main = styled.div`
 		min-height: 100%;
 		height: calc(100vh - ${headerHeight} - 10px);
 
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, 50%);
 		grid-template-rows: 0.2fr 2fr 1fr;
 		grid-auto-columns: 1fr;
 		grid-template-areas:
