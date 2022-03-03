@@ -12,19 +12,21 @@ export const Main = styled.div`
 	display: grid;
 
 	grid-template-columns: 1fr;
-	grid-template-rows: 0.2fr 1fr 0.1fr 1fr;
+	grid-template-rows: 0.1fr 1fr 0.1fr 0.5fr;
 	grid-auto-columns: 100%;
 	grid-template-areas:
 		'nav'
 		'image'
 		'buttons'
+		'previews'
 		'content';
 
 	@media ${device.tablet} {
-		grid-template-rows: repeat(4, auto);
+		grid-template-rows: 0.1fr 1fr 0.1fr 0.1fr;
 		grid-template-areas:
 			'nav'
 			'image'
+			'buttons'
 			'previews'
 			'content';
 	}
@@ -35,11 +37,12 @@ export const Main = styled.div`
 		height: calc(100vh - ${headerHeight} - 10px);
 
 		grid-template-columns: repeat(2, 50%);
-		grid-template-rows: 0.2fr 2fr 1fr;
+		grid-template-rows: 0.1fr 1fr 0.1fr 0.5fr;
 		grid-auto-columns: 1fr;
 		grid-template-areas:
 			'image nav'
 			'image content'
+			'buttons content'
 			'previews content';
 	}
 `;

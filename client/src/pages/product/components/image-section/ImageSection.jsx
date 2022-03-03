@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-import { useViewport } from '../../../../hooks/useViewport';
 import { Button } from '../../../../shared';
 import { MainImage, Thumbnails } from './components-animated';
-import { Buttons, ImageWrapp, Previews } from './ImageSection.styled';
-
-const MOBILE_BREAKPOINT = 768;
+import { Buttons, ImageWrapp } from './ImageSection.styled';
 
 export const ImageSection = ({ images }) => {
 	const [[activeImageIndex, direction], setImage] = useState([0, 0]);
-	const { isBreakpoint } = useViewport(MOBILE_BREAKPOINT);
 	const firstImageIndex = 0;
 	const lastImageIndex = images?.length - 1;
 
@@ -30,7 +26,7 @@ export const ImageSection = ({ images }) => {
 		}
 	};
 
-	const changeImage = (index) => {
+	const handleClickImage = (index) => {
 		if (index > activeImageIndex) {
 			changeToNextImage(index);
 		} else {
@@ -44,9 +40,13 @@ export const ImageSection = ({ images }) => {
 		if (!buttonDirection) return;
 
 		if (buttonDirection === 'prev') {
-			changeToPrevImage(activeImageIndex - 1);
+			const isFirstImage = activeImageIndex === firstImageIndex;
+
+			changeToPrevImage(isFirstImage ? lastImageIndex : activeImageIndex - 1);
 		} else if (buttonDirection === 'next') {
-			changeToNextImage(activeImageIndex + 1);
+			const isLastImage = activeImageIndex === lastImageIndex;
+
+			changeToNextImage(isLastImage ? firstImageIndex : activeImageIndex + 1);
 		}
 	};
 
@@ -60,24 +60,19 @@ export const ImageSection = ({ images }) => {
 				/>
 			</ImageWrapp>
 
-			{isBreakpoint ? (
-				<Buttons onClick={handleButtonChangeImage}>
-					<Button outlined data-direction='prev' disabled={activeImageIndex === firstImageIndex}>
-						<FiArrowLeft />
-					</Button>
-					<Button outlined data-direction='next' disabled={activeImageIndex === lastImageIndex}>
-						<FiArrowRight />
-					</Button>
-				</Buttons>
-			) : (
-				<Previews>
-					<Thumbnails
-						images={images}
-						activeImageIndex={activeImageIndex}
-						onChangeImage={changeImage}
-					/>
-				</Previews>
-			)}
+			<Buttons onClick={handleButtonChangeImage}>
+				<Button outlined data-direction='prev'>
+					<FiArrowLeft />
+				</Button>
+				<Button outlined data-direction='next'>
+					<FiArrowRight />
+				</Button>
+			</Buttons>
+			<Thumbnails
+				images={images}
+				activeImageIndex={activeImageIndex}
+				onChangeImage={handleClickImage}
+			/>
 		</>
 	);
 };

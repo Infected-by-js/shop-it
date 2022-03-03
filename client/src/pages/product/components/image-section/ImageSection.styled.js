@@ -23,11 +23,12 @@ export const ImageWrapp = styled.div`
 
 	@media ${device.tablet} {
 		margin-bottom: 30px;
-		height: 380px;
+		max-height: 380px;
+		height: auto;
 	}
 
 	@media ${device.laptop} {
-		height: 700px;
+		max-height: 580px;
 
 		margin-bottom: 0;
 		padding: 0 20px 20px 0;
@@ -38,28 +39,13 @@ export const ImageWrapp = styled.div`
 	}
 `;
 
-export const Previews = styled.div`
-	grid-area: previews;
-	align-items: center;
-	justify-content: center;
-	gap: 50px;
-
-	display: none;
-
-	@media ${device.tablet} {
-		border-top: 1px solid ${color.greyLight};
-
-		display: flex;
-		align-items: flex-start;
-	}
-`;
-
 export const Buttons = styled.div`
 	grid-area: buttons;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+	margin-bottom: 20px;
 
 	font-size: 1.5rem;
 `;

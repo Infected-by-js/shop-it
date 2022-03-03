@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import {
 	productsSelector,
 	cartProductsSelector,
@@ -15,12 +17,14 @@ import {
 	removeFromFavourites,
 } from '../../redux/actions';
 
-import { checkProductsInList } from '../../helpers/checkProductInList';
 import { HOME_PAGE_ROUTE } from '../../router/routes';
+import { checkProductsInList } from '../../helpers/checkProductInList';
+import { formatCentsToDollars } from '../../helpers/handleMoney';
 
-import { Container, Header } from '../../shared';
+import { Container, Header, Loader } from '../../shared';
 import { ImageSection, DescriptionSection, Navigation } from './components/';
 import { Main } from './ProductPage.styled';
+import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
 
 export const ProductPage = () => {
 	const { activeProduct, isLoading, error } = useSelector(productsSelector);
@@ -63,27 +67,37 @@ export const ProductPage = () => {
 		navigate(HOME_PAGE_ROUTE);
 	};
 
-	return (
-		<>
+	return isLoading ? (
+		<Loader />
+	) : (
+		<motion.div
+			variants={defaultPageFadeInVariants}
+			initial='initial'
+			animate='animate'
+			exit='exit'
+		>
 			<Header />
 			<Container as='main'>
-				{isLoading ? (
-					<p>loading</p>
-				) : (
-					<Main>
-						<Navigation
-							onBack={handleClickBack}
-							onAddToFavourite={handleToggleToFavourite}
-							onAddToCart={handleToggleToCart}
-							isAuth={isAuth}
-							isInCart={isAlreadyInCart}
-							isFavourite={isAlreadyFavourite}
-						/>
-						<ImageSection images={activeProduct?.images} />
-						<DescriptionSection />
-					</Main>
-				)}
+				<Main>
+					<Navigation
+						onBack={handleClickBack}
+						onAddToFavourite={handleToggleToFavourite}
+						onAddToCart={handleToggleToCart}
+						isAuth={isAuth}
+						isInCart={isAlreadyInCart}
+						isFavourite={isAlreadyFavourite}
+					/>
+					<ImageSection images={activeProduct?.images} />
+					<DescriptionSection
+						title={activeProduct.title}
+						author={activeProduct.author}
+						price={formatCentsToDollars(activeProduct.price)}
+						year_created={activeProduct.year_created}
+						size={activeProduct.size}
+						description={activeProduct.description}
+					/>
+				</Main>
 			</Container>
-		</>
+		</motion.div>
 	);
 };

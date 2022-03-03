@@ -1,17 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
 import { thumbnailsVariantes } from '../motion';
-import { PreviewsItem } from './Thumbnails.styled';
+import { ThumbnailsWrapp, ThumbnailsItem } from './Thumbnails.styled';
 
 export const Thumbnails = ({ images, activeImageIndex, onChangeImage }) => {
-	const [thumbnails, setThumbnails] = useState(images);
-
 	return (
-		<>
-			<button>prev</button>
+		<ThumbnailsWrapp>
 			<AnimatePresence>
-				{thumbnails.map((thumbnail, index) => (
-					<PreviewsItem
+				{images.map((thumbnail, index) => (
+					<ThumbnailsItem
 						as={motion.div}
 						key={thumbnail}
 						variants={thumbnailsVariantes}
@@ -19,10 +15,9 @@ export const Thumbnails = ({ images, activeImageIndex, onChangeImage }) => {
 						onClick={() => onChangeImage(index)}
 					>
 						<img src={thumbnail} alt='thumbnail' />
-					</PreviewsItem>
+					</ThumbnailsItem>
 				))}
 			</AnimatePresence>
-			<button>next</button>
-		</>
+		</ThumbnailsWrapp>
 	);
 };
