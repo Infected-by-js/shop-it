@@ -2,11 +2,18 @@ import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { StyledInput } from '../../shared/input/Input.styled';
-import { color, device, fonts, fontWeight, animationSpeed } from '../../assets/styles/constants';
+import {
+	color,
+	device,
+	fonts,
+	fontWeight,
+	animationSpeed,
+	headerHeight,
+} from '../../assets/styles/constants';
 
 export const Wrapper = styled.div`
+	margin-top: ${headerHeight};
 	width: 100vw;
-	min-height: 100vh;
 
 	display: flex;
 	align-items: center;
@@ -14,6 +21,11 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 
 	background: ${color.white};
+
+	@media ${device.tablet} {
+		margin-top: 0;
+		min-height: 100vh;
+	}
 `;
 
 export const Content = styled.div`
@@ -43,6 +55,7 @@ export const Content = styled.div`
 `;
 export const TitleContainer = styled.div`
 	grid-area: title;
+	padding-bottom: 20px;
 
 	display: flex;
 	align-items: center;
@@ -59,7 +72,6 @@ export const Title = styled.h1`
 	flex: 1;
 
 	margin: 0;
-	padding-bottom: 20px;
 
 	@media ${device.tablet} {
 		text-align: left;

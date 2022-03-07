@@ -1,22 +1,20 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-import { mainImageVariants } from '../motion';
+import { mainImageVariants } from '../../../../../../helpers/motions-utils';
 
 export const MainImage = ({ imageKey, src, direction }) => {
 	return (
 		<>
-			<AnimatePresence>
-				<motion.img
-					key={imageKey}
-					src={src}
-					alt='product'
-					custom={direction}
-					variants={mainImageVariants}
-					initial='incoming'
-					animate='active'
-					exit='exit'
-				/>
-			</AnimatePresence>
+			<motion.img
+				key={imageKey}
+				src={src}
+				alt='product'
+				custom={direction}
+				variants={mainImageVariants}
+				initial='incoming'
+				animate='active'
+				exit='exit'
+			/>
 		</>
 	);
 };

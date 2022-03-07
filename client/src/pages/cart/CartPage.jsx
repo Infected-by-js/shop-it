@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +9,9 @@ import { removeFromCart } from '../../redux/actions';
 import { cartSelector } from '../../redux/selectors';
 
 import { Header, Container, Modal, Button } from '../../shared';
-
-import { Wrapper, Title, ButtonsWrapp } from './CartPage.styled.js';
 import { Cart } from './components/cart/Cart';
+import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
+import { Wrapper, Title, ButtonsWrapp } from './CartPage.styled.js';
 
 export const CartPage = () => {
 	const { products, totalPrice } = useSelector(cartSelector);
@@ -35,7 +36,7 @@ export const CartPage = () => {
 	};
 
 	return (
-		<Wrapper>
+		<Wrapper as={motion.div} variants={defaultPageFadeInVariants} {...defaultPageFadeInVariants}>
 			<Header />
 
 			<Container>

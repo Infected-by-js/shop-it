@@ -2,8 +2,10 @@ export {
 	productsSelector,
 	selectProducts,
 	selectActiveProduct,
+	selectCategory,
 	selectProductsLoadingState,
 	selectProductsError,
+	selectPage,
 } from './features/products/productsSelectors';
 
 export { searchSelector } from './features/search/searchSelectors';

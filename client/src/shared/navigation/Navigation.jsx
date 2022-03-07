@@ -11,7 +11,7 @@ import {
 } from '../../redux/selectors';
 import { logOutUser } from '../../redux/actions';
 
-import { IconWithBange } from '../';
+import { IconWithBadge } from '../';
 import { NavItem, NavMenu, NavMenuMobile } from './components';
 
 import { IconWrapp, SignButton, Link } from './Navigation.styled';
@@ -44,7 +44,7 @@ export const Navigation = () => {
 						<>
 							<NavItem>
 								<Link to={CART_PAGE_ROUTE}>
-									<IconWithBange
+									<IconWithBadge
 										icon={FiHeart}
 										bangeLabel={productsInFavourites}
 										isShownBange={productsInFavourites !== 0}
@@ -53,7 +53,7 @@ export const Navigation = () => {
 							</NavItem>
 							<NavItem>
 								<Link to={FAVOURITES_PAGE_ROUTE}>
-									<IconWithBange
+									<IconWithBadge
 										icon={FiShoppingBag}
 										bangeLabel={productsInCart}
 										isShownBange={productsInCart !== 0}
@@ -73,7 +73,7 @@ export const Navigation = () => {
 							<NavItem>
 								<Link to={FAVOURITES_PAGE_ROUTE}>
 									<IconWrapp>
-										<IconWithBange
+										<IconWithBadge
 											icon={FiHeart}
 											bangeLabel={productsInFavourites}
 											isShownBange={productsInFavourites !== 0}
@@ -84,7 +84,7 @@ export const Navigation = () => {
 							<NavItem>
 								<Link to={CART_PAGE_ROUTE}>
 									<IconWrapp>
-										<IconWithBange
+										<IconWithBadge
 											icon={FiShoppingBag}
 											bangeLabel={productsInCart}
 											isShownBange={productsInCart !== 0}

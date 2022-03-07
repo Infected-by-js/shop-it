@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device, color } from '../../../../assets/styles/constants';
+import { device } from '../../../../assets/styles/constants';
 
 export const ImageWrapp = styled.div`
 	position: relative;
@@ -23,12 +23,11 @@ export const ImageWrapp = styled.div`
 
 	@media ${device.tablet} {
 		margin-bottom: 30px;
-		max-height: 380px;
-		height: auto;
+		height: 580px;
 	}
 
 	@media ${device.laptop} {
-		max-height: 580px;
+		height: auto;
 
 		margin-bottom: 0;
 		padding: 0 20px 20px 0;

@@ -1,6 +1,6 @@
 import { lighten } from 'polished';
-import styled, { css } from 'styled-components';
-import { color, device, animationSpeed } from '../../assets/styles/constants';
+import styled from 'styled-components';
+import { color, animationSpeed } from '../../assets/styles/constants';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -40,44 +40,5 @@ export const ButtonsWrapper = styled.div`
 
 	${Wrapper}:hover & {
 		opacity: 1;
-	}
-`;
-
-export const Button = styled.button`
-	width: 80px;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0.6;
-	border: 0;
-	border-radius: 50%;
-	background-color: ${color.white};
-	transition: background-color ${animationSpeed.middle} ease;
-
-	svg {
-		width: 50%;
-		height: 50%;
-
-		transition: color ${animationSpeed.middle} ease;
-	}
-
-	${({ isActive }) =>
-		isActive &&
-		css`
-			background-color: ${color.red};
-			svg {
-				color: ${color.white};
-			}
-		`}
-
-	&:hover,
-	&:focus-visible {
-		opacity: 1;
-	}
-
-	@media ${device.laptop} {
-		width: 60px;
-		height: 60px;
 	}
 `;

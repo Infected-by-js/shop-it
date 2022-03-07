@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
+import { useScrollToTop } from '../../hooks/';
 import { routeToProductPage } from '../../router/routes';
-import { addToCart, addToFavourites, getProducts } from '../../redux/actions';
+import { addToCart, addToFavourites, getProducts, setPage } from '../../redux/actions';
 import {
 	cartProductsSelector,
 	favouriteProductsSelector,
 	productsSelector,
 } from '../../redux/selectors';
 
-import { ProductCard } from '../index';
-import { Wrapper, EmptyStateTitle } from './ProductList.styled';
-import { ProductItemSkeleton } from '../skeletons';
+import { ProductCard, ProductItemSkeleton, Pagination } from '../';
 import { checkProductsInList } from '../../helpers/checkProductInList';
+import { Wrapper, EmptyStateTitle } from './ProductList.styled';
 
-export const ProductList = ({ category = '', limit = '' }) => {
-	const { products, isLoading } = useSelector(productsSelector);
+const SCROLL_POSITION = 0;
+
+export const ProductList = ({ category = '' }) => {
+	const { products, isLoading, pages, page } = useSelector(productsSelector);
 	const favourites = useSelector(favouriteProductsSelector);
 	const cartProducts = useSelector(cartProductsSelector);
 
@@ -24,8 +27,10 @@ export const ProductList = ({ category = '', limit = '' }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getProducts({ category, limit }));
-	}, [category]);
+		dispatch(getProducts({ category, page }));
+	}, [category, page]);
+
+	useScrollToTop(SCROLL_POSITION, isLoading);
 
 	const handleToggleToCart = (product) => {
 		dispatch(addToCart(product));
@@ -41,13 +46,12 @@ export const ProductList = ({ category = '', limit = '' }) => {
 		dispatch(addToFavourites(product));
 	};
 
-	const checkIsInCart = (product) => {
-		return checkProductsInList(cartProducts, product);
+	const handleClickPagination = (page) => {
+		dispatch(setPage(page));
 	};
 
-	const checkIsFavourite = (product) => {
-		return checkProductsInList(favourites, product);
-	};
+	const checkIsInCart = (product) => checkProductsInList(cartProducts, product);
+	const checkIsFavourite = (product) => checkProductsInList(favourites, product);
 
 	if (isLoading) {
 		const skeletons = Array.from({ length: 4 });
@@ -59,25 +63,32 @@ export const ProductList = ({ category = '', limit = '' }) => {
 			</Wrapper>
 		);
 	}
+
 	if (!products.length) {
 		return <EmptyStateTitle>There will be products soon!</EmptyStateTitle>;
 	}
 
 	return (
-		<Wrapper>
-			{products.map((product) => (
-				<ProductCard
-					key={product.id}
-					product={product}
-					image={product.images[0]}
-					title={product.title}
-					checkIsInCart={checkIsInCart}
-					checkIsFavourite={checkIsFavourite}
-					onAddToCart={handleToggleToCart}
-					onDetails={handleRouteToDetalsPage}
-					onAddToFavourites={handleToggleToFavourite}
-				/>
-			))}
-		</Wrapper>
+		products && (
+			<>
+				<Wrapper as={motion.div}>
+					{products.map((product, index) => (
+						<ProductCard
+							key={product.id}
+							index={index}
+							product={product}
+							image={product.images[0]}
+							title={product.title}
+							checkIsInCart={checkIsInCart}
+							checkIsFavourite={checkIsFavourite}
+							onAddToCart={handleToggleToCart}
+							onDetails={handleRouteToDetalsPage}
+							onAddToFavourites={handleToggleToFavourite}
+						/>
+					))}
+				</Wrapper>
+				<Pagination pagesCount={pages} activePage={page} onClick={handleClickPagination} />
+			</>
+		)
 	);
 };

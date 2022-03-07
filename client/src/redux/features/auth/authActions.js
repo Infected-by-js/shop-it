@@ -32,16 +32,20 @@ export const registerUser = createAsyncThunk(
 	}
 );
 
-export const requestAuth = createAsyncThunk('auth/requestAuth', async (token) => {
-	try {
-		const user = await UserService.requestAuth(token);
-		const { accessToken, ...restUserCredentials } = user;
+export const requestAuth = createAsyncThunk(
+	'auth/requestAuth',
+	async (token, { rejectWithValue }) => {
+		try {
+			const user = await UserService.requestAuth(token);
+			const { accessToken, ...restUserCredentials } = user;
 
-		return restUserCredentials;
-	} catch (error) {
-		console.log(error.response.data);
+			return restUserCredentials;
+		} catch (error) {
+			console.log(error.response.data);
+			return rejectWithValue(error.response.data);
+		}
 	}
-});
+);
 
 export const logOutUser = createAction('auth/logout', () => {
 	UserService.logout();

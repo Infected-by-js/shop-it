@@ -5,17 +5,17 @@ class ProductService {
 		this.requests = requests;
 	}
 
-	async fetchAll({ category = '', limit = '', query = '' }) {
-		const response = await this.requests.fetchProducts({ category, limit, query });
-		console.log(response.data);
+	async fetchAll({ category = '', limit = '', page = '', query = '' }) {
+		const response = await this.requests.fetchProducts({ category, limit, query, page });
+		const { products, pageData } = response.data;
 
-		const products = response.data.map((product) => {
+		const preparedProducts = products.map((product) => {
 			const images = product.images.map(this.requests.getImageUrl);
 
 			return { ...product, images };
 		});
 
-		return products;
+		return { products: preparedProducts, page: pageData };
 	}
 
 	async fetchOne(id) {

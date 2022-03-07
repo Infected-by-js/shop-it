@@ -5,11 +5,11 @@ import { color, fonts, fontWeight, headerHeight, device } from '../../assets/sty
 export const ProductsPageWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
+	margin-top: ${headerHeight};
 `;
 
 export const Main = styled.main`
-	margin-top: ${headerHeight};
 	padding-bottom: 80px;
 	flex: 1;
 

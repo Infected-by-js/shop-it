@@ -1,15 +1,18 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { FiShoppingBag, FiSearch, FiHeart } from 'react-icons/fi';
-import { Wrapper, Image, ButtonsWrapper, Button } from './ProductCard.styled';
+
+import { productCardVariants } from '../../helpers/motions-utils';
+import { ButtonAnimated } from '../';
+import { Wrapper, Image, ButtonsWrapper } from './ProductCard.styled';
 
 export const ProductCard = (props) => {
 	const [isInCart, setIsInCart] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
 	const {
-		image,
 		product,
+		image,
+		index,
 		title,
 		onAddToCart,
 		onDetails,
@@ -41,18 +44,18 @@ export const ProductCard = (props) => {
 	}, []);
 
 	return (
-		<Wrapper>
+		<Wrapper as={motion.div} variants={productCardVariants} custom={index} {...productCardVariants}>
 			<Image src={image} alt={title} />
 			<ButtonsWrapper>
-				<Button onClick={handleToggleToCart} isActive={isInCart}>
-					<FiShoppingBag />
-				</Button>
-				<Button onClick={handleClickDetails}>
-					<FiSearch />
-				</Button>
-				<Button onClick={handleToggleToFavourite} isActive={isFavourite}>
+				<ButtonAnimated onClick={handleToggleToFavourite} isActive={isFavourite}>
 					<FiHeart />
-				</Button>
+				</ButtonAnimated>
+				<ButtonAnimated onClick={handleClickDetails}>
+					<FiSearch />
+				</ButtonAnimated>
+				<ButtonAnimated onClick={handleToggleToCart} isActive={isInCart}>
+					<FiShoppingBag />
+				</ButtonAnimated>
 			</ButtonsWrapper>
 		</Wrapper>
 	);

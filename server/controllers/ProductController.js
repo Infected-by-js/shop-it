@@ -1,25 +1,41 @@
 const ProductService = require('../services/ProductService');
 const FileService = require('../services/FileService');
 const { validationResult } = require('express-validator');
+const { PAGE_ITEMS_LIMIT } = require('../utils/constants');
 
 class ProductController {
 	async getAll(req, res) {
 		const qLimit = req.query.limit;
 		const qCategory = req.query.category;
+		const qPage = req.query.page;
 		const qQuery = req.query.query;
 
 		try {
-			let products;
+			let productsData;
 
 			if (qCategory) {
-				products = await ProductService.getProductsByCategory(qCategory, qLimit);
+				productsData = await ProductService.getProductsByCategory({
+					category: qCategory,
+					page: qPage,
+					limit: qLimit,
+					pageLimit: PAGE_ITEMS_LIMIT,
+				});
 			} else if (qQuery) {
-				products = await ProductService.getProductsByQuery(qQuery);
+				productsData = await ProductService.getProductsByQuery({
+					query: qQuery,
+					page: qPage,
+					limit: qLimit,
+					pageLimit: PAGE_ITEMS_LIMIT,
+				});
 			} else {
-				products = await ProductService.getProducts(qLimit);
+				productsData = await ProductService.getProducts({
+					page: qPage,
+					limit: qLimit,
+					pageLimit: PAGE_ITEMS_LIMIT,
+				});
 			}
 
-			res.status(200).json(products);
+			res.status(200).json(productsData);
 		} catch (error) {
 			res.status(500).json(error.message);
 		}

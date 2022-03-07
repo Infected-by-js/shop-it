@@ -22,7 +22,7 @@ export const IconWrapp = styled.div`
 	}
 `;
 
-export const Bange = styled.span`
+export const Badge = styled.span`
 	position: absolute;
 	right: -13px;
 	top: -13px;

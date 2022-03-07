@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FcGoogle, FcBadDecision } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { HOME_PAGE_ROUTE, LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
 import { useFormValidation, useRouting } from '../../hooks/';
 import { loginUser, registerUser } from '../../redux/actions';
+import { selectUser } from '../../redux/selectors';
 
+import { authPageFadeInVariants } from '../../helpers/motions-utils';
 import { loginSchema, registerSchema } from './helpers/validationSchemas';
 import { loginInputs, registerInputs } from './helpers/formInputs';
 
@@ -22,17 +24,15 @@ import {
 	TitleContainer,
 	Error,
 } from './AuthPage.styled.js';
-import { selectUser } from '../../redux/selectors';
 
 export const AuthPage = () => {
-	const [isLoginPage, setIsLoginPage] = useState(true);
+	const [isLoginPage, setIsLoginPage] = useState(false);
 	const { isLoading, authError, currentUser } = useSelector(selectUser);
-	const { currentPage } = useRouting();
+	const { currentPage, navigateTo } = useRouting();
 	const { register, handleSubmit, validationErrors } = useFormValidation(
 		isLoginPage ? loginSchema : registerSchema
 	);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	const handleSubmitForm = (formData) => {
 		const { username, password, email } = formData;
@@ -46,13 +46,13 @@ export const AuthPage = () => {
 
 	useEffect(() => {
 		if (currentUser && !authError) {
-			navigate(HOME_PAGE_ROUTE);
+			navigateTo(HOME_PAGE_ROUTE);
 		}
 	}, [currentUser]);
 
 	useEffect(() => {
 		setIsLoginPage(currentPage === LOGIN_PAGE_ROUTE);
-	}, [currentPage]);
+	}, []);
 
 	return (
 		<>
@@ -64,7 +64,13 @@ export const AuthPage = () => {
 						<Error>{authError}</Error>
 					</TitleContainer>
 
-					<Form onSubmit={handleSubmit(handleSubmitForm)} noValidate>
+					<Form
+						onSubmit={handleSubmit(handleSubmitForm)}
+						noValidate
+						as={motion.form}
+						variants={authPageFadeInVariants}
+						{...authPageFadeInVariants}
+					>
 						{(isLoginPage ? loginInputs : registerInputs).map((input) => (
 							<FormInput
 								key={input.name}
@@ -76,7 +82,11 @@ export const AuthPage = () => {
 						<Button>{isLoginPage ? 'Login' : 'Sign Up'}</Button>
 					</Form>
 
-					<OthersBlock>
+					<OthersBlock
+						as={motion.div}
+						variants={authPageFadeInVariants}
+						{...authPageFadeInVariants}
+					>
 						<OtherLoginButton>
 							<FcGoogle />
 							Login with Google

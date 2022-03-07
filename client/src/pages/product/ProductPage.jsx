@@ -70,13 +70,7 @@ export const ProductPage = () => {
 	return isLoading ? (
 		<Loader />
 	) : (
-		<motion.div
-			variants={defaultPageFadeInVariants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
-		>
-			<Header />
+		<motion.div variants={defaultPageFadeInVariants} {...defaultPageFadeInVariants}>
 			<Container as='main'>
 				<Main>
 					<Navigation

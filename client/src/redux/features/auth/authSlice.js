@@ -27,7 +27,7 @@ const authSlice = createSlice({
 			state.currentUser = action.payload;
 			state.isAuth = true;
 		});
-		addMatcher(isRejectedWithValue(registerUser, loginUser), (state, action) => {
+		addMatcher(isRejectedWithValue(registerUser, loginUser, requestAuth), (state, action) => {
 			state.isLoading = false;
 			state.authError = action.payload;
 		});

@@ -7,6 +7,9 @@ export const selectActiveProduct = createSelector(
 	(products) => products.activeProduct
 );
 export const selectProducts = createSelector([productsSelector], (products) => products.products);
+export const selectPage = createSelector([productsSelector], (products) => products.page);
+export const selectPagesCount = createSelector([productsSelector], (products) => products.pages);
+export const selectCategory = createSelector([productsSelector], (products) => products.category);
 
 export const selectProductsLoadingState = createSelector(
 	[productsSelector],

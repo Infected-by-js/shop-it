@@ -1,6 +1,11 @@
 export { addToCart, removeFromCart } from './features/cart/cartActions';
 export { addToFavourites, removeFromFavourites } from './features/favourites/favouritesActions';
-export { getProducts, getOneProduct } from './features/products/productsActions';
+export {
+	getProducts,
+	getOneProduct,
+	setPage,
+	setCategory,
+} from './features/products/productsActions';
 export {
 	searchProducts,
 	addToRecentSearch,

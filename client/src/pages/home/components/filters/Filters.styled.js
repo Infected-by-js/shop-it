@@ -35,7 +35,7 @@ export const FilterItem = styled.button`
 	transition: color ${animationSpeed.middle} ease, background-color ${animationSpeed.middle} ease;
 
 	&:hover,
-	&:focus {
+	&:focus-visible {
 		color: ${color.white};
 		background-color: ${color.black};
 	}

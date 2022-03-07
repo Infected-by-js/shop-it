@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     min-width: 350px;
+	overflow-x: hidden;
     
   }
 

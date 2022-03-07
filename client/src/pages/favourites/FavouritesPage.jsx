@@ -37,8 +37,6 @@ export const FavouritesPage = () => {
 
 	return (
 		<Wrapper>
-			<Header />
-
 			<Container>
 				<Title>Your Favourites</Title>
 				<ButtonsWrapp>
