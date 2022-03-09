@@ -1,4 +1,5 @@
 import styled from 'styled-components/';
+import { color } from '../../assets/styles/constants';
 
 export const ModalContainer = styled.div`
 	position: fixed;
@@ -34,9 +35,10 @@ export const Content = styled.div`
 	background-color: transparent;
 	border: none;
 	z-index: 2;
+	overflow: hidden;
 
 	min-width: 300px;
 	min-height: 200px;
-	background-color: white;
+	background-color: ${color.white};
 	border-radius: 10px;
 `;

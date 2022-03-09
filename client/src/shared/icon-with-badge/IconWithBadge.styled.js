@@ -3,7 +3,7 @@ import { animationSpeed, color, fonts, fontWeight } from '../../assets/styles/co
 
 export const IconWrapp = styled.div`
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 

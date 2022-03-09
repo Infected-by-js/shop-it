@@ -5,33 +5,42 @@ import { FiShoppingBag, FiSearch, FiHeart } from 'react-icons/fi';
 import { productCardVariants } from '../../helpers/motions-utils';
 import { ButtonAnimated } from '../';
 import { Wrapper, Image, ButtonsWrapper } from './ProductCard.styled';
+import { useDispatch } from 'react-redux';
+import {
+	addToCart,
+	addToFavourites,
+	removeFromCart,
+	removeFromFavourites,
+} from '../../redux/actions';
+import { routeToProductPage } from '../../router/routes';
+import { useNavigate } from 'react-router-dom';
 
 export const ProductCard = (props) => {
+	const { product, image, index, title, checkIsInCart, checkIsFavourite } = props;
 	const [isInCart, setIsInCart] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
-	const {
-		product,
-		image,
-		index,
-		title,
-		onAddToCart,
-		onDetails,
-		onAddToFavourites,
-		checkIsInCart,
-		checkIsFavourite,
-	} = props;
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const handleToggleToCart = () => {
-		onAddToCart(product);
+		if (isInCart) {
+			dispatch(removeFromCart(product));
+		} else {
+			dispatch(addToCart(product));
+		}
 		setIsInCart((prev) => !prev);
 	};
 
 	const handleClickDetails = () => {
-		onDetails(product);
+		navigate(routeToProductPage(product.id));
 	};
 
 	const handleToggleToFavourite = () => {
-		onAddToFavourites(product);
+		if (isFavourite) {
+			dispatch(removeFromFavourites(product));
+		} else {
+			dispatch(addToFavourites(product));
+		}
 		setIsFavourite((prev) => !prev);
 	};
 

@@ -1,64 +1,54 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { removeFromFavourites } from '../../redux/actions';
-import { favouritesSelector } from '../../redux/selectors';
-import { CART_PAGE_ROUTE, HOME_PAGE_ROUTE } from '../../router/routes';
+import { favouriteProductsSelector } from '../../redux/selectors';
+import { routeToProductPage } from '../../router/routes';
 
-import { Container, ProductCard, Button, Header } from '../../shared';
+import { useRouting } from '../../hooks';
+import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
 
-import {
-	Wrapper,
-	Title,
-	ButtonsWrapp,
-	Content,
-	ProductsList,
-	Placeholder,
-} from './FavouritesPage.styled.js';
+import { Container, EmptyState } from '../../shared';
+import { FavouriteItem } from './components/';
+
+import { Wrapper, Title, Content, FavouriteList } from './FavouritesPage.styled.js';
 
 export const FavouritesPage = () => {
-	const products = useSelector(favouritesSelector);
+	const favourites = useSelector(favouriteProductsSelector);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	const { navigateTo } = useRouting();
 
-	const handleRemoveFromCart = (product) => {
-		dispatch(removeFromFavourites(product));
+	const handleRemoveFromFavourite = (item) => {
+		dispatch(removeFromFavourites(item));
 	};
 
-	const handleNavigateToCart = () => {
-		navigate(CART_PAGE_ROUTE);
-	};
-
-	const handleBack = () => {
-		navigate(HOME_PAGE_ROUTE);
+	const handleRouteToProduct = (id) => {
+		navigateTo(routeToProductPage(id));
 	};
 
 	return (
-		<Wrapper>
+		<Wrapper as={motion.div} variants={defaultPageFadeInVariants} {...defaultPageFadeInVariants}>
 			<Container>
-				<Title>Your Favourites</Title>
-				<ButtonsWrapp>
-					<Button outlined onClick={handleBack}>
-						<HiChevronLeft />
-						CONTINUE SHOPPING
-					</Button>
-					<Button outlined onClick={handleNavigateToCart}>
-						CHECKOUT NOW
-						<HiChevronRight />
-					</Button>
-				</ButtonsWrapp>
+				<Title>Your Wishlist</Title>
 
 				<Content>
-					{!products.length ? (
-						<Placeholder>You are did not add anything yet :(</Placeholder>
+					{!favourites.length ? (
+						<EmptyState label='Your Wishlist is Empty' />
 					) : (
-						<ProductsList>
-							{products.map((product) => (
-								<ProductCard key={product.id} />
-							))}
-						</ProductsList>
+						<FavouriteList as={motion.div} layout>
+							<AnimatePresence>
+								{favourites.map((favourite, index) => (
+									<FavouriteItem
+										key={favourite.id}
+										image={favourite.images[0]}
+										index={index}
+										product={favourite}
+										onRemoveFavourite={handleRemoveFromFavourite}
+										onOpenProduct={handleRouteToProduct}
+									/>
+								))}
+							</AnimatePresence>
+						</FavouriteList>
 					)}
 				</Content>
 			</Container>

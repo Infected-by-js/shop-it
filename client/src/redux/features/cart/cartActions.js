@@ -1,9 +1,9 @@
-import { addProduct, removeProduct } from './cartSlice';
+import { createAction } from '@reduxjs/toolkit';
 
-export const addToCart = (product) => {
-	return addProduct(product);
-};
+export const addToCart = createAction('cart/addToCart', (product) => {
+	return { payload: product };
+});
 
-export const removeFromCart = (product) => {
-	return removeProduct(product);
-};
+export const removeFromCart = createAction('cart/removeFromCart', (product) => {
+	return { payload: product };
+});

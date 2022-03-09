@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { useScrollToTop } from '../../hooks/';
-import { routeToProductPage } from '../../router/routes';
-import { addToCart, addToFavourites, getProducts, setPage } from '../../redux/actions';
+import { getProducts, setPage } from '../../redux/actions';
 import {
 	cartProductsSelector,
 	favouriteProductsSelector,
@@ -22,8 +20,6 @@ export const ProductList = ({ category = '' }) => {
 	const { products, isLoading, pages, page } = useSelector(productsSelector);
 	const favourites = useSelector(favouriteProductsSelector);
 	const cartProducts = useSelector(cartProductsSelector);
-
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -31,20 +27,6 @@ export const ProductList = ({ category = '' }) => {
 	}, [category, page]);
 
 	useScrollToTop(SCROLL_POSITION, isLoading);
-
-	const handleToggleToCart = (product) => {
-		dispatch(addToCart(product));
-	};
-
-	const handleRouteToDetalsPage = (product) => {
-		const productId = product.id;
-
-		navigate(routeToProductPage(productId));
-	};
-
-	const handleToggleToFavourite = (product) => {
-		dispatch(addToFavourites(product));
-	};
 
 	const handleClickPagination = (page) => {
 		dispatch(setPage(page));
@@ -81,9 +63,6 @@ export const ProductList = ({ category = '' }) => {
 							title={product.title}
 							checkIsInCart={checkIsInCart}
 							checkIsFavourite={checkIsFavourite}
-							onAddToCart={handleToggleToCart}
-							onDetails={handleRouteToDetalsPage}
-							onAddToFavourites={handleToggleToFavourite}
 						/>
 					))}
 				</Wrapper>

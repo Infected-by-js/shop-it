@@ -7,18 +7,16 @@ export const productCardVariants = {
 };
 
 export const mainImageVariants = {
-	incoming: (direction) => ({
-		x: direction > 0 ? '100%' : '-100%',
+	initial: (direction) => ({
+		x: direction > 0 ? '110%' : '-110%',
 		scale: 1.2,
-		opacity: 0,
-		transition: { duration: 0.5 },
+		transition: { duration: 0.25 },
 	}),
-	active: { x: 0, scale: 1, opacity: 1, transition: { duration: 0.5 } },
+	animate: { x: 0, scale: 1, transition: { duration: 0.25 } },
 	exit: (direction) => ({
-		x: direction > 0 ? '-100%' : '100%',
-		scale: 1,
-		opacity: 0,
-		transition: { duration: 0.5 },
+		x: direction > 0 ? '-110%' : '110%',
+		scale: 0.8,
+		transition: { duration: 0.25 },
 	}),
 };
 
@@ -77,19 +75,22 @@ export const footerFadeInUpVariants = {
 	},
 };
 
+export const bounceVariants = {
+	initial: { scale: 0, transition: { duration: 0.2, ease: defaultEasing } },
+	animate: { scale: 1, transition: { duration: 0.2, ease: defaultEasing } },
+	exit: { scale: 0, transition: { duration: 0.2, ease: defaultEasing } },
+};
+
 export const modalVariants = {
-	hidden: { opacity: 0, top: '100%', transition: { duration: 0.8, ease: defaultEasing } },
-	visible: { opacity: 1, top: '50%', transition: { duration: 0.8, ease: defaultEasing } },
+	initial: { opacity: 0, transition: { duration: 0.4, ease: defaultEasing } },
+	animate: { opacity: 1, transition: { duration: 0.4, ease: defaultEasing } },
+	exit: { opacity: 0, transition: { duration: 0.4, ease: defaultEasing } },
 };
 
 export const modalOverlayVariants = {
-	hidden: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
-	visible: { opacity: 1, transition: { duration: 0.2 } },
-};
-
-export const modalFadeInUpVariants = {
-	initial: { y: 60, opacity: 0, transition: { duration: 0.8, ease: defaultEasing } },
-	animate: { y: 0, opacity: 1, transition: { duration: 0.8, ease: defaultEasing } },
+	initial: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
+	animate: { opacity: 1, transition: { duration: 0.2 } },
+	exit: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
 };
 
 export const authPageFadeInVariants = {

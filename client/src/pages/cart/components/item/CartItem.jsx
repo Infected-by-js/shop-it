@@ -1,24 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 import { Wrapper, Image, Details, TextWrapp, Text, Price, RemoveButton } from './CartItem.styled';
 
 export const CartItem = (props) => {
-	const { id, image, title, author, style, size, price, onRemove, productLink = '/' } = props;
+	const { product, image, title, author, style, size, price, onRemove, onRouteToProduct } = props;
 
-	const handleRemoveFromCart = () => {
-		onRemove(id);
+	const handleRemoveFromCart = (event) => {
+		event.stopPropagation();
+		onRemove(product);
+	};
+
+	const handleClickProduct = () => {
+		onRouteToProduct(product.id);
 	};
 
 	return (
-		<Wrapper>
+		<Wrapper onClick={handleClickProduct}>
 			<Image src={image} />
 
 			<Details>
 				<TextWrapp>
-					<Link to={productLink}>
-						<Text style={{ fontWeight: 700 }}>{title}</Text>
-					</Link>
+					<Text style={{ fontWeight: 700 }}>{title}</Text>
 					<Text>by {author}</Text>
 					<Text>{style}</Text>
 					<Text>{size}</Text>

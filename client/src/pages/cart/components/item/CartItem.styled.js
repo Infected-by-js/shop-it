@@ -5,7 +5,7 @@ import {
 	fonts,
 	fontWeight,
 	animationSpeed,
-} from '../../../../../../assets/styles/constants';
+} from '../../../../assets/styles/constants';
 
 export const Wrapper = styled.div`
 	margin: 0 auto;
@@ -48,15 +48,6 @@ export const Details = styled.div`
 
 export const TextWrapp = styled.div`
 	flex: 1;
-
-	a {
-		transition: color ${animationSpeed.fast} ease;
-	}
-
-	a:hover,
-	a:focus-visible {
-		color: ${color.red};
-	}
 `;
 
 export const Text = styled.p`

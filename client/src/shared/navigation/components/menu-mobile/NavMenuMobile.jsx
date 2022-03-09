@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import { useSkipFirstMount } from '../../../../hooks/useSkipFirstMount';
-
+import { useSkipFirstMount } from '../../../../hooks';
 import { Burger } from '../burger/Burger';
 import { NavMobileContainer, NavMobileList } from './NavMenuMobile.styled';
 
-export const NavMenuMobile = ({ children }) => {
-	const [menuOpen, setMenuOpen] = useState(false);
-
+export const NavMenuMobile = ({ isOpen, onOpen, children, ...restProps }) => {
 	useSkipFirstMount(() => {
 		document.body.style.overflow = 'hidden';
+
 		return () => (document.body.style.overflow = 'visible');
-	}, menuOpen);
+	}, isOpen);
 
 	return (
 		<>
-			<Burger isMenuOpen={menuOpen} onClick={() => setMenuOpen((prev) => !prev)} />
-			<NavMobileContainer isMenuOpen={menuOpen}>
-				<NavMobileList>{children}</NavMobileList>
+			<Burger isMenuOpen={isOpen} onClick={onOpen} />
+			<NavMobileContainer isMenuOpen={isOpen}>
+				<NavMobileList {...restProps}>{children}</NavMobileList>
 			</NavMobileContainer>
 		</>
 	);

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { checkProductsInList } from '../../../helpers/checkProductInList';
+import { addToFavourites, removeFromFavourites } from './favouritesActions';
 
 const initialState = {
 	products: [],
@@ -9,27 +10,24 @@ const initialState = {
 export const favouritesSlice = createSlice({
 	name: 'favourites',
 	initialState,
-	reducers: {
-		addFavouriteProduct: (state, action) => {
+	extraReducers: ({ addCase }) => {
+		addCase(addToFavourites, (state, action) => {
 			const isAlreadyFavourite = checkProductsInList(state.products, action.payload);
 
 			if (!isAlreadyFavourite) {
 				state.quantity += 1;
 				state.products.push(action.payload);
 			}
-		},
-
-		removeFavouriteProduct: (state, action) => {
+		});
+		addCase(removeFromFavourites, (state, action) => {
 			const isAlreadyFavourite = checkProductsInList(state.products, action.payload);
 
 			if (isAlreadyFavourite) {
 				state.quantity -= 1;
 				state.products = state.products.filter((product) => product.id !== action.payload.id);
 			}
-		},
+		});
 	},
 });
-
-export const { addFavouriteProduct, removeFavouriteProduct } = favouritesSlice.actions;
 
 export default favouritesSlice.reducer;

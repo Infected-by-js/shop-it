@@ -1,23 +1,17 @@
 import styled from 'styled-components';
-import {
-	color,
-	device,
-	fonts,
-	fontWeight,
-	headerHeight,
-	animationSpeed,
-} from '../../assets/styles/constants';
+import { color, device, fonts, fontWeight, headerHeight } from '../../assets/styles/constants';
 
 export const Wrapper = styled.main``;
 
 export const Title = styled.h1`
 	margin-top: ${headerHeight};
-	padding-top: 20px;
+	padding: 20px 0;
 	margin-bottom: 20px;
+	font-size: 2rem;
 	font-family: ${fonts.inter};
 	font-weight: ${fontWeight.inter.xs};
 	text-align: center;
-	text-transform: uppercase;
+	border-bottom: 1px solid ${color.silverLight};
 `;
 
 export const ButtonsWrapp = styled.div`
@@ -28,26 +22,43 @@ export const ButtonsWrapp = styled.div`
 	padding-bottom: 50px;
 	border-bottom: 1px solid ${color.silverLight};
 
-	svg {
-		width: 8px;
-		height: 14px;
-
-		g {
-			transition: fill ${animationSpeed.fast} ease;
-		}
-	}
-
 	button {
-		padding: 10px;
-		gap: 5px;
-		&:hover {
-			svg g {
-				fill: ${color.white};
-			}
-		}
-
-		@media ${device.tablet} {
-			padding: 15px 20px;
-		}
+		font-family: ${fonts.inter};
+		font-weight: ${fontWeight.inter.xs};
 	}
+`;
+
+export const IconWrapp = styled.span`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.75rem;
+`;
+
+export const Cart = styled.div`
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+	margin-bottom: 50px;
+
+	flex-direction: column;
+
+	@media ${device.laptop} {
+		flex-direction: row;
+	}
+	@media ${device.laptopL} {
+		max-width: 80%;
+		margin: 0 auto 50px;
+	}
+`;
+
+export const Content = styled.div`
+	width: 100%;
+`;
+
+export const CartList = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 40px;
 `;

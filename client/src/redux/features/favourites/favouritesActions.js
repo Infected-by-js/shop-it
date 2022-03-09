@@ -1,9 +1,9 @@
-import { addFavouriteProduct, removeFavouriteProduct } from './favouritesSlice';
+import { createAction } from '@reduxjs/toolkit';
 
-export const addToFavourites = (product) => {
-	return addFavouriteProduct(product);
-};
+export const addToFavourites = createAction('favourites/addToFavourites', (product) => {
+	return { payload: product };
+});
 
-export const removeFromFavourites = (id) => {
-	return removeFavouriteProduct(id);
-};
+export const removeFromFavourites = createAction('favourites/removeFromFavourites', (product) => {
+	return { payload: product };
+});

@@ -19,3 +19,4 @@ export { Loader } from './loader/Loader';
 export { ButtonAnimated } from './button-animated/ButtonAnimated';
 export { ProductItemSkeleton, InfoSkeleton, OverviewSkeleton } from './skeletons/';
 export { Pagination } from './pagination/Pagination';
+export { EmptyState } from './empty-state/EmptyState';

@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Portal } from '../portal/Portal';
+import { motion } from 'framer-motion';
+import { modalVariants, modalOverlayVariants } from '../../helpers/motions-utils';
 import { ModalContainer, Overlay, Content } from './Modal.styled';
+import { useSkipFirstMount } from '../../hooks';
 
-export const Modal = ({ onClose, children, ...props }) => {
+export const Modal = ({ isOpen, onClose, children, ...props }) => {
 	useEffect(() => {
 		const handleEscButton = (event) => {
 			if (event.key === 'Escape') {
@@ -10,20 +13,34 @@ export const Modal = ({ onClose, children, ...props }) => {
 			}
 		};
 
-		document.body.style.overflow = 'hidden';
 		document.addEventListener('keydown', handleEscButton);
-
 		return () => {
 			document.removeEventListener('keydown', handleEscButton);
-			document.body.style.overflow = 'visible';
 		};
 	}, []);
+
+	useSkipFirstMount(() => {
+		document.body.style.overflow = 'hidden';
+
+		return () => (document.body.style.overflow = 'visible');
+	}, isOpen);
+
+	if (!isOpen) {
+		return null;
+	}
 
 	return (
 		<Portal>
 			<ModalContainer>
-				<Overlay onClick={onClose} />
-				<Content {...props}>{children}</Content>
+				<Overlay
+					onClick={onClose}
+					as={motion.div}
+					variants={modalOverlayVariants}
+					{...modalOverlayVariants}
+				/>
+				<Content as={motion.div} variants={modalVariants} {...modalVariants} {...props}>
+					{children}
+				</Content>
 			</ModalContainer>
 		</Portal>
 	);

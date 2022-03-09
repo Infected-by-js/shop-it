@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link as RouterLink } from 'react-router-dom';
 import { animationSpeed, color, fonts, fontWeight } from '../../assets/styles/constants';
 
 export const IconWrapp = styled.span`
@@ -8,7 +7,7 @@ export const IconWrapp = styled.span`
 	justify-content: center;
 `;
 
-export const SignButton = styled.button`
+export const Button = styled.button`
 	width: 100%;
 	height: 100%;
 	background-color: transparent;
@@ -23,10 +22,4 @@ export const SignButton = styled.button`
 	&:hover {
 		color: ${color.red};
 	}
-`;
-
-export const Link = styled(RouterLink)`
-	display: flex !important;
-	align-items: center;
-	justify-content: center;
 `;

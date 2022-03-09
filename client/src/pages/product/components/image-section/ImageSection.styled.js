@@ -10,7 +10,7 @@ export const ImageWrapp = styled.div`
 	justify-content: center;
 	padding: 10px;
 	margin-bottom: 10px;
-	height: 280px;
+	height: 450px;
 	overflow: hidden;
 
 	img {

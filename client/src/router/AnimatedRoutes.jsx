@@ -1,12 +1,13 @@
-import { AnimatePresence } from 'framer-motion';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
-import StorageService from '../api/services/StorageService';
-import { CartPage, ProductPage, HomePage, AuthPage, FavouritesPage } from '../pages';
+import { AnimatePresence } from 'framer-motion';
 
 import { requestAuth } from '../redux/actions';
 import { selectUser } from '../redux/selectors';
+
+import StorageService from '../api/services/StorageService';
+import { CartPage, ProductPage, HomePage, AuthPage, FavouritesPage } from '../pages';
 import { Header } from '../shared';
 import {
 	CART_PAGE_ROUTE,
