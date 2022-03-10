@@ -4,7 +4,7 @@ import { mainImageVariants } from '../../../../../../helpers/motions-utils';
 
 export const MainImage = ({ imageKey, src, direction, ...restProps }) => {
 	return (
-		<AnimatePresence exitBeforeEnter custom={direction}>
+		<AnimatePresence custom={direction}>
 			<motion.img
 				key={imageKey}
 				src={src}

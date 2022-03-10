@@ -1,7 +1,10 @@
 import { Wrapper, Image, Details, TextWrapp, Text, Price, RemoveButton } from './CartItem.styled';
+import { motion } from 'framer-motion';
+import { cartCardAnimation } from '../../../../helpers/motions-utils';
 
 export const CartItem = (props) => {
-	const { product, image, title, author, style, size, price, onRemove, onRouteToProduct } = props;
+	const { product, index, image, title, author, style, size, price, onRemove, onRouteToProduct } =
+		props;
 
 	const handleRemoveFromCart = (event) => {
 		event.stopPropagation();
@@ -13,7 +16,13 @@ export const CartItem = (props) => {
 	};
 
 	return (
-		<Wrapper onClick={handleClickProduct}>
+		<Wrapper
+			onClick={handleClickProduct}
+			as={motion.div}
+			key={product.id}
+			custom={index}
+			{...cartCardAnimation}
+		>
 			<Image src={image} />
 
 			<Details>

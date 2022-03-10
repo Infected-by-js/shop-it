@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { FiShoppingBag, FiSearch, FiHeart } from 'react-icons/fi';
 
-import { productCardVariants } from '../../helpers/motions-utils';
+import { productCardAnimation } from '../../helpers/motions-utils';
 import { ButtonAnimated } from '../';
 import { Wrapper, Image, ButtonsWrapper } from './ProductCard.styled';
 import { useDispatch } from 'react-redux';
@@ -53,7 +53,7 @@ export const ProductCard = (props) => {
 	}, []);
 
 	return (
-		<Wrapper as={motion.div} variants={productCardVariants} custom={index} {...productCardVariants}>
+		<Wrapper as={motion.div} custom={index} {...productCardAnimation}>
 			<Image src={image} alt={title} />
 			<ButtonsWrapper>
 				<ButtonAnimated onClick={handleToggleToFavourite} isActive={isFavourite}>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Portal } from '../portal/Portal';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { modalVariants, modalOverlayVariants } from '../../helpers/motions-utils';
 import { ModalContainer, Overlay, Content } from './Modal.styled';
 import { useSkipFirstMount } from '../../hooks';
@@ -33,12 +33,21 @@ export const Modal = ({ isOpen, onClose, children, ...props }) => {
 		<Portal>
 			<ModalContainer>
 				<Overlay
-					onClick={onClose}
 					as={motion.div}
+					key='overlay'
+					onClick={onClose}
 					variants={modalOverlayVariants}
 					{...modalOverlayVariants}
 				/>
-				<Content as={motion.div} variants={modalVariants} {...modalVariants} {...props}>
+				<Content
+					as={motion.div}
+					variants={modalVariants}
+					{...modalVariants}
+					{...props}
+					key='modal'
+					layoutId='modal'
+					layout
+				>
 					{children}
 				</Content>
 			</ModalContainer>

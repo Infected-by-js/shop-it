@@ -29,19 +29,21 @@ export const HomePage = () => {
 	};
 
 	return (
-		<ProductsPageWrapper>
-			<Main>
-				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
-				<Container>
-					<Filters
-						list={categories}
-						activeItemValue={activeCategory}
-						changeActiveItem={changeCategory}
-					/>
-					<ProductList category={activeCategory} />
-				</Container>
-			</Main>
-			<Footer />
-		</ProductsPageWrapper>
+		<>
+			<ProductsPageWrapper>
+				<Main>
+					<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
+					<Container>
+						<Filters
+							list={categories}
+							activeItemValue={activeCategory}
+							changeActiveItem={changeCategory}
+						/>
+						<ProductList category={activeCategory} />
+					</Container>
+				</Main>
+				<Footer />
+			</ProductsPageWrapper>
+		</>
 	);
 };

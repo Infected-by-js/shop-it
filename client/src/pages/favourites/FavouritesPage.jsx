@@ -6,7 +6,7 @@ import { favouriteProductsSelector } from '../../redux/selectors';
 import { routeToProductPage } from '../../router/routes';
 
 import { useRouting } from '../../hooks';
-import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
+import { defaultPageFadeInVariants, favouritePageAnimation } from '../../helpers/motions-utils';
 
 import { Container, EmptyState } from '../../shared';
 import { FavouriteItem } from './components/';
@@ -27,15 +27,17 @@ export const FavouritesPage = () => {
 	};
 
 	return (
-		<Wrapper as={motion.div} variants={defaultPageFadeInVariants} {...defaultPageFadeInVariants}>
+		<Wrapper as={motion.div}>
 			<Container>
-				<Title>Your Wishlist</Title>
+				<Title as={motion.h1} {...defaultPageFadeInVariants}>
+					Your Wishlist
+				</Title>
 
-				<Content>
+				<Content as={motion.div} layout='position' {...favouritePageAnimation} key='fav'>
 					{!favourites.length ? (
 						<EmptyState label='Your Wishlist is Empty' />
 					) : (
-						<FavouriteList as={motion.div} layout>
+						<FavouriteList>
 							<AnimatePresence>
 								{favourites.map((favourite, index) => (
 									<FavouriteItem

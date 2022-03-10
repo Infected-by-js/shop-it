@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animationSpeed, color, fonts, fontWeight } from '../../../../assets/styles/constants';
+import { color, fonts, fontWeight } from '../../../../assets/styles/constants';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -8,16 +8,8 @@ export const Wrapper = styled.div`
 	display: flex;
 	border-radius: 10px;
 	overflow: hidden;
-	box-shadow: 4px 9px 14px rgba(0, 0, 0, 0.1), 0px 0px 30px rgba(0, 0, 0, 0.1);
-
-	transition: box-shadow ${animationSpeed.middle} ease, transform ${animationSpeed.middle} ease;
-
-	&:hover {
-		transform: translate(-5px, -5px);
-		box-shadow: 5px 5px 14px rgba(0, 0, 0, 0.2), 2px 2px 20px rgba(0, 0, 0, 0.2);
-	}
-
 	cursor: pointer;
+	border: 1px solid ${color.greyLight};
 `;
 
 export const Image = styled.img`
@@ -50,7 +42,7 @@ export const Button = styled.button`
 	align-items: center;
 	justify-content: center;
 
-	font-size: 2.5rem;
+	font-size: 2.75rem;
 	border: none;
 	background-color: transparent;
 	border-radius: 50%;

@@ -1,9 +1,9 @@
 export const defaultEasing = [0.4, 0.2, 0.6, 1];
 
-export const productCardVariants = {
+export const productCardAnimation = {
 	initial: (index) => ({ opacity: 0, y: 150, transition: { duration: 0.5, delay: 0.1 * index } }),
 	animate: (index) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 * index } }),
-	exit: (index) => ({ opacity: 0, y: 0, transition: { duration: 0.5, delay: 0.1 * index } }),
+	exit: (index) => ({ opacity: 0, y: -150, transition: { duration: 0.5, delay: 0.1 * index } }),
 };
 
 export const mainImageVariants = {
@@ -82,15 +82,21 @@ export const bounceVariants = {
 };
 
 export const modalVariants = {
-	initial: { opacity: 0, transition: { duration: 0.4, ease: defaultEasing } },
-	animate: { opacity: 1, transition: { duration: 0.4, ease: defaultEasing } },
-	exit: { opacity: 0, transition: { duration: 0.4, ease: defaultEasing } },
+	initial: {
+		opacity: 0,
+	},
+	animate: {
+		opacity: 1,
+	},
+	exit: { opacity: 0 },
+	transition: { duration: 0.2, ease: defaultEasing, when: 'beforeChildren' },
 };
 
 export const modalOverlayVariants = {
-	initial: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
-	animate: { opacity: 1, transition: { duration: 0.2 } },
-	exit: { opacity: 0, transition: { duration: 0.2, delay: 0.2 } },
+	initial: { opacity: 0 },
+	animate: { opacity: 1 },
+	exit: { opacity: 0 },
+	transition: { duration: 0.2, when: 'beforeChildren' },
 };
 
 export const authPageFadeInVariants = {
@@ -102,17 +108,71 @@ export const authPageFadeInVariants = {
 export const defaultPageFadeInVariants = {
 	initial: {
 		opacity: 0,
-		transition: { duration: 1.2, ease: defaultEasing },
+		transition: { duration: 0.4, ease: defaultEasing },
 		willChange: 'opacity, transform',
 	},
 	animate: {
 		opacity: 1,
-		transition: { duration: 1.2, ease: defaultEasing },
+		transition: { duration: 0.4, ease: defaultEasing },
 		willChange: 'opacity, transform',
 	},
 	exit: {
 		opacity: 0,
-		transition: { duration: 1.2, ease: defaultEasing },
+		transition: { duration: 0.4, ease: defaultEasing },
 		willChange: 'opacity, transform',
 	},
+};
+
+export const favouriteCardAnimation = {
+	style: {
+		boxShadow: '4px 8px 4px rgba(0, 0, 0, 0.1), 0px 0px 30px rgba(0, 0, 0, 0.05)',
+	},
+	whileHover: {
+		x: -5,
+		y: -5,
+		boxShadow: '4px 8px 4px rgba(0, 0, 0, 0.1), 5px 5px 10px rgba(0, 0, 0, 0.3)',
+		transition: 0.2,
+	},
+	initial: (index) => ({ opacity: 0, y: 150, transition: { delay: 0.15 * index } }),
+	animate: (index) => ({ opacity: 1, y: 0, transition: { delay: 0.15 * index } }),
+	exit: { opacity: 0, scale: 0 },
+
+	transition: {
+		duration: 0.2,
+		layout: { duration: 0.2 },
+	},
+	layout: 'position',
+};
+
+export const favouritePageAnimation = {
+	initial: {
+		opacity: 0,
+		y: '20%',
+		transition: { duration: 0.2, ease: defaultEasing },
+	},
+	animate: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.4, ease: defaultEasing },
+	},
+	exit: {
+		opacity: 0,
+		y: '20%',
+		transition: { duration: 0.4, ease: defaultEasing },
+	},
+};
+
+export const cartCardAnimation = {
+	whileHover: {
+		boxShadow: '4px 8px 4px rgba(0, 0, 0, 0.1), 5px 5px 10px rgba(0, 0, 0, 0.3)',
+	},
+	initial: (index) => ({ opacity: 0, y: 150, transition: { delay: 0.15 * index } }),
+	animate: (index) => ({ opacity: 1, y: 0, transition: { delay: 0.15 * index } }),
+	exit: { opacity: 0 },
+
+	transition: {
+		duration: 0.2,
+		layout: { duration: 0.2 },
+	},
+	layout: 'position',
 };

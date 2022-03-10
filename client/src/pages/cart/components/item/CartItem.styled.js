@@ -17,11 +17,7 @@ export const Wrapper = styled.div`
 	width: 320px;
 
 	border-radius: 8px;
-	transition: box-shadow ${animationSpeed.middle} ease-in-out;
-
-	&:hover {
-		box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.3);
-	}
+	cursor: pointer;
 
 	@media ${device.laptop} {
 		flex-direction: row;

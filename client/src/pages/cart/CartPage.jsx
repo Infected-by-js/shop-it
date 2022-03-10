@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { routeToProductPage } from '../../router/routes';
 import { removeFromCart } from '../../redux/actions';
@@ -46,16 +46,19 @@ export const CartPage = () => {
 					<Cart>
 						<Content>
 							<CartList>
-								{products.map((product) => (
-									<CartItem
-										key={product.id}
-										product={product}
-										image={product.images[0]}
-										onRemove={handleRemoveFromCart}
-										onRouteToProduct={handleRouteToProduct}
-										{...product}
-									/>
-								))}
+								<AnimatePresence>
+									{products.map((product, index) => (
+										<CartItem
+											key={product.id}
+											product={product}
+											image={product.images[0]}
+											onRemove={handleRemoveFromCart}
+											onRouteToProduct={handleRouteToProduct}
+											index={index}
+											{...product}
+										/>
+									))}
+								</AnimatePresence>
 							</CartList>
 						</Content>
 						{totalPrice > 0 && <CartSummary totalPrice={totalPrice} onCheckOut={handleOpenModal} />}
