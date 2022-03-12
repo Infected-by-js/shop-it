@@ -1,4 +1,4 @@
-export const BASE = 'http://localhost:5000/api';
+export const BASE = '/api';
 export const PRODUCTS = '/products';
 export const IMAGES = 'https://raw.githubusercontent.com/Infected-by-js/shop-it/assets';
 export const LOGIN = 'auth/login';

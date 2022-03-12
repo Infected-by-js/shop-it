@@ -104,22 +104,20 @@ JWT_SEC=<jwt_secret_key>
 $ yarn data:import
 ```
 
-### Run:
+### Install Dependencies (frontend & backend)
 
 ```
-$ cd server
 $ yarn
-$ yarn start
-
-```
-
-### 4. Run Frontend
-
-```
-# open new terminal
 $ cd client
 $ yarn
-$ yarn start
+
+```
+
+### Run
+
+```
+# Run frontend (:3000) & backend (:5000)
+$ yarn dev
 ```
 
 Sample login credentials:
