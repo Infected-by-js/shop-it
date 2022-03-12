@@ -1,1 +1,1 @@
-# React Redux@toolkit app store
+# React Redux toolkit app store
