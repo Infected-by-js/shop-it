@@ -3,7 +3,7 @@ module.exports = [
 		author: 'name of author',
 		category: 'sculpture',
 		description: 'description',
-		images: ['db5f0091-ee54-49c7-80af-14bed41121f8.jpg'],
+		images: ['db5f0091-ee54-49c7-80af-14bed41121f8.jpeg'],
 		price: 9999,
 		size: '10 x 10 x 10 cm',
 		style: 'name of style',
@@ -16,9 +16,9 @@ module.exports = [
 		description:
 			'A little original mixed media painting of a Wren and feather. Part collage, part assemblage with a tiny handmade feather and part painting.',
 		images: [
-			'1642ec87-152e-4d6a-b05e-e8a7ea08c503.jpg',
-			'e35d07c3-27f1-4507-aadc-9f3bb9ce4c8e.jpg',
-			'45350fa9-cd0d-4444-8035-bc5442831988.png',
+			'1642ec87-152e-4d6a-b05e-e8a7ea08c503.jpeg',
+			'e35d07c3-27f1-4507-aadc-9f3bb9ce4c8e.jpeg',
+			'45350fa9-cd0d-4444-8035-bc5442831988.jpeg',
 		],
 		price: 66.12,
 		size: '17 x 17 x 3.5cm',
@@ -32,8 +32,8 @@ module.exports = [
 		description:
 			'Small original oil painting. 7x9.5 inch. It is a small framed oil painting, ready to hang.\n\nOriginal painting of a cow for farmhouse decor. This is not a print, it is an original oil painting of a landscape with dairy cow in a meadow, with vintage style.',
 		images: [
-			'6d93dda5-2983-4f7d-8503-06ede2460853.jpg',
-			'fde946b1-7547-43c7-893c-b77cea17b2d5.jpg',
+			'6d93dda5-2983-4f7d-8503-06ede2460853.jpeg',
+			'fde946b1-7547-43c7-893c-b77cea17b2d5.jpeg',
 		],
 		price: 99,
 		size: '26.67 x 21.08 x 1.27cm',
@@ -52,9 +52,9 @@ module.exports = [
 		category: 'paintings',
 		year_created: 2022,
 		images: [
-			'5ab9869d84f34ffcacbae706d6844b9c_opt.jpg',
-			'629f0d2e94c74cb98b41f6a908cca45f_opt.jpg',
-			'1234e9c7b84a415a80cffeff47dcae41_opt.jpg',
+			'5ab9869d84f34ffcacbae706d6844b9c_opt.jpeg',
+			'629f0d2e94c74cb98b41f6a908cca45f_opt.jpeg',
+			'1234e9c7b84a415a80cffeff47dcae41_opt.jpeg',
 		],
 	},
 	{
@@ -68,9 +68,9 @@ module.exports = [
 		category: 'drawings',
 		year_created: 2019,
 		images: [
-			'be84e889f2114075bdeecf36bb3f7462_opt.jpg',
-			'92707606275844219e81cca54cb26451.png',
-			'6917746353334e1280f5da00cd1af13c.png',
+			'be84e889f2114075bdeecf36bb3f7462_opt.jpeg',
+			'92707606275844219e81cca54cb26451.jpeg',
+			'6917746353334e1280f5da00cd1af13c.jpeg',
 		],
 	},
 	{
@@ -84,13 +84,13 @@ module.exports = [
 		category: 'drawings',
 		year_created: 2017,
 		images: [
-			'f33a5d87bb094dde8fb136e49f7d2753.jpg',
-			'e1ac7ab8e0e1417c95752367ba02f8bb_opt.jpg',
-			'1f6fb4079f98451286ebb0c9f672af96_opt.jpg',
-			'93eb668cefe242a194aaafb2d06d92f0.jpg',
-			'a473abec15944f38a3eecec4390944be.jpg',
-			'79610c25b1b9495b9efad24d8d5f2e79.jpg',
-			'1de744b9ed8b4307b16bfbc7208e606e.jpg',
+			'f33a5d87bb094dde8fb136e49f7d2753.jpeg',
+			'e1ac7ab8e0e1417c95752367ba02f8bb_opt.jpeg',
+			'1f6fb4079f98451286ebb0c9f672af96_opt.jpeg',
+			'93eb668cefe242a194aaafb2d06d92f0.jpeg',
+			'a473abec15944f38a3eecec4390944be.jpeg',
+			'79610c25b1b9495b9efad24d8d5f2e79.jpeg',
+			'1de744b9ed8b4307b16bfbc7208e606e.jpeg',
 		],
 	},
 	{
@@ -104,9 +104,9 @@ module.exports = [
 		category: 'drawings',
 		year_created: 2022,
 		images: [
-			'a4da40f444e64c13bc5b6805d9ea4ee8_opt.jpg',
-			'a692ec140ef64021866bee2a65595d44_opt.jpg',
-			'15776091ca0843e289c07a28d838a2ec_opt.jpg',
+			'a4da40f444e64c13bc5b6805d9ea4ee8_opt.jpeg',
+			'a692ec140ef64021866bee2a65595d44_opt.jpeg',
+			'15776091ca0843e289c07a28d838a2ec_opt.jpeg',
 		],
 	},
 	{
@@ -120,10 +120,10 @@ module.exports = [
 		category: 'paintings',
 		year_created: 2021,
 		images: [
-			'dac21820fdad4bb2aec46f400d41fd4b_opt.jpg',
-			'e011b58f6f29469bb109c8f4d9220ef1_opt.jpg',
-			'ce13198c3f0341f4b909a8a42f243ba1_opt.jpg',
-			'c21ff5e79c5340518f731992608c1c85_opt.jpg',
+			'dac21820fdad4bb2aec46f400d41fd4b_opt.jpeg',
+			'e011b58f6f29469bb109c8f4d9220ef1_opt.jpeg',
+			'ce13198c3f0341f4b909a8a42f243ba1_opt.jpeg',
+			'c21ff5e79c5340518f731992608c1c85_opt.jpeg',
 		],
 	},
 	{
@@ -137,8 +137,8 @@ module.exports = [
 		category: 'paintings',
 		year_created: 2022,
 		images: [
-			'7b86fd94fecd430996985e07f283b972_opt.jpg',
-			'5b559e51b1c244e081729d715a939066_opt.jpg',
+			'7b86fd94fecd430996985e07f283b972_opt.jpeg',
+			'5b559e51b1c244e081729d715a939066_opt.jpeg',
 		],
 	},
 	{
@@ -152,8 +152,8 @@ module.exports = [
 		category: 'paintings',
 		year_created: 2022,
 		images: [
-			'1b4bc2adc0ec44f6ac2562256373cc1f_opt.jpg',
-			'6fcccaf6d7f849fd84f4453642a336d1_opt.jpg',
+			'1b4bc2adc0ec44f6ac2562256373cc1f_opt.jpeg',
+			'6fcccaf6d7f849fd84f4453642a336d1_opt.jpeg',
 		],
 	},
 	{
@@ -167,9 +167,9 @@ module.exports = [
 		category: 'sculpture',
 		year_created: 2021,
 		images: [
-			'4fd61609c705479799194f8850c6865b_opt.jpg',
-			'2c44a8a1a17a497db5c2b9d4fd730c5b_opt.jpg',
-			'faa173ef10e543e9b90fd7f5c764d55d_opt.jpg',
+			'4fd61609c705479799194f8850c6865b_opt.jpeg',
+			'2c44a8a1a17a497db5c2b9d4fd730c5b_opt.jpeg',
+			'faa173ef10e543e9b90fd7f5c764d55d_opt.jpeg',
 		],
 	},
 	{
@@ -182,11 +182,11 @@ module.exports = [
 		category: 'sculpture',
 		year_created: 2022,
 		images: [
-			'dc4d935c4f9443c99b4d7e1a15296f33_opt.jpg',
-			'74b45e9df3bf4898a1f21d5af64c9915_opt.jpg',
-			'0283ef0089e34693a1cb675de235a9ce_opt.jpg',
-			'bd17e4c44c384bcb84c35a6f555737c3_opt.jpg',
-			'eca58e10247e4d18b789635002c9c061_opt.jpg',
+			'dc4d935c4f9443c99b4d7e1a15296f33_opt.jpeg',
+			'74b45e9df3bf4898a1f21d5af64c9915_opt.jpeg',
+			'0283ef0089e34693a1cb675de235a9ce_opt.jpeg',
+			'bd17e4c44c384bcb84c35a6f555737c3_opt.jpeg',
+			'eca58e10247e4d18b789635002c9c061_opt.jpeg',
 		],
 	},
 	{
@@ -200,10 +200,10 @@ module.exports = [
 		category: 'drawings',
 		year_created: 2022,
 		images: [
-			'b0e776b23ea7451bb6d08acd70abfc6a_opt.jpg',
-			'4c679cf28ac143e49585d1f50297758d_opt.jpg',
-			'3fd64ea50b52453e9f84edb9bf71b800_opt.jpg',
-			'26d6f3ebae8c4f84b677ec1e08a5ed7f_opt.jpg',
+			'b0e776b23ea7451bb6d08acd70abfc6a_opt.jpeg',
+			'4c679cf28ac143e49585d1f50297758d_opt.jpeg',
+			'3fd64ea50b52453e9f84edb9bf71b800_opt.jpeg',
+			'26d6f3ebae8c4f84b677ec1e08a5ed7f_opt.jpeg',
 		],
 	},
 	{
@@ -217,10 +217,10 @@ module.exports = [
 		category: 'drawings',
 		year_created: 2021,
 		images: [
-			'd72966b315364176aa6f31579b0331a9_opt.jpg',
-			'72e0a5e4d4f84f0d8c6df5d818a9f8bd_opt.jpg',
-			'06fc70d789b043688f9dc081aa18a6bc.png',
-			'632261f708bf4421a69e5bf947243d72.png',
+			'd72966b315364176aa6f31579b0331a9_opt.jpeg',
+			'72e0a5e4d4f84f0d8c6df5d818a9f8bd_opt.jpeg',
+			'06fc70d789b043688f9dc081aa18a6bc.jpeg',
+			'632261f708bf4421a69e5bf947243d72.jpeg',
 		],
 	},
 ];
