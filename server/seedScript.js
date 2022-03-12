@@ -3,7 +3,7 @@ require('dotenv').config();
 const Product = require('./models/Product');
 const User = require('./models/User');
 const products = require('./data/products');
-const user = require('./data/user');
+const users = require('./data/users');
 const connectDB = require('./config/db');
 
 const importData = async () => {
@@ -13,7 +13,7 @@ const importData = async () => {
 		await User.deleteMany({});
 
 		await Product.insertMany(products);
-		await User.insertOne(user);
+		await User.insertMany(users);
 
 		console.log('Data Import Success');
 
