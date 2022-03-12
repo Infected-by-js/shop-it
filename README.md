@@ -15,7 +15,7 @@ Redux Toolkit to manage the state of favourite items and the shopping cart. Prot
 
 <p align="center" >
   <a href="https://shopit-mern-store.herokuapp.com/" target="_blank" >
-    <img alt="Demo on Heroku"  width="15%" src="https://pngset.com/images/heroku-logo-sticker-number-symbol-text-alphabet-transparent-png-1894813.png">
+    <img alt="Demo on Heroku"  width="15%" src="https://cdn-icons-png.flaticon.com/512/873/873120.png">
   </a>
 </p>
 
