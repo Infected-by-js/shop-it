@@ -1,6 +1,4 @@
 const ProductService = require('../services/ProductService');
-const FileService = require('../services/FileService');
-const { validationResult } = require('express-validator');
 const { PAGE_ITEMS_LIMIT } = require('../utils/constants');
 
 class ProductController {
@@ -47,28 +45,6 @@ class ProductController {
 			res.status(200).json(product);
 		} catch (error) {
 			res.status(500).json('Product not found!');
-		}
-	}
-
-	async create(req, res) {
-		const { errors } = validationResult(req);
-
-		try {
-			if (errors.length) {
-				FileService.deleteImages(req.files);
-
-				return res.status(400).json(errors);
-			}
-
-			const images = req.files.map((image) => image.filename);
-			const newProduct = { ...req.body, images };
-			const savedProduct = await ProductService.saveProduct(newProduct);
-
-			res.status(201).json(savedProduct);
-		} catch (error) {
-			FileService.deleteImages(req.files);
-
-			res.status(500).json(error.message);
 		}
 	}
 }

@@ -53,11 +53,6 @@ class ProductService {
 		const product = await Product.findById(productId);
 		return this.getProductDto(product);
 	}
-
-	saveProduct(product) {
-		const newProduct = new Product(product);
-		return newProduct.save();
-	}
 }
 
 module.exports = new ProductService();
