@@ -144,3 +144,4 @@ Password: 1234
 - [ ] Move the user's favourite products data to the server
 - [ ] Payments
 - [ ] Information popups(add/remove products to/from cart)
+- [ ] Show to user error messages
