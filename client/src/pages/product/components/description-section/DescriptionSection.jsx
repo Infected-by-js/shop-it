@@ -1,4 +1,3 @@
-import React from 'react';
 import { Wrapper, Header, Text, Row } from './DescriptionSection.styled';
 
 export const DescriptionSection = ({ title, price, author, year_created, size, description }) => {

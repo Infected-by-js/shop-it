@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 export const useViewport = (breakpoint = 1920) => {
 	const [width, setWidth] = useState(window.innerWidth);
 
-	const isBreakpoint = useMemo(() => width <= breakpoint, [width]);
+	const isBreakpoint = useMemo(() => width <= breakpoint, [width, breakpoint]);
 
 	useEffect(() => {
 		const handleWindowResize = () => {

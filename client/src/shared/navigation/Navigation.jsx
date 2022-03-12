@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiShoppingBag, FiHeart } from 'react-icons/fi';
-import { useViewport } from '../../hooks/useViewport';
+import { useViewport } from '../../hooks/';
 
 import { CART_PAGE_ROUTE, FAVOURITES_PAGE_ROUTE, LOGIN_PAGE_ROUTE } from '../../router/routes';
 import {
@@ -48,9 +48,11 @@ export const Navigation = () => {
 
 	const handleRouteToPage = (event) => {
 		const button = event.target.closest('button');
-		if (!button) return;
+		const buttonName = button?.name;
 
-		const buttonName = button.name;
+		if (!buttonName || !button) return;
+
+		console.log(buttonName);
 
 		navigate(PAGES_ROUTE[buttonName]);
 		setIsMobileMenuOpen(false);

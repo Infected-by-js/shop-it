@@ -1,7 +1,4 @@
-import React from 'react';
 import { Container, Label, Menu, Item } from './Dropdown.styled';
-
-// !!! FIXME: add dispath dropdown by click
 
 export const Dropdown = ({ children, label, ...restProps }) => {
 	return (

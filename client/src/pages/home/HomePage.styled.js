@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+
 import { color, fonts, fontWeight, headerHeight, device } from '../../assets/styles/constants';
 
 export const ProductsPageWrapper = styled.div`
@@ -53,3 +53,5 @@ export const ProductList = styled.div`
 		grid-template-columns: repeat(4, 1fr);
 	}
 `;
+
+export const SkeletonWrapper = styled.div``;

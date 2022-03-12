@@ -1,4 +1,3 @@
-import React from 'react';
 import { FiHeart, FiChevronLeft, FiShoppingBag } from 'react-icons/fi';
 import { Nav, BackButton, IconCart, IconFavourite, Icons } from './Navigation.styled';
 

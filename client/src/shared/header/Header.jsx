@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { Container, Logo, Navigation } from '../';
-import { useRouting } from '../../hooks/useRouting';
+import { useRouting } from '../../hooks/';
 import { LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
 import { headerFadeInUpVariants } from '../../helpers/motions-utils';
 import { Wrapper, Content } from './Header.styled.js';

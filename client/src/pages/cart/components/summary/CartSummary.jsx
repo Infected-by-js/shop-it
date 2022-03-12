@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Wrapper, Content, Title, Item, ItemText, ItemPrice, Button } from './CartSummary.styled';
 
 const mockDiscount = 5.9;

@@ -1,22 +1,36 @@
-import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { setPage } from '../../redux/actions';
+import {
+	cartProductsSelector,
+	favouriteProductsSelector,
+	productsSelector,
+	selectIsUserAuth,
+} from '../../redux/selectors';
+import { getProducts, setPage } from '../../redux/actions';
 import { routeToCategoryPage } from '../../router/routes';
+import { useScrollToTop } from '../../hooks';
 
-import { Container, Footer, ProductList } from '../../shared';
-import { Filters } from './components';
-
+import { checkProductsInList } from '../../helpers/checkProductInList';
 import { categories } from '../../assets/categories';
 
-import { Main, MainTitle, ProductsPageWrapper } from './HomePage.styled';
+import { Container, EmptyState, Footer, Loader } from '../../shared';
+import { Filters, ProductCard, Pagination } from './components';
+
+import { Main, MainTitle, ProductsPageWrapper, ProductList } from './HomePage.styled';
 
 const initialCategory = categories[0].value;
+const SCROLL_POSITION = 0;
 
 export const HomePage = () => {
-	const navigate = useNavigate();
+	const { products, isLoading, pages, page } = useSelector(productsSelector);
+	const isAuth = useSelector(selectIsUserAuth);
+	const favourites = useSelector(favouriteProductsSelector);
+	const cartProducts = useSelector(cartProductsSelector);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { categoryId } = useParams();
 
 	const activeCategory = useMemo(() => {
@@ -28,22 +42,54 @@ export const HomePage = () => {
 		navigate(value ? routeToCategoryPage(value) : value);
 	};
 
+	useScrollToTop(SCROLL_POSITION, isLoading);
+
+	useEffect(() => {
+		dispatch(getProducts({ category: activeCategory, page }));
+		// eslint-disable-next-line
+	}, [activeCategory, page]);
+
+	const handleClickPagination = (page) => {
+		dispatch(setPage(page));
+	};
+
+	const checkIsInCart = (product) => checkProductsInList(cartProducts, product);
+	const checkIsFavourite = (product) => checkProductsInList(favourites, product);
+
 	return (
-		<>
-			<ProductsPageWrapper>
-				<Main>
-					<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
-					<Container>
-						<Filters
-							list={categories}
-							activeItemValue={activeCategory}
-							changeActiveItem={changeCategory}
-						/>
-						<ProductList category={activeCategory} />
-					</Container>
-				</Main>
-				<Footer />
-			</ProductsPageWrapper>
-		</>
+		<ProductsPageWrapper>
+			<Main>
+				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
+				<Container>
+					<Filters
+						list={categories}
+						activeItemValue={activeCategory}
+						changeActiveItem={changeCategory}
+					/>
+					<ProductList as={motion.div}>
+						{products ? (
+							products.map((product, index) => (
+								<ProductCard
+									key={product.id}
+									index={index}
+									isAuth={isAuth}
+									product={product}
+									image={product.images[0]}
+									checkIsInCart={checkIsInCart}
+									checkIsFavourite={checkIsFavourite}
+								/>
+							))
+						) : (
+							<EmptyState label='There will be products soon!' />
+						)}
+					</ProductList>
+					{!isLoading && (
+						<Pagination pagesCount={pages} activePage={page} onClick={handleClickPagination} />
+					)}
+				</Container>
+			</Main>
+			<Footer />
+			<Loader isLoading={isLoading} />
+		</ProductsPageWrapper>
 	);
 };

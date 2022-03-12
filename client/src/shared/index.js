@@ -1,5 +1,4 @@
 export { Button } from './button/Button';
-export { Carousel } from './carousel/Carousel';
 export { Container } from './container/Container';
 export { Copyright } from './copyright/Copyright';
 export { Dropdown } from './dropdown/Dropdown';
@@ -11,12 +10,7 @@ export { Input } from './input/Input';
 export { Logo } from './logo/Logo';
 export { Modal } from './modal/Modal';
 export { Navigation } from './navigation/Navigation';
-export { Popup } from './popup/Popup';
 export { Portal } from './portal/Portal';
-export { ProductCard } from './product-card/ProductCard';
-export { ProductList } from './product-list/ProductList';
 export { Loader } from './loader/Loader';
 export { ButtonAnimated } from './button-animated/ButtonAnimated';
-export { ProductItemSkeleton, InfoSkeleton, OverviewSkeleton } from './skeletons/';
-export { Pagination } from './pagination/Pagination';
 export { EmptyState } from './empty-state/EmptyState';

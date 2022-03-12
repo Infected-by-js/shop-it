@@ -8,7 +8,6 @@ export {
 	selectPage,
 } from './features/products/productsSelectors';
 
-export { searchSelector } from './features/search/searchSelectors';
 export {
 	cartSelector,
 	cartProductsSelector,

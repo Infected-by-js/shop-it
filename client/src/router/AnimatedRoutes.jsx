@@ -30,6 +30,7 @@ export const AnimatedRoutes = () => {
 		if (token) {
 			dispatch(requestAuth(token));
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	// FIXME: change it to refresh token

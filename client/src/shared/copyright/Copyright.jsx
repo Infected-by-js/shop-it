@@ -1,4 +1,3 @@
-import React from 'react';
 import { CopyrightLink } from './Copyright.styled.js';
 
 export const Copyright = () => {

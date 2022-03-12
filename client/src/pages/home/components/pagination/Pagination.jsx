@@ -1,4 +1,6 @@
 import { Wrapper, List, Item } from './Pagination.styled';
+import { motion } from 'framer-motion';
+import { bounceVariants } from '../../../../helpers/motions-utils';
 
 export const Pagination = ({ pagesCount, activePage, onClick }) => {
 	const handleClickPage = (page) => {
@@ -20,7 +22,7 @@ export const Pagination = ({ pagesCount, activePage, onClick }) => {
 	const dots = () => <Item disabled>...</Item>;
 
 	return (
-		<Wrapper>
+		<Wrapper as={motion.div} {...bounceVariants}>
 			<List>
 				{pagesCount <= 5 && itemList(generatePagesArray(pagesCount))}
 

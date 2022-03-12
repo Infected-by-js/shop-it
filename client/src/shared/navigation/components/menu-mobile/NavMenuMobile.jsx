@@ -1,13 +1,9 @@
-import { useSkipFirstMount } from '../../../../hooks';
+import { useShowScrollbar } from '../../../../hooks';
 import { Burger } from '../burger/Burger';
 import { NavMobileContainer, NavMobileList } from './NavMenuMobile.styled';
 
 export const NavMenuMobile = ({ isOpen, onOpen, children, ...restProps }) => {
-	useSkipFirstMount(() => {
-		document.body.style.overflow = 'hidden';
-
-		return () => (document.body.style.overflow = 'visible');
-	}, isOpen);
+	useShowScrollbar(isOpen);
 
 	return (
 		<>

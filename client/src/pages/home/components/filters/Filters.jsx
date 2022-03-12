@@ -1,4 +1,3 @@
-import React from 'react';
 import { Wrapper, FilterItem } from './Filters.styled';
 
 export const Filters = ({ list, activeItemValue, changeActiveItem }) => {

@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion';
-
 import { mainImageVariants } from '../../../../../../helpers/motions-utils';
 
 export const MainImage = ({ imageKey, src, direction, ...restProps }) => {

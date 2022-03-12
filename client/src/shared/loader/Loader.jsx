@@ -1,9 +1,16 @@
 import { Portal } from '../';
+import { useShowScrollbar } from '../../hooks/';
 import { Wrapper, LoaderContent, Letter } from './Loader.styled';
 
 const LOADER_TEXT = 'Loading...';
 
-export const Loader = () => {
+export const Loader = ({ isLoading }) => {
+	useShowScrollbar(isLoading);
+
+	if (!isLoading) {
+		return null;
+	}
+
 	return (
 		<Portal>
 			<Wrapper>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { FcGoogle, FcBadDecision } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
+import { FcGoogle, FcBadDecision } from 'react-icons/fc';
+import { motion } from 'framer-motion';
 
-import { HOME_PAGE_ROUTE, LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
-import { useFormValidation, useRouting } from '../../hooks/';
 import { loginUser, registerUser } from '../../redux/actions';
 import { selectUser } from '../../redux/selectors';
+import { HOME_PAGE_ROUTE, LOGIN_PAGE_ROUTE, REGISTER_PAGE_ROUTE } from '../../router/routes';
+import { useFormValidation, useRouting } from '../../hooks/';
 
 import { authPageFadeInVariants } from '../../helpers/motions-utils';
 import { loginSchema, registerSchema } from './helpers/validationSchemas';
@@ -48,10 +48,12 @@ export const AuthPage = () => {
 		if (currentUser && !authError) {
 			navigateTo(HOME_PAGE_ROUTE);
 		}
+		// eslint-disable-next-line
 	}, [currentUser]);
 
 	useEffect(() => {
 		setIsLoginPage(currentPage === LOGIN_PAGE_ROUTE);
+		// eslint-disable-next-line
 	}, []);
 
 	return (

@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const useSkipFirstMount = (callback, deps) => {
 	const mount = useRef(true);
@@ -15,5 +14,6 @@ export const useSkipFirstMount = (callback, deps) => {
 		}
 
 		mount.current = false;
+		// eslint-disable-next-line
 	}, [deps]);
 };

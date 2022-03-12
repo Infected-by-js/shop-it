@@ -1,6 +1,6 @@
 import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
-import { fonts, color, animationSpeed, device } from '../../assets/styles/constants';
+import { fonts, color, animationSpeed, device } from '../../../../assets/styles/constants';
 
 export const Wrapper = styled.nav`
 	margin-top: 50px;

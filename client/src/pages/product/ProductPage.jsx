@@ -18,16 +18,16 @@ import {
 } from '../../redux/actions';
 
 import { HOME_PAGE_ROUTE } from '../../router/routes';
+import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
 import { checkProductsInList } from '../../helpers/checkProductInList';
 import { formatCentsToDollars } from '../../helpers/handleMoney';
 
-import { Container, Header, Loader } from '../../shared';
+import { Container, Loader } from '../../shared';
 import { ImageSection, DescriptionSection, Navigation } from './components/';
 import { Main } from './ProductPage.styled';
-import { defaultPageFadeInVariants } from '../../helpers/motions-utils';
 
 export const ProductPage = () => {
-	const { activeProduct, isLoading, error } = useSelector(productsSelector);
+	const { activeProduct, isLoading } = useSelector(productsSelector);
 	const isAuth = useSelector(selectIsUserAuth);
 	const productsInCart = useSelector(cartProductsSelector);
 	const favourites = useSelector(favouriteProductsSelector);
@@ -37,6 +37,7 @@ export const ProductPage = () => {
 
 	useEffect(() => {
 		dispatch(getOneProduct(params.productId));
+		// eslint-disable-next-line
 	}, []);
 
 	const isAlreadyInCart = useMemo(() => {

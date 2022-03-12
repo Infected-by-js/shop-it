@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { Portal } from '../portal/Portal';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+
 import { modalVariants, modalOverlayVariants } from '../../helpers/motions-utils';
+import { useShowScrollbar } from '../../hooks/';
+import { Portal } from '../portal/Portal';
 import { ModalContainer, Overlay, Content } from './Modal.styled';
-import { useSkipFirstMount } from '../../hooks';
 
 export const Modal = ({ isOpen, onClose, children, ...props }) => {
 	useEffect(() => {
@@ -17,13 +18,10 @@ export const Modal = ({ isOpen, onClose, children, ...props }) => {
 		return () => {
 			document.removeEventListener('keydown', handleEscButton);
 		};
+		// eslint-disable-next-line
 	}, []);
 
-	useSkipFirstMount(() => {
-		document.body.style.overflow = 'hidden';
-
-		return () => (document.body.style.overflow = 'visible');
-	}, isOpen);
+	useShowScrollbar(isOpen);
 
 	if (!isOpen) {
 		return null;

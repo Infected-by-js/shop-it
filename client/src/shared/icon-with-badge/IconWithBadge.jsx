@@ -1,6 +1,5 @@
-import React from 'react';
-import { IconWrapp, Badge } from './IconWithBadge.styled';
 import { AnimatePresence, motion } from 'framer-motion';
+import { IconWrapp, Badge } from './IconWithBadge.styled';
 import { bounceVariants } from '../../helpers/motions-utils';
 
 export const IconWithBadge = ({ bangeLabel, icon: Icon, isShownBange = true }) => {

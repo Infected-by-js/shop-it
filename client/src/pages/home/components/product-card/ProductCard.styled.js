@@ -1,6 +1,6 @@
 import { lighten } from 'polished';
 import styled from 'styled-components';
-import { color, animationSpeed } from '../../assets/styles/constants';
+import { color, animationSpeed } from '../../../../assets/styles/constants';
 
 export const Wrapper = styled.div`
 	position: relative;

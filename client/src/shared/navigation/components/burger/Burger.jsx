@@ -1,4 +1,3 @@
-import React from 'react';
 import { BurgerButton } from './Burger.styled';
 
 export const Burger = ({ isMenuOpen, onClick }) => {

@@ -1,4 +1,3 @@
-import { transparentize } from 'polished';
 import styled, { css } from 'styled-components';
 import { animationSpeed, color, device } from '../../assets/styles/constants';
 

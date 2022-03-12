@@ -25,13 +25,6 @@ class ProductService {
 
 		return { ...product, images };
 	}
-
-	async createOne(requestBody) {
-		const token = 'blabla';
-		const response = await this.requests.saveProduct(requestBody, token);
-
-		return response.data;
-	}
 }
 
 export default new ProductService(requests);

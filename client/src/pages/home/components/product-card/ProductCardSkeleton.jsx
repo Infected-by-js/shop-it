@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-export const ProductItemSkeleton = (props) => (
+export const ProductCardSkeleton = (props) => (
 	<ContentLoader
 		width={300}
 		height={460}

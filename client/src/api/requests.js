@@ -4,7 +4,6 @@ import { PRODUCTS, IMAGES, LOGIN, REGISTER, AUTH } from './endpoints';
 export const requests = {
 	fetchProducts,
 	fetchProduct,
-	saveProduct,
 	getImageUrl,
 	login,
 	register,
@@ -19,10 +18,6 @@ function fetchProducts(params) {
 
 function fetchProduct(id) {
 	return axiosInstance.get(`${PRODUCTS}/${id}`);
-}
-
-function saveProduct(product) {
-	return axiosInstance.post(PRODUCTS, product);
 }
 
 function auth() {
