@@ -64,16 +64,16 @@ Redux Toolkit to manage the state of favourite items and the shopping cart. Prot
 
 ## Features
 
-⭐️ User Sign In & User Sign Up
-⭐️ Auto auth by JWT
-⭐️ Save products to favourites(available only logged in users)
-⭐️ Cart functionality (except the payment. which will be added soon)
-⭐️ Products pagination
-⭐️ Use of React hooks and custom hooks
-⭐️ Responsive layout
-⭐️ Loading skeletons
-⭐️ Route animations and micro-interactions handled with Framer Motion
-⭐️ Database seeder (products & users)
+- User Sign In & User Sign Up
+- Auto auth by JWT
+- Save products to favourites(available only logged in users)
+- Cart functionality (except the payment. which will be added soon)
+- Products pagination
+- Use of React hooks and custom hooks
+- Responsive layout
+- Loading skeletons
+- Route animations and micro-interactions handled with Framer Motion
+- Database seeder (products & users)
 
 ## How to use
 
