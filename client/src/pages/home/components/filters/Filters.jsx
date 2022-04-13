@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+import { bounceVariants } from '../../../../helpers/motions-utils';
 import { Wrapper, FilterItem } from './Filters.styled';
 
 export const Filters = ({ list, activeItemValue, changeActiveItem }) => {
@@ -8,7 +10,7 @@ export const Filters = ({ list, activeItemValue, changeActiveItem }) => {
 	};
 
 	return (
-		<Wrapper>
+		<Wrapper as={motion.div} {...bounceVariants}>
 			{list.map(({ title, value }) => (
 				<FilterItem
 					key={title}

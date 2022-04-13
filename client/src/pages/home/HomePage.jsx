@@ -16,10 +16,11 @@ import { useScrollToTop } from '../../hooks';
 import { checkProductsInList } from '../../helpers/checkProductInList';
 import { categories } from '../../assets/categories';
 
-import { Container, EmptyState, Footer, Loader } from '../../shared';
+import { Container, EmptyState, Footer } from '../../shared';
 import { Filters, ProductCard, Pagination } from './components';
 
 import { Main, MainTitle, ProductsPageWrapper, ProductList } from './HomePage.styled';
+import { bounceVariants, defaultEasing } from '../../helpers/motions-utils';
 
 const initialCategory = categories[0].value;
 const SCROLL_POSITION = 0;
@@ -59,7 +60,9 @@ export const HomePage = () => {
 	return (
 		<ProductsPageWrapper>
 			<Main>
-				<MainTitle>Original {activeCategory ? activeCategory : 'arts'} for sale</MainTitle>
+				<MainTitle as={motion.h1} {...bounceVariants}>
+					Original {activeCategory ? activeCategory : 'arts'} for sale
+				</MainTitle>
 				<Container>
 					<Filters
 						list={categories}
@@ -89,7 +92,6 @@ export const HomePage = () => {
 				</Container>
 			</Main>
 			<Footer />
-			<Loader isLoading={isLoading} />
 		</ProductsPageWrapper>
 	);
 };
