@@ -14,8 +14,8 @@ Redux Toolkit to manage the state of favourite items and the shopping cart. Prot
 ## Demo
 
 <p align="center" >
-  <a href="#" target="_blank" >
-    <img alt="Demo on Heroku"  width="15%" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAyNyAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+aGVyb2t1LWxvZ288L3RpdGxlPjxwYXRoIGQ9Ik0zIDBDMS4xMyAwIDAgMS4xMSAwIDIuOTAzdjI0LjE5NEMwIDI4Ljg4MyAxLjEzIDMwIDMgMzBoMjFjMS44NjMgMCAzLTEuMTEgMy0yLjkwM1YyLjkwM0MyNi45OTQgMS4xMSAyNS44NjMgMCAyNCAwSDN6bTIxLjA0MiAyYy41MDguMDA2Ljk1OC40NDguOTU4LjkyOVYyNy4wN2MwIC40ODctLjQ1LjkyOS0uOTU4LjkyOUgyLjk1OEMyLjQ1IDI4IDIgMjcuNTU4IDIgMjcuMDcxVjIuOTNjMC0uNDg4LjQ1LS45My45NTgtLjkzaDIxLjA4NHpNMjAgMjVoLTIuNzgxdi04LjUwNmMwLS43NzQtLjIzNy0xLjA0OC0uNDY4LTEuMjA4LTEuMzk2LS45NTktNS40MTQtLjA0Mi03LjgzNC45MTZMNyAxNy4wMTIgNy4wMDYgNWgyLjgxNnY3LjkxN2EyMC45OSAyMC45OSAwIDAgMSAxLjg4Mi0uNDgyYzIuOTg4LS42NDMgNS4xODQtLjQ3IDYuNjE2LjUwNS43ODcuNTM2IDEuNjggMS41OSAxLjY4IDMuNTU0VjI1em0tNi0xNWgzLjI5M0ExNi4xMDkgMTYuMTA5IDAgMCAwIDIwIDVoLTMuMjg3Yy0uNDkgMS4xODgtMS4zODUgMy4xODgtMi43MTMgNXpNNyAyNXYtN2wzIDMuNUw3IDI1eiIgZmlsbD0iIzc5NTg5ZiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+">
+  <a href="https://shopit-mern-store.herokuapp.com/" target="_blank" >
+    <img alt="Demo on Heroku"  width="15%" src="https://cdn-icons-png.flaticon.com/512/873/873120.png">
   </a>
 </p>
 
