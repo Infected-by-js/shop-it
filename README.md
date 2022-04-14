@@ -9,7 +9,7 @@
 
 **Fullstack art store application built with the MERN stack, redux toolkit, styled-components, framer-motion**.
 Includes registration/login with validation(server & client side), auto auth if the user is already logged in.
-Redux Toolkit to manage the state of favourite items and the shopping cart. Protected Routes to prevent access to certain routes if the token does not exist or is invalid. This web app will be a full e-commerce application, many features will be added
+Redux Toolkit to manage the state of favourite items and the shopping cart. Protected Routes to prevent access to certain routes if the token does not exist or is invalid.
 
 ## Demo
 
@@ -126,22 +126,3 @@ Sample login credentials:
 Username: shopit
 Password: 1234
 ```
-
-# 🎯 Plans
-
-- [ ] Admin dashboard
-  - [ ] Add/edit products
-  - [ ] Edit user data
-  - [ ] Acceptance or rejection of user purchases
-- [ ] Customer dashboard
-  - [ ] Request to edit product
-  - [ ] Edit user credentials
-- [ ] Login with Google
-- [ ] Login as Anonymous
-- [ ] Refresh token
-- [ ] Dark theme
-- [ ] Move the user's cart data to the server
-- [ ] Move the user's favourite products data to the server
-- [ ] Payments
-- [ ] Information popups(add/remove products to/from cart)
-- [ ] Show to user error messages
